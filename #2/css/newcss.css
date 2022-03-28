@@ -1,0 +1,56 @@
+/* CSS */ 
+h1{
+    margin-top: 1px;
+    color: #230ead;
+    text-align: right;
+    font-size: 65px;
+    font-style: oblique;
+    font-family: "Calibri";
+}
+
+p{
+    font-family: "Constantia";
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+hr{
+    border-bottom-color: brown;
+    border-bottom-width: 4px;
+}
+
+#red{
+    text-decoration: underline;
+    color: crimson;
+    font-size: 50px;
+}
+
+#green{
+    text-decoration: overline #107526;
+    font-weight: bold;
+    color: #0f942c;
+    font-size: 35px;
+}
+
+#orange{
+    color: #db8709;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.background{
+    background-image: url(../pictures/background.jpg);
+}
+
+.picture{
+    float: right;
+    margin-top: 10px;
+    width: 30%;
+}
+
+.last{
+    font-size: 32px;
+    font-family: "Bahnschrift SemiCondensed";
+    text-align: justify;
+    
+}
