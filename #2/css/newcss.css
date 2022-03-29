@@ -1,6 +1,7 @@
 /* CSS */ 
 h1{
     margin-top: 1px;
+    margin-right: 20px;
     color: #230ead;
     text-align: right;
     font-size: 65px;
@@ -17,6 +18,7 @@ p{
 hr{
     border-bottom-color: brown;
     border-bottom-width: 4px;
+    margin-right: 10px;
 }
 
 #red{
@@ -45,6 +47,8 @@ hr{
 .picture{
     float: right;
     margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     width: 30%;
 }
 
