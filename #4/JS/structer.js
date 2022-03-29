@@ -16,19 +16,23 @@ class task{
     };
 }
 
-block = document.getElementById("response_field");
-let a = document.createElement("checkbox");
+function test_start(){
+    block = document.getElementById("response_field");
+    let a = document.createElement("checkbox");
+    let current_task = task("ЧТО?", "Ответ 1", "Ответ 2", "Ответ 3", "Ответ 4", "VVV" );
+    creation_checkbox(current_task);
+}
 
-let current_task = task("ЧТО?", "Ответ 1", "Ответ 2", "Ответ 3", "Ответ 4", "VVV" );
 
 
-function creation_checkbox(current_task){
-    question = document.innerHTMl(this.question);
-    block.append(question);
+
+
+function creation_checkbox(current){
+    question = document.innerHTMl('$this.question');
+    block.appendChild(question);
 
     
 
 }
 
 
-creation_checkbox(current_task);
