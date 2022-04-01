@@ -4,12 +4,14 @@ class time{
     #time_minutes;
     #time_seconds;
     #seconds;
+    #working;
     constructor(id_timer){
         this.#timer = document.getElementById(id_timer);
         this.#time_hour = Number(this.#timer.value.split(':')[0]);
         this.#time_minutes = Number(this.#timer.value.split(':')[1]);
         this.#time_seconds = Number(this.#timer.value.split(':')[2]);
         this.#seconds = (this.#time_hour * 3600) + (this.#time_minutes * 60) + (this.#time_seconds);
+        this.#working = false;
     };
     timing() {
         if (this.#seconds > 0){
@@ -22,13 +24,8 @@ class time{
             let s1 = (s.toString().length == 2) ? (s) : ('0' + s);
             timer.value = h1 + ":" + m1 + ":" + s1;
             console.log('timer.value: ', timer.value);
-        };
-    };
-    #countdown() {
-        let timer_id_finish = setTimeout('finish_test()', (this.#seconds * 1000));
-    };
-    start_timer(){
-        this.#countdown();
-        let timer_id_cound = setInterval('timer_klass.timing()', 1000);
+        } else {
+            finish_test()
+        }
     };
 };

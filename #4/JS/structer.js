@@ -24,10 +24,8 @@ function test_start(){
     let current_task = new task("ЧТО?", "Ответ 1", "Ответ 2", "Ответ 3", "Ответ 4", "VVV" );
     creation_checkbox(current_task);
 
-    timer_klass = new time('timer');
-    console.log('timer_klass: ', timer_klass);
-    timer_klass.start_timer();
-
+    start_timer("timer");
+    
     
 
 }
@@ -49,7 +47,11 @@ function creation_checkbox(current){
 }
 
 
-
+function start_timer(id_timer){
+    timer_klass = new time(id_timer);
+    console.log('timer_klass: ', timer_klass);
+    setInterval('timer_klass.timing()', 1000);
+};
 
 
 function finish_test(){
