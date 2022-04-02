@@ -62,7 +62,7 @@ class task_checkbox extends task{
     checkbox_save(){
         for (let i = 1; i < 5; i++){
             this[`field${i}`] = document.getElementById(`answer${i}`).checked
-            console.log(`this[field${i}]: `, this[`field${i}`]);
+            //console.log(`this[field${i}]: `, this[`field${i}`]);
         }
     }
 }
@@ -113,7 +113,7 @@ class task_radiobutton extends task{
     radiobutton_save(){
         for (let i = 1; i < 5; i++){
             this[`field${i}`] = document.getElementById(`answer${i}`).checked
-            console.log(`this[field${i}]: `, this[`field${i}`]);
+            //console.log(`this[field${i}]: `, this[`field${i}`]);
         }
     }
 }
