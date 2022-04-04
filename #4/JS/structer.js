@@ -102,6 +102,9 @@ class task_radiobutton extends task{
     field2;
     field3;
     field4;
+    user_answer;
+    user_score;
+
 
     constructor(input_number, input_question, input_answer, input_rans, name){
         super(input_number, input_question, input_answer, input_rans);
@@ -113,6 +116,8 @@ class task_radiobutton extends task{
         this.field2 = 0;
         this.field3 = 0;
         this.field4 = 0;
+        this.user_answer = [];
+        this.user_score = 0;
     };
 
     radiobutton_generate_form(){
@@ -141,10 +146,34 @@ class task_radiobutton extends task{
 
     radiobutton_save(){
         for (let i = 1; i < 5; i++){
-            this[`field${i}`] = document.getElementById(`answer${i}`).checked;
+            this[`field${i}`] = document.getElementById(`answer${i - 1}`).checked;
             console.log(`this[field${i}]: `, this[`field${i}`]);
         };
+        this.radiobutton_check();
     };
+
+    radiobutton_check(){
+        for (let q = 1; q < 5; q++){
+            let temp = this[`field${q}`]
+            if (temp == true){
+                if (this.user_answer.indexOf(this.answer[q-1]) == -1){
+                    this.user_answer.push(this.answer[q-1]);
+                }; 
+            };
+            if (temp == false){
+                if (this.user_answer.indexOf(this.answer[q-1]) != -1){
+                this.user_answer.pop(this.answer[q-1]);
+                };
+            };
+        };
+        
+        if (this.user_answer == this.right_answer){
+            this.user_score = 1;
+        } else {
+            this.user_score = 0;
+        };
+    };
+
 };
 
 class task_free_answer extends task{
