@@ -70,9 +70,26 @@ class task_checkbox extends task{
     };
 
     checkbox_check(){
-        
+        for (let q = 1; q < 5; q++){
+            let temp = this[`field${q}`]
+            if (temp == true){
+                if (this.user_answer.indexOf(this.answer[q-1]) == -1){
+                    this.user_answer.push(this.answer[q-1]);
+                }; 
+            };
+            if (temp == false){
+                if (this.user_answer.indexOf(this.answer[q-1]) != -1){
+                this.user_answer.pop(this.answer[q-1]);
+                };
+            };
+        };
 
-    }
+        if (this.user_answer == this.right_answer){
+            this.user_score = 1;
+        } else {
+            this.user_score = 0;
+        };
+    };
 };
 
 class task_radiobutton extends task{
@@ -304,7 +321,6 @@ class task_selection extends task{
             this.user_score = 0;
         };
     };
-
 };
 
 class questions{
@@ -511,21 +527,15 @@ class questions{
             let th1 = document.createElement('th');
             th1.insertAdjacentHTML("beforeend", `${line + 1}`);
             tr.append(th1);
-
-           
-
-
-            
-            console.log('this.all_questions[line].field1;: ', this.all_questions[line].field1);
-            console.log('this.field1: ', this.field1);
-
-
-
-            for (let column = 1; column < sample_thead.length; column++){
-                let th = document.createElement('th');
-                th.insertAdjacentHTML("beforeend", `${line}` + `${column}`);
-                tr.append(th);
-            }
+            let th2 = document.createElement('th');
+            th2.insertAdjacentHTML("beforeend", `${qwerty.all_questions[line].user_answer}`);
+            tr.append(th2);
+            let th3 = document.createElement('th');
+            th3.insertAdjacentHTML("beforeend", `${qwerty.all_questions[line].right_answer}`);
+            tr.append(th3);
+            let th4 = document.createElement('th');
+            th4.insertAdjacentHTML("beforeend", `${qwerty.all_questions[line].user_score}`);
+            tr.append(th4);
             table_tbody.append(tr);
         };
         table.append(table_tbody);
