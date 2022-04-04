@@ -52,7 +52,7 @@ class questions{
     };
 
     current_div_next(){
-        if (this.current_position < this.current_number - 1){
+        if (this.current_position < (this.current_number - 1)){
             this.current_position++;
             this.current_div = this.questions_div[this.current_position];
             this.questions_div[this.current_position - 1].replaceWith(this.current_div);
@@ -72,6 +72,24 @@ class questions{
         setInterval('timer_klass.timing()', 1000);
     };
 
+    div_random(){
+        let  arr = [];
+        while (arr.length < (this.current_number)){
+            let a = Math.round(Math.random() * (this.current_number - 1))
+            console.log('a: ', a);
+            if ((arr.indexOf(a) == -1) && ((this.current_number - 2))){
+                arr.push(a)
+            }
+            console.log(' arr: ',  arr);
+        }
+
+        let random_divs = [];
+        for (let i = 0; i < arr.length; i++){
+            random_divs.push(this.questions_div[arr[i]]);
+        }
+        this.questions_div = random_divs;
+    }
+
 }
 
 let qwerty = new questions;
@@ -90,13 +108,15 @@ function test_start(){
     qwerty.generate_radiobutton_question();
     qwerty.generate_free_answer_question();
 
-    qwerty.current_div_update();
-
-
 
     
-    let mix_q = start_form.elements.mix_questions.checked
-    console.log('mix_q: ', mix_q);
+    
+
+    
+    let mix_q = start_form.elements.mix_questions.checked;
+    mix_q ? qwerty.div_random() : mix_q;
+
+    qwerty.current_div_update();
 
     let mix_a = start_form.elements.mix_answers.checked
     console.log('mix_a: ', mix_a);
@@ -111,14 +131,7 @@ function test_start(){
     block.replaceWith(div_middle);
 }
 
-function next_question(){
-    if ((0 <= counter) && (counter <= 3)){
-        let y = counter;
-        let x = counter + 1;
-        questions_div[y].replaceWith(questions_div[x])
-        counter++;
-    };
-}
+
 
 
 
