@@ -89,7 +89,13 @@ class task_checkbox extends task{
         } else {
             this.user_score = 0;
         };
+
+        this.user_answer;
+        console.log('this.user_answer: ', this.user_answer);
+        this.user_score;
+        console.log('this.user_score: ', this.user_score);
     };
+    
 };
 
 class task_radiobutton extends task{
@@ -171,6 +177,11 @@ class task_radiobutton extends task{
         } else {
             this.user_score = 0;
         };
+
+        this.user_answer;
+        console.log('this.user_answer: ', this.user_answer);
+        this.user_score;
+        console.log('this.user_score: ', this.user_score);
     };
 
 };
@@ -230,6 +241,11 @@ class task_free_answer extends task{
         } else {
             this.user_score = 0;
         };
+
+        this.user_answer;
+        console.log('this.user_answer: ', this.user_answer);
+        this.user_score;
+        console.log('this.user_score: ', this.user_score);
     };
    
 };
@@ -320,6 +336,11 @@ class task_selection extends task{
         } else {
             this.user_score = 0;
         };
+
+        this.user_answer;
+        console.log('this.user_answer: ', this.user_answer);
+        this.user_score;
+        console.log('this.user_score: ', this.user_score);
     };
 };
 
@@ -337,6 +358,7 @@ class questions{
     user_answer;
     user_score;
     all_score;
+    order;
 
     constructor(){
         this.all_questions = [];
@@ -350,6 +372,7 @@ class questions{
         this.random_answers = 0;
         this.timer_interval = 0;
         this.all_score = 0;
+        this.order = [];
     };
 
     generate_checkbox_question(input_question, input_answer, input_rans){
@@ -471,7 +494,7 @@ class questions{
                 arr.push(a);
             }
         }
-
+        this.order = arr;
         let random_divs = [];
         for (let i = 0; i < arr.length; i++){
             random_divs.push(this.questions_div[arr[i]]);
@@ -524,13 +547,15 @@ class questions{
             th1.insertAdjacentHTML("beforeend", `${line + 1}`);
             tr.append(th1);
             let th2 = document.createElement('th');
-            th2.insertAdjacentHTML("beforeend", `${qwerty.all_questions[line].user_answer}`);
+            let temp = this.all_questions[this.order[line]].user_answer;
+            temp == 0 ? temp = "-" : temp;
+            th2.insertAdjacentHTML("beforeend", `${temp}`);
             tr.append(th2);
             let th3 = document.createElement('th');
-            th3.insertAdjacentHTML("beforeend", `${qwerty.all_questions[line].right_answer}`);
+            th3.insertAdjacentHTML("beforeend", `${this.all_questions[`${this.order[line]}`].right_answer}`);
             tr.append(th3);
             let th4 = document.createElement('th');
-            th4.insertAdjacentHTML("beforeend", `${qwerty.all_questions[line].user_score}`);
+            th4.insertAdjacentHTML("beforeend", `${this.all_questions[`${this.order[line]}`].user_score}`);
             tr.append(th4);
             table_tbody.append(tr);
         };

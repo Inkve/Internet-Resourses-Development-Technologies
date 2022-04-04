@@ -22,9 +22,8 @@ class time{
             let s1 = (s.toString().length == 2) ? (s) : ('0' + s);
             this.#timer.value = h1 + ":" + m1 + ":" + s1;
             document.getElementById('timer_on_test').value = this.#timer.value;
-            //console.log('timer.value: ', timer.value);
         } else {
-            finish_test()
+            qwerty.finish_test()
         }
     };
 };
