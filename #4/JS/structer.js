@@ -164,6 +164,60 @@ class task_free_answer extends task{
     };
 };
 
+class task_selection extends task{
+    name;
+    fieldset;
+    form;
+    div;
+    field1;
 
+    constructor(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans, name){
+        super(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans);
+        this.name = name;
+        this.fieldset = document.createElement('select');
+        this.form = document.createElement('form');
+        this.div = document.createElement('div');
+    };
+
+    selection_generate_form(){
+        for (let i = 0; i <= 4; i++){
+            if (i == 0){
+                let selection_element = document.createElement('option');
+                selection_element.disabled = true;
+                selection_element.selected = true;
+                selection_element.hidden = true;
+                this.fieldset.append(selection_element);
+            };
+            if (i != 0){
+                let selection_element = document.createElement('option');
+                selection_element.setAttribute("id", `answer${i}`);
+                selection_element.setAttribute("name", `answer${i}`);
+                selection_element.setAttribute("value", `${this[`answer${i}`]}`);
+                let selection_text = document.createElement('span');
+                selection_text.insertAdjacentHTML("beforeend", `${this[`answer${i}`]}`);
+                selection_text.insertAdjacentHTML("beforeend", "</br>");
+                selection_element.append(selection_text);
+                this.fieldset.append(selection_element);
+            };
+        };
+        this.form.prepend(this.fieldset);
+    };
+
+    selection_generate_div(){
+        this.fieldset.setAttribute("id", "test_id");
+        this.fieldset.setAttribute("onchange", `qwerty.all_questions[${this.number - 1}].selection_save()`);
+        this.div.insertAdjacentHTML("beforeend", `Это вопрос №${this.number}` + '</br>');
+        this.div.insertAdjacentHTML("beforeend", 'Название вопроса: ' + this.question + '</br>');
+        this.selection_generate_form();
+        this.div.append(this.form);
+    };
+
+    selection_save(){
+        for (let i = 1; i < 5; i++){
+            this[`field${i}`] = document.getElementById(`answer${i}`).selected;
+            console.log(`this[field${i}]: `, this[`field${i}`]);
+        };
+    };
+};
 
 

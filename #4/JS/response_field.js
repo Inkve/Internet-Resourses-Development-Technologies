@@ -39,6 +39,14 @@ class questions{
         this.current_name = `current_task${this.current_number + 1}`;
     }
 
+    generate_selection_question(){
+        this.all_questions.push(new task_selection(`${this.current_number + 1}`, `ЧТО${this.current_number + 1}?`, `Ответ ${this.current_number + 1}_1`, `Ответ ${this.current_number + 1}_2`, `Ответ ${this.current_number + 1}_3`, `Ответ ${this.current_number + 1}_4`, "VVV", `${this.current_name}`));
+        this.all_questions[this.current_number].selection_generate_div();
+        this.questions_div.push(this.all_questions[this.current_number].div);
+        this.current_number++;
+        this.current_name = `current_task${this.current_number + 1}`;
+    }
+
     current_div_update(){
         this.current_div = this.questions_div[0];
     };
@@ -58,24 +66,34 @@ class questions{
             this.questions_div[this.current_position + 1].replaceWith(this.current_div);
         };
     };
+
+    start_timer(id_timer){
+        timer_klass = new time(id_timer);
+        setInterval('timer_klass.timing()', 1000);
+    };
+
 }
 
 let qwerty = new questions;
+let timer_klass;
 
 
 function test_start(){
-    qwerty.generate_checkbox_question();
-    qwerty.generate_checkbox_question();
+    qwerty.start_timer("timer");
 
+    qwerty.generate_selection_question();
     qwerty.generate_checkbox_question();
-    qwerty.generate_radiobutton_question();
     qwerty.generate_radiobutton_question();
     qwerty.generate_free_answer_question();
+    qwerty.generate_selection_question();
     qwerty.generate_checkbox_question();
-    qwerty.current_div_update();
-    console.log('qwerty: ', qwerty);
+    qwerty.generate_radiobutton_question();
+    qwerty.generate_free_answer_question();
 
-    start_timer("timer");
+    qwerty.current_div_update();
+
+
+
     
     let mix_q = start_form.elements.mix_questions.checked
     console.log('mix_q: ', mix_q);
@@ -89,9 +107,8 @@ function test_start(){
     div_middle.insertAdjacentHTML("beforeend", '<button id="prev" onclick="qwerty.current_div_prev()"> Прошлый </button>' 
     + '<button id="next" onclick="qwerty.current_div_next()" > Следующий </button>');
     
-    div_middle.prepend(qwerty.current_div)
-    console.log('qwerty.questions_div[0]: ', qwerty.current_div);
-    block.replaceWith(div_middle)
+    div_middle.prepend(qwerty.current_div);
+    block.replaceWith(div_middle);
 }
 
 function next_question(){
@@ -109,11 +126,7 @@ function next_question(){
 
 
 
-function start_timer(id_timer){
-    timer_klass = new time(id_timer);
-    console.log('timer_klass: ', timer_klass);
-    setInterval('timer_klass.timing()', 1000);
-};
+
 
 
 function finish_test(){
