@@ -374,10 +374,6 @@ class questions{
         this.current_name = `current_task${this.current_number + 1}`;
     }
 
-    checkbox_check(){
-
-    }
-
     generate_radiobutton_question(input_question, input_answer, input_rans){
         if (this.random_answers == 1){
             let  arr = [];
