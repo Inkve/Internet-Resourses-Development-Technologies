@@ -70,25 +70,7 @@ class task_checkbox extends task{
     };
 
     checkbox_check(){
-        for (let q = 1; q < 5; q++){
-            let temp = this[`field${q}`]
-            if (temp == true){
-                if (this.user_answer.indexOf(this.answer[q-1]) == -1){
-                    this.user_answer.push(this.answer[q-1]);
-                }; 
-            };
-            if (temp == false){
-                if (this.user_answer.indexOf(this.answer[q-1]) != -1){
-                this.user_answer.pop(this.answer[q-1]);
-                };
-            };
-        };
         
-        if (this.user_answer == this.right_answer){
-            this.user_score = 1;
-        } else {
-            this.user_score = 0;
-        };
 
     }
 };
@@ -182,6 +164,8 @@ class task_free_answer extends task{
     form;
     div;
     field1;
+    user_answer;
+    user_score;
 
     constructor(input_number, input_question, input_answer, input_rans, name){
         super(input_number, input_question, input_answer, input_rans);
@@ -190,6 +174,8 @@ class task_free_answer extends task{
         this.form = document.createElement('form');
         this.div = document.createElement('div');
         this.field1 = 0;
+        this.user_answer = 0;
+        this.user_score = 0;
     }
 
     free_answer_generate_form(){
@@ -217,7 +203,18 @@ class task_free_answer extends task{
         this[`field${i}`] = document.getElementById(`answer${i}`).value;
         console.log('`answer${i}`: ', `answer${i}`);
         console.log(`this[field${i}]: `, this[`field${i}`]);
+        this.free_answer_check();
     };
+
+    free_answer_check(){
+        this.user_answer = this.field1;
+        if (this.user_answer == this.right_answer){
+            this.user_score = 1;
+        } else {
+            this.user_score = 0;
+        };
+    };
+   
 };
 
 class task_selection extends task{
@@ -226,6 +223,11 @@ class task_selection extends task{
     form;
     div;
     field1;
+    field2;
+    field3;
+    field4;
+    user_answer;
+    user_score;
 
     constructor(input_number, input_question, input_answer, input_rans, name){
         super(input_number, input_question, input_answer, input_rans);
@@ -234,6 +236,11 @@ class task_selection extends task{
         this.form = document.createElement('form');
         this.div = document.createElement('div');
         this.field1 = 0;
+        this.field2 = 0;
+        this.field3 = 0;
+        this.field4 = 0;
+        this.user_answer = [];
+        this.user_score = 0;
     };
 
     selection_generate_form(){
@@ -270,10 +277,34 @@ class task_selection extends task{
 
     selection_save(){
         for (let i = 1; i < 5; i++){
-            this[`field${i}`] = document.getElementById(`answer${i}`).selected;
+            this[`field${i}`] = document.getElementById(`answer${i - 1}`).selected;
             console.log(`this[field${i}]: `, this[`field${i}`]);
+            this.selection_check();
         };
     };
+
+    selection_check(){
+        for (let q = 1; q < 5; q++){
+            let temp = this[`field${q}`]
+            if (temp == true){
+                if (this.user_answer.indexOf(this.answer[q-1]) == -1){
+                    this.user_answer.push(this.answer[q-1]);
+                }; 
+            };
+            if (temp == false){
+                if (this.user_answer.indexOf(this.answer[q-1]) != -1){
+                this.user_answer.pop(this.answer[q-1]);
+                };
+            };
+        };
+        
+        if (this.user_answer == this.right_answer){
+            this.user_score = 1;
+        } else {
+            this.user_score = 0;
+        };
+    };
+
 };
 
 class questions{
