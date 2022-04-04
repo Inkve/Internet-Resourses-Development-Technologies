@@ -1,19 +1,13 @@
 class task{
     number;
     question;
-    answer1;
-    answer2;
-    answer3;
-    answer4;
+    answer;
     right_answer;
 
-    constructor(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans){
+    constructor(input_number, input_question, input_answer, input_rans){
         this.number = input_number;
         this.question = input_question;
-        this.answer1 = input_ans1;
-        this.answer2 = input_ans2;
-        this.answer3 = input_ans3;
-        this.answer4 = input_ans4;
+        this.answer = input_answer;
         this.right_answer = input_rans;
     };
 };
@@ -28,8 +22,8 @@ class task_checkbox extends task{
     field3;
     field4;
 
-    constructor(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans, name){
-        super(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans);
+    constructor(input_number, input_question, input_answer, input_rans, name){
+        super(input_number, input_question, input_answer, input_rans);
         this.name = name;
         this.fieldset = document.createElement('fieldset');
         this.form = document.createElement('form');
@@ -37,7 +31,7 @@ class task_checkbox extends task{
     }
 
     checkbox_generate_form(){
-        for (let i = 1; i <= 4; i++){
+        for (let i = 0; i <= 3; i++){
             let checkbox_element = document.createElement('input');
             checkbox_element.setAttribute("type", "checkbox");
             checkbox_element.setAttribute("id", `answer${i}`);
@@ -45,7 +39,7 @@ class task_checkbox extends task{
             checkbox_element.setAttribute("value", `answer${i}`);
             checkbox_element.setAttribute("oninput", `qwerty.all_questions[${this.number - 1}].checkbox_save()`);
             let checkbox_text = document.createElement('span');
-            checkbox_text.insertAdjacentHTML("beforeend", `${this[`answer${i}`]}`);
+            checkbox_text.insertAdjacentHTML("beforeend", `${this.answer[`${i}`]}`);
             checkbox_text.insertAdjacentHTML("beforeend", "</br>");
             this.fieldset.append(checkbox_element);
             this.fieldset.append(checkbox_text);
@@ -78,8 +72,8 @@ class task_radiobutton extends task{
     field3;
     field4;
 
-    constructor(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans, name){
-        super(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans);
+    constructor(input_number, input_question, input_answer, input_rans, name){
+        super(input_number, input_question, input_answer, input_rans);
         this.name = name;
         this.fieldset = document.createElement('fieldset');
         this.form = document.createElement('form');
@@ -87,7 +81,7 @@ class task_radiobutton extends task{
     };
 
     radiobutton_generate_form(){
-        for (let i = 1; i <= 4; i++){
+        for (let i = 0; i <= 3; i++){
             let radiobutton_element = document.createElement('input');
             radiobutton_element.setAttribute("type", "radio");
             radiobutton_element.setAttribute("id", `answer${i}`);
@@ -95,7 +89,7 @@ class task_radiobutton extends task{
             radiobutton_element.setAttribute("value", `answer${i}`);
             radiobutton_element.setAttribute("oninput", `qwerty.all_questions[${this.number - 1}].radiobutton_save()`);
             let radiobutton_text = document.createElement('span');
-            radiobutton_text.insertAdjacentHTML("beforeend", `${this[`answer${i}`]}`);
+            radiobutton_text.insertAdjacentHTML("beforeend", `${this.answer[`${i}`]}`);
             radiobutton_text.insertAdjacentHTML("beforeend", "</br>");
             this.fieldset.append(radiobutton_element);
             this.fieldset.append(radiobutton_text);
@@ -125,8 +119,8 @@ class task_free_answer extends task{
     div;
     field1;
 
-    constructor(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans, name){
-        super(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans);
+    constructor(input_number, input_question, input_answer, input_rans, name){
+        super(input_number, input_question, input_answer, input_rans);
         this.name = name;
         this.fieldset = document.createElement('fieldset');
         this.form = document.createElement('form');
@@ -168,8 +162,8 @@ class task_selection extends task{
     div;
     field1;
 
-    constructor(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans, name){
-        super(input_number, input_question, input_ans1, input_ans2, input_ans3, input_ans4, input_rans);
+    constructor(input_number, input_question, input_answer, input_rans, name){
+        super(input_number, input_question, input_answer, input_rans);
         this.name = name;
         this.fieldset = document.createElement('select');
         this.form = document.createElement('form');
@@ -177,21 +171,21 @@ class task_selection extends task{
     };
 
     selection_generate_form(){
-        for (let i = 0; i <= 4; i++){
-            if (i == 0){
+        for (let i = -1; i <= 3; i++){
+            if (i == -1){
                 let selection_element = document.createElement('option');
                 selection_element.disabled = true;
                 selection_element.selected = true;
                 selection_element.hidden = true;
                 this.fieldset.append(selection_element);
             };
-            if (i != 0){
+            if (i != -1){
                 let selection_element = document.createElement('option');
                 selection_element.setAttribute("id", `answer${i}`);
                 selection_element.setAttribute("name", `answer${i}`);
-                selection_element.setAttribute("value", `${this[`answer${i}`]}`);
+                selection_element.setAttribute("value", `${this.answer[`${i}`]}`);
                 let selection_text = document.createElement('span');
-                selection_text.insertAdjacentHTML("beforeend", `${this[`answer${i}`]}`);
+                selection_text.insertAdjacentHTML("beforeend", `${this.answer[`${i}`]}`);
                 selection_text.insertAdjacentHTML("beforeend", "</br>");
                 selection_element.append(selection_text);
                 this.fieldset.append(selection_element);
@@ -216,4 +210,176 @@ class task_selection extends task{
     };
 };
 
+class questions{
+    static all_questions;
+    static questions_div;
+    current_number;
+    current_position;
+    current_name;
+    current_div;
+    button_div;
+    button_number;
+    random_answers;
+
+    constructor(){
+        this.all_questions = [];
+        this.questions_div = [];
+        this.current_number = 0;
+        this.current_position = 0;
+        this.current_name = `current_task${this.current_number + 1}`;
+        this.current_div = 0;
+        this.button_div = [];
+        this.button_number = 0;
+        this.random_answers = 0;
+    };
+
+    generate_checkbox_question(input_question, input_answer, input_rans){
+        if (this.random_answers == 1){
+            let  arr = [];
+            while (arr.length < 4){
+                let a = Math.round(Math.random() * (4));
+                if ((arr.indexOf(a) == -1) && ((a <= 3))){
+                    arr.push(a);
+                };
+            }; 
+            let random_answer = [];
+            for (let i = 0; i < arr.length; i++){
+                random_answer.push(input_answer[arr[i]]);
+            };
+            input_answer = random_answer;
+        };
+        this.all_questions.push(new task_checkbox(`${this.current_number + 1}`, input_question, input_answer, input_rans, `${this.current_name}`));
+        this.all_questions[this.current_number].checkbox_generate_div();
+        this.questions_div.push(this.all_questions[this.current_number].div);
+        this.current_number++;
+        this.current_name = `current_task${this.current_number + 1}`;
+    }
+
+    generate_radiobutton_question(input_question, input_answer, input_rans){
+        if (this.random_answers == 1){
+            let  arr = [];
+            while (arr.length < 4){
+                let a = Math.round(Math.random() * (4));
+                if ((arr.indexOf(a) == -1) && ((a <= 3))){
+                    arr.push(a);
+                };
+            }; 
+            let random_answer = [];
+            for (let i = 0; i < arr.length; i++){
+                random_answer.push(input_answer[arr[i]]);
+            };
+            input_answer = random_answer;
+        };
+        this.all_questions.push(new task_radiobutton(`${this.current_number + 1}`, input_question, input_answer, input_rans, `${this.current_name}`));
+        this.all_questions[this.current_number].radiobutton_generate_div();
+        this.questions_div.push(this.all_questions[this.current_number].div);
+        this.current_number++;
+        this.current_name = `current_task${this.current_number + 1}`;
+    }
+
+    generate_free_answer_question(input_question, input_answer, input_rans){
+        this.all_questions.push(new task_free_answer(`${this.current_number + 1}`, input_question, input_answer, input_rans, `${this.current_name}`));
+        this.all_questions[this.current_number].free_answer_generate_div();
+        this.questions_div.push(this.all_questions[this.current_number].div);
+        this.current_number++;
+        this.current_name = `current_task${this.current_number + 1}`;
+    }
+
+    generate_selection_question(input_question, input_answer, input_rans){
+        if (this.random_answers == 1){
+            let  arr = [];
+            while (arr.length < 4){
+                let a = Math.round(Math.random() * (4));
+                if ((arr.indexOf(a) == -1) && ((a <= 3))){
+                    arr.push(a);
+                };
+            }; 
+            let random_answer = [];
+            for (let i = 0; i < arr.length; i++){
+                random_answer.push(input_answer[arr[i]]);
+            };
+            input_answer = random_answer;
+        };
+        this.all_questions.push(new task_selection(`${this.current_number + 1}`, input_question, input_answer, input_rans, `${this.current_name}`));
+        this.all_questions[this.current_number].selection_generate_div();
+        this.questions_div.push(this.all_questions[this.current_number].div);
+        this.current_number++;
+        this.current_name = `current_task${this.current_number + 1}`;
+    }
+
+    current_div_update(){
+        this.current_div = this.questions_div[0];
+        this.current_position = 0;
+    };
+
+    current_div_next(){
+        if (this.current_position < (this.current_number - 1)){
+            this.current_position++;
+            this.current_div = this.questions_div[this.current_position];
+            this.questions_div[this.current_position - 1].replaceWith(this.current_div);
+            let qwea = document.createElement('span');
+            let qweb = document.getElementById("temp_number");
+            qwea.setAttribute("id", "temp_number");
+            qwea.insertAdjacentHTML("beforeend", 'Это вопрос №' + `${this.current_position + 1}` +  '</br>');
+            qweb.replaceWith(qwea);
+        };
+    };
+
+    current_div_prev(){
+        if (this.current_position > 0){
+            this.current_position--;
+            console.log('current_position: ', this.current_position);
+            this.current_div = this.questions_div[this.current_position];
+            this.questions_div[this.current_position + 1].replaceWith(this.current_div);
+            let qwea = document.createElement('span');
+            let qweb = document.getElementById("temp_number");
+            qwea.setAttribute("id", "temp_number");
+            qwea.insertAdjacentHTML("beforeend", 'Это вопрос №' + `${this.current_position + 1}` +  '</br>');
+            qweb.replaceWith(qwea);
+        };
+    };
+
+    start_timer(id_timer){
+        timer_klass = new time(id_timer);
+        setInterval('timer_klass.timing()', 1000);
+    };
+
+    div_random(){
+        let  arr = [];
+        while (arr.length < (this.current_number)){
+            let a = Math.round(Math.random() * (this.current_number - 1));
+            if ((arr.indexOf(a) == -1) && ((this.current_number - 2))){
+                arr.push(a);
+            }
+        }
+
+        let random_divs = [];
+        for (let i = 0; i < arr.length; i++){
+            random_divs.push(this.questions_div[arr[i]]);
+        }
+        this.questions_div = random_divs;
+    }
+
+    div_need(number){
+        console.log('number: ', number);
+        this.current_div = this.questions_div[number];
+        this.questions_div[this.current_position].replaceWith(this.current_div);
+        this.current_position = number;
+        let qwea = document.createElement('span');
+        let qweb = document.getElementById("temp_number");
+        qwea.setAttribute("id", "temp_number");
+        qwea.insertAdjacentHTML("beforeend", 'Это вопрос №' + `${this.current_position + 1}` +  '</br>');
+        qweb.replaceWith(qwea);
+    }
+
+
+    generate_buttons(){
+        for (let i = 0; i < this.current_number; i++){
+            let btn = document.createElement('button');
+            btn.setAttribute("onclick", `qwerty.div_need(${i})`);
+            btn.append(`${i + 1}`);
+            this.button_div.push(btn);
+        }
+    }
+}
 
