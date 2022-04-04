@@ -21,6 +21,8 @@ class task_checkbox extends task{
     field2;
     field3;
     field4;
+    user_answer;
+    user_score;
 
     constructor(input_number, input_question, input_answer, input_rans, name){
         super(input_number, input_question, input_answer, input_rans);
@@ -28,6 +30,12 @@ class task_checkbox extends task{
         this.fieldset = document.createElement('fieldset');
         this.form = document.createElement('form');
         this.div = document.createElement('div');
+        this.field1 = 0;
+        this.field2 = 0;
+        this.field3 = 0;
+        this.field4 = 0;
+        this.user_answer = [];
+        this.user_score = 0;
     }
 
     checkbox_generate_form(){
@@ -56,10 +64,33 @@ class task_checkbox extends task{
 
     checkbox_save(){
         for (let i = 1; i < 5; i++){
-            this[`field${i}`] = document.getElementById(`answer${i}`).checked;
-            console.log(`this[field${i}]: `, this[`field${i}`]);
+            this[`field${i}`] = document.getElementById(`answer${i-1}`).checked;
         };
+        this.checkbox_check()
     };
+
+    checkbox_check(){
+        for (let q = 1; q < 5; q++){
+            let temp = this[`field${q}`]
+            if (temp == true){
+                if (this.user_answer.indexOf(this.answer[q-1]) == -1){
+                    this.user_answer.push(this.answer[q-1]);
+                }; 
+            };
+            if (temp == false){
+                if (this.user_answer.indexOf(this.answer[q-1]) != -1){
+                this.user_answer.pop(this.answer[q-1]);
+                };
+            };
+        };
+        
+        if (this.user_answer == this.right_answer){
+            this.user_score = 1;
+        } else {
+            this.user_score = 0;
+        };
+
+    }
 };
 
 class task_radiobutton extends task{
@@ -78,6 +109,10 @@ class task_radiobutton extends task{
         this.fieldset = document.createElement('fieldset');
         this.form = document.createElement('form');
         this.div = document.createElement('div');
+        this.field1 = 0;
+        this.field2 = 0;
+        this.field3 = 0;
+        this.field4 = 0;
     };
 
     radiobutton_generate_form(){
@@ -125,6 +160,7 @@ class task_free_answer extends task{
         this.fieldset = document.createElement('fieldset');
         this.form = document.createElement('form');
         this.div = document.createElement('div');
+        this.field1 = 0;
     }
 
     free_answer_generate_form(){
@@ -168,6 +204,7 @@ class task_selection extends task{
         this.fieldset = document.createElement('select');
         this.form = document.createElement('form');
         this.div = document.createElement('div');
+        this.field1 = 0;
     };
 
     selection_generate_form(){
@@ -220,6 +257,10 @@ class questions{
     button_div;
     button_number;
     random_answers;
+    timer_interval;
+    user_answer;
+    user_score;
+    all_score;
 
     constructor(){
         this.all_questions = [];
@@ -231,6 +272,8 @@ class questions{
         this.button_div = [];
         this.button_number = 0;
         this.random_answers = 0;
+        this.timer_interval = 0;
+        this.all_score = 0;
     };
 
     generate_checkbox_question(input_question, input_answer, input_rans){
@@ -253,6 +296,10 @@ class questions{
         this.questions_div.push(this.all_questions[this.current_number].div);
         this.current_number++;
         this.current_name = `current_task${this.current_number + 1}`;
+    }
+
+    checkbox_check(){
+
     }
 
     generate_radiobutton_question(input_question, input_answer, input_rans){
@@ -341,7 +388,7 @@ class questions{
 
     start_timer(id_timer){
         timer_klass = new time(id_timer);
-        setInterval('timer_klass.timing()', 1000);
+        this.timer_interval = setInterval('timer_klass.timing()', 1000);
     };
 
     div_random(){
@@ -381,5 +428,51 @@ class questions{
             this.button_div.push(btn);
         }
     }
+
+    finish_test(){
+        clearInterval(this.timer_interval);
+        block = document.getElementById("div_middle");
+        let finish_div = document.createElement('div');
+        let table = document.createElement('table');
+        table.setAttribute("class", "finish_table")
+        let table_thead = document.createElement('thead');
+
+        let sample_thead = ["Номер вопроса", "Ваш ответ", "Правильный ответ", "Балл"];
+        for (let column = 0; column < sample_thead.length; column++){
+            let th = document.createElement('th');
+            th.insertAdjacentHTML("beforeend", `${sample_thead[column]}`);
+            table_thead.append(th);
+        }
+        table.append(table_thead);
+
+        let table_tbody = document.createElement('tbody');
+        for (let line = 0; line < this.current_number; line++){
+            let tr = document.createElement('tr');
+            let th1 = document.createElement('th');
+            th1.insertAdjacentHTML("beforeend", `${line + 1}`);
+            tr.append(th1);
+
+           
+
+
+            
+            console.log('this.all_questions[line].field1;: ', this.all_questions[line].field1);
+            console.log('this.field1: ', this.field1);
+
+
+
+            for (let column = 1; column < sample_thead.length; column++){
+                let th = document.createElement('th');
+                th.insertAdjacentHTML("beforeend", `${line}` + `${column}`);
+                tr.append(th);
+            }
+            table_tbody.append(tr);
+        };
+        table.append(table_tbody);
+        finish_div.append(table);
+        block.replaceWith(finish_div);
+    };
+
+
 }
 
