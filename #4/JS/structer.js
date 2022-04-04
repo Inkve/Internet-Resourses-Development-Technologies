@@ -55,7 +55,6 @@ class task_checkbox extends task{
 
     checkbox_generate_div(){
         this.fieldset.setAttribute("id","test_id");
-        this.div.insertAdjacentHTML("beforeend", `Это вопрос №${this.number}` + '</br>');
         this.div.insertAdjacentHTML("beforeend", 'Название вопроса: ' + this.question + '</br>');
         this.checkbox_generate_form();
         this.div.append(this.form);
@@ -106,7 +105,6 @@ class task_radiobutton extends task{
 
     radiobutton_generate_div(){
         this.fieldset.setAttribute("id","test_id");
-        this.div.insertAdjacentHTML("beforeend", `Это вопрос №${this.number}` + '</br>');
         this.div.insertAdjacentHTML("beforeend", 'Название вопроса: ' + this.question + '</br>');
         this.radiobutton_generate_form();
         this.div.append(this.form);
@@ -150,7 +148,6 @@ class task_free_answer extends task{
 
     free_answer_generate_div(){
         this.fieldset.setAttribute("id","test_id");
-        this.div.insertAdjacentHTML("beforeend", `Это вопрос №${this.number}` + '</br>');
         this.div.insertAdjacentHTML("beforeend", 'Название вопроса: ' + this.question + '</br>');
         this.free_answer_generate_form();
         this.div.append(this.form);
@@ -206,7 +203,6 @@ class task_selection extends task{
     selection_generate_div(){
         this.fieldset.setAttribute("id", "test_id");
         this.fieldset.setAttribute("onchange", `qwerty.all_questions[${this.number - 1}].selection_save()`);
-        this.div.insertAdjacentHTML("beforeend", `Это вопрос №${this.number}` + '</br>');
         this.div.insertAdjacentHTML("beforeend", 'Название вопроса: ' + this.question + '</br>');
         this.selection_generate_form();
         this.div.append(this.form);

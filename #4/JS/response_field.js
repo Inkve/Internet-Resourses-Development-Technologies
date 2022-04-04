@@ -5,6 +5,8 @@ class questions{
     current_position;
     current_name;
     current_div;
+    button_div;
+    button_number;
 
     constructor(){
         this.all_questions = [];
@@ -13,6 +15,8 @@ class questions{
         this.current_position = 0;
         this.current_name = `current_task${this.current_number + 1}`;
         this.current_div = 0;
+        this.button_div = [];
+        this.button_number = 0;
     };
 
     generate_checkbox_question(){
@@ -49,6 +53,7 @@ class questions{
 
     current_div_update(){
         this.current_div = this.questions_div[0];
+        this.current_position = 0;
     };
 
     current_div_next(){
@@ -56,14 +61,25 @@ class questions{
             this.current_position++;
             this.current_div = this.questions_div[this.current_position];
             this.questions_div[this.current_position - 1].replaceWith(this.current_div);
+            let qwea = document.createElement('span');
+            let qweb = document.getElementById("temp_number");
+            qwea.setAttribute("id", "temp_number");
+            qwea.insertAdjacentHTML("beforeend", 'Это вопрос №' + `${this.current_position + 1}` +  '</br>');
+            qweb.replaceWith(qwea);
         };
     };
 
     current_div_prev(){
         if (this.current_position > 0){
             this.current_position--;
+            console.log('current_position: ', this.current_position);
             this.current_div = this.questions_div[this.current_position];
             this.questions_div[this.current_position + 1].replaceWith(this.current_div);
+            let qwea = document.createElement('span');
+            let qweb = document.getElementById("temp_number");
+            qwea.setAttribute("id", "temp_number");
+            qwea.insertAdjacentHTML("beforeend", 'Это вопрос №' + `${this.current_position + 1}` +  '</br>');
+            qweb.replaceWith(qwea);
         };
     };
 
@@ -90,6 +106,27 @@ class questions{
         this.questions_div = random_divs;
     }
 
+    div_need(number){
+        console.log('number: ', number);
+        this.current_div = this.questions_div[number];
+        this.questions_div[this.current_position].replaceWith(this.current_div);
+        this.current_position = number;
+        let qwea = document.createElement('span');
+        let qweb = document.getElementById("temp_number");
+        qwea.setAttribute("id", "temp_number");
+        qwea.insertAdjacentHTML("beforeend", 'Это вопрос №' + `${this.current_position + 1}` +  '</br>');
+        qweb.replaceWith(qwea);
+    }
+
+
+    generate_buttons(){
+        for (let i = 0; i < this.current_number; i++){
+            let btn = document.createElement('button');
+            btn.setAttribute("onclick", `qwerty.div_need(${i})`);
+            btn.append(`${i + 1}`);
+            this.button_div.push(btn);
+        }
+    }
 }
 
 let qwerty = new questions;
@@ -122,12 +159,30 @@ function test_start(){
     console.log('mix_a: ', mix_a);
 
     block = document.getElementById("response_field");
+    let rtt = document.createElement('span');
+    rtt.setAttribute("id", "temp_number");
+    rtt.insertAdjacentHTML("beforeend", 'Это вопрос №1' +  '</br>');
     div_middle = document.createElement('div');
+    div_middle.setAttribute("class", "div_middle");
+ 
+    
+    //div_middle.insertAdjacentHTML("beforeend", 'Это вопрос №' + '<span id="temp_number"> ehdhdh </span>' +  '</br>');
+    
     div_middle.insertAdjacentHTML("beforeend", '<input type="time" id="timer_on_test" disabled>' + '</br>');
     div_middle.insertAdjacentHTML("beforeend", '<button id="prev" onclick="qwerty.current_div_prev()"> Прошлый </button>' 
     + '<button id="next" onclick="qwerty.current_div_next()" > Следующий </button>');
     
     div_middle.prepend(qwerty.current_div);
+    div_middle.prepend(rtt);
+
+    let button_divs = document.createElement("div");
+    qwerty.generate_buttons();
+    for (let i = 0; i < qwerty.current_number; i++){
+        button_divs.append(qwerty.button_div[i]);
+    }
+
+    div_middle.append(button_divs);
+
     block.replaceWith(div_middle);
 }
 
