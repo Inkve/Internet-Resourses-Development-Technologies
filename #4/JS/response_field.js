@@ -1,5 +1,4 @@
 class questions{
-    static all_numer;
     static all_questions;
     static questions_div;
     current_number;
@@ -10,7 +9,6 @@ class questions{
     constructor(){
         this.all_questions = [];
         this.questions_div = [];
-        this.all_numer = 8;
         this.current_number = 0;
         this.current_position = 0;
         this.current_name = `current_task${this.current_number + 1}`;
@@ -20,7 +18,7 @@ class questions{
     generate_checkbox_question(){
         this.all_questions.push(new task_checkbox(`${this.current_number + 1}`, `ЧТО${this.current_number + 1}?`, `Ответ ${this.current_number + 1}_1`, `Ответ ${this.current_number + 1}_2`, `Ответ ${this.current_number + 1}_3`, `Ответ ${this.current_number + 1}_4`, "VVV", `${this.current_name}`));
         this.all_questions[this.current_number].checkbox_generate_div();
-        this.questions_div.push(this.all_questions[this.current_number].div)
+        this.questions_div.push(this.all_questions[this.current_number].div);
         this.current_number++;
         this.current_name = `current_task${this.current_number + 1}`;
     }
@@ -28,7 +26,15 @@ class questions{
     generate_radiobutton_question(){
         this.all_questions.push(new task_radiobutton(`${this.current_number + 1}`, `ЧТО${this.current_number + 1}?`, `Ответ ${this.current_number + 1}_1`, `Ответ ${this.current_number + 1}_2`, `Ответ ${this.current_number + 1}_3`, `Ответ ${this.current_number + 1}_4`, "VVV", `${this.current_name}`));
         this.all_questions[this.current_number].radiobutton_generate_div();
-        this.questions_div.push(this.all_questions[this.current_number].div)
+        this.questions_div.push(this.all_questions[this.current_number].div);
+        this.current_number++;
+        this.current_name = `current_task${this.current_number + 1}`;
+    }
+
+    generate_free_answer_question(){
+        this.all_questions.push(new task_free_answer(`${this.current_number + 1}`, `ЧТО${this.current_number + 1}?`, `Ответ ${this.current_number + 1}_1`, `Ответ ${this.current_number + 1}_2`, `Ответ ${this.current_number + 1}_3`, `Ответ ${this.current_number + 1}_4`, "VVV", `${this.current_name}`));
+        this.all_questions[this.current_number].free_answer_generate_div();
+        this.questions_div.push(this.all_questions[this.current_number].div);
         this.current_number++;
         this.current_name = `current_task${this.current_number + 1}`;
     }
@@ -60,9 +66,12 @@ let qwerty = new questions;
 function test_start(){
     qwerty.generate_checkbox_question();
     qwerty.generate_checkbox_question();
+
     qwerty.generate_checkbox_question();
     qwerty.generate_radiobutton_question();
     qwerty.generate_radiobutton_question();
+    qwerty.generate_free_answer_question();
+    qwerty.generate_checkbox_question();
     qwerty.current_div_update();
     console.log('qwerty: ', qwerty);
 
