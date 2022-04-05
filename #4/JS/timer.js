@@ -4,6 +4,7 @@ class time{
     #time_minutes;
     #time_seconds;
     #seconds;
+    
     constructor(id_timer){
         this.#timer = document.getElementById(id_timer);
         this.#time_hour = Number(this.#timer.value.split(':')[0]);
@@ -11,6 +12,7 @@ class time{
         this.#time_seconds = Number(this.#timer.value.split(':')[2]);
         this.#seconds = (this.#time_hour * 3600) + (this.#time_minutes * 60) + (this.#time_seconds);
     };
+
     timing() {
         if (this.#seconds > 0){
             this.#seconds -= 1;

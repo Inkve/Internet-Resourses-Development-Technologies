@@ -650,7 +650,5 @@ class questions{
         finish_div.append(`Вы ответили правильно на целых ${this.all_score} вопросов! Браво!`);
         block.replaceWith(finish_div);
     };
-
-
 }
 
