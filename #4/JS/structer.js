@@ -452,6 +452,9 @@ class questions{
     current_div_update(){
         this.current_div = this.questions_div[0];
         this.current_position = 0;
+        for (let i = 0; i < this.current_number; i++){
+            this.order.push(i);
+        }
     };
 
     current_div_next(){
@@ -528,6 +531,7 @@ class questions{
         clearInterval(this.timer_interval);
         block = document.getElementById("div_middle");
         let finish_div = document.createElement('div');
+        finish_div.prepend("Вы успешно завершили тест! Ознакомтесь с результатами ниже")
         let table = document.createElement('table');
         table.setAttribute("class", "finish_table")
         let table_thead = document.createElement('thead');
@@ -557,10 +561,12 @@ class questions{
             let th4 = document.createElement('th');
             th4.insertAdjacentHTML("beforeend", `${this.all_questions[`${this.order[line]}`].user_score}`);
             tr.append(th4);
+            this.all_score += this.all_questions[this.order[line]].user_score;
             table_tbody.append(tr);
         };
         table.append(table_tbody);
         finish_div.append(table);
+        finish_div.append(`Вы ответили правильно на целых ${this.all_score} вопросов! Браво!`);
         block.replaceWith(finish_div);
     };
 
