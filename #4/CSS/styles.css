@@ -35,6 +35,10 @@ li{
     margin: auto;
 }
 
+.div_middle{
+    max-width: 40%;
+}
+
 h1{
     color: rgb(241, 76, 10);
     margin: auto;
