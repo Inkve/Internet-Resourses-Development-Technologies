@@ -29,8 +29,8 @@ function test_start(){
     div_middle.setAttribute("class", "div_middle");
     div_middle.setAttribute("id", "div_middle");
     div_middle.insertAdjacentHTML("beforeend", '<input type="time" id="timer_on_test" disabled>' + '</br>');
-    div_middle.insertAdjacentHTML("beforeend", '<button id="prev" onclick="qwerty.current_div_prev()"> Прошлый вопрос! </button>' 
-    + '<button id="next" onclick="qwerty.current_div_next()" > Следующий вопрос! </button>');
+    div_middle.insertAdjacentHTML("beforeend", '<button id="prev" onclick="qwerty.current_div_prev()" class="standart"> Прошлый вопрос! </button>' 
+    + '<button id="next" onclick="qwerty.current_div_next()" class="standart"> Следующий вопрос! </button>');
     
     div_middle.prepend(qwerty.current_div);
     div_middle.prepend(temp_number);
@@ -42,8 +42,7 @@ function test_start(){
     }
 
     div_middle.append(button_divs);
-
-    div_middle.insertAdjacentHTML("beforeend", '<button id="finish" onclick="qwerty.finish_test()"> Закончить тест! </button>');
+    div_middle.insertAdjacentHTML("beforeend", '<button id="finish" onclick="qwerty.finish_test()" class="standart"> Закончить тест! </button>');
     block.replaceWith(div_middle);
 }
 

@@ -3,12 +3,16 @@ class task{
     question;
     answer;
     right_answer;
+    look;
+    answered;
 
     constructor(input_number, input_question, input_answer, input_rans){
         this.number = input_number;
         this.question = input_question;
         this.answer = input_answer;
         this.right_answer = input_rans;
+        this.look = 0;
+        this.answered = 0;
     };
 };
 
@@ -30,6 +34,7 @@ class task_checkbox extends task{
         this.fieldset = document.createElement('fieldset');
         this.form = document.createElement('form');
         this.div = document.createElement('div');
+        this.div.setAttribute("class", "div_answer");
         this.field1 = 0;
         this.field2 = 0;
         this.field3 = 0;
@@ -94,6 +99,16 @@ class task_checkbox extends task{
         console.log('this.user_answer: ', this.user_answer);
         this.user_score;
         console.log('this.user_score: ', this.user_score);
+
+        if (this.user_answer != 0){
+            let x = document.getElementById(`btn${qwerty.current_position}`);
+            x.setAttribute("class", "answered");
+            this.answered = 1;
+        } else {
+            let x = document.getElementById(`btn${qwerty.current_position}`);
+            x.setAttribute("class", "looked");
+            this.answered = 0;
+        }
     };
     
 };
@@ -117,6 +132,7 @@ class task_radiobutton extends task{
         this.fieldset = document.createElement('fieldset');
         this.form = document.createElement('form');
         this.div = document.createElement('div');
+        this.div.setAttribute("class", "div_answer");
         this.field1 = 0;
         this.field2 = 0;
         this.field3 = 0;
@@ -182,6 +198,16 @@ class task_radiobutton extends task{
         console.log('this.user_answer: ', this.user_answer);
         this.user_score;
         console.log('this.user_score: ', this.user_score);
+
+        if (this.user_answer != 0){
+            let x = document.getElementById(`btn${qwerty.current_position}`);
+            x.setAttribute("class", "answered");
+            this.answered = 1;
+        } else {
+            let x = document.getElementById(`btn${qwerty.current_position}`);
+            x.setAttribute("class", "looked");
+            this.answered = 0;
+        }
     };
 
 };
@@ -201,6 +227,7 @@ class task_free_answer extends task{
         this.fieldset = document.createElement('fieldset');
         this.form = document.createElement('form');
         this.div = document.createElement('div');
+        this.div.setAttribute("class", "div_answer");
         this.field1 = 0;
         this.user_answer = 0;
         this.user_score = 0;
@@ -246,8 +273,16 @@ class task_free_answer extends task{
         console.log('this.user_answer: ', this.user_answer);
         this.user_score;
         console.log('this.user_score: ', this.user_score);
+
+        let x = document.getElementById(`btn${qwerty.current_position}`);
+        if (this.user_answer != 0){
+            x.setAttribute("class", "answered");
+            this.answered = 1;
+        } else {
+            x.setAttribute("class", "looked");
+            this.answered = 0;
+        }
     };
-   
 };
 
 class task_selection extends task{
@@ -268,6 +303,7 @@ class task_selection extends task{
         this.fieldset = document.createElement('select');
         this.form = document.createElement('form');
         this.div = document.createElement('div');
+        this.div.setAttribute("class", "div_answer");
         this.field1 = 0;
         this.field2 = 0;
         this.field3 = 0;
@@ -336,6 +372,15 @@ class task_selection extends task{
         } else {
             this.user_score = 0;
         };
+
+        let x = document.getElementById(`btn${qwerty.current_position}`);
+        if (this.user_answer != 0){
+            this.answered = 1;
+            x.setAttribute("class", "answered");
+        } else {
+            x.setAttribute("class", "looked");
+            this.answered = 0;
+        }
 
         this.user_answer;
         console.log('this.user_answer: ', this.user_answer);
@@ -468,6 +513,14 @@ class questions{
             qwea.insertAdjacentHTML("beforeend", 'Это вопрос №' + `${this.current_position + 1}` +  '</br>');
             qweb.replaceWith(qwea);
         };
+
+        let x = document.getElementById(`btn${qwerty.current_position}`);
+        let y = this.all_questions[this.order[this.current_position]].user_answer;
+        if (y != 0){
+            x.setAttribute("class", "answered");
+        } else {
+            x.setAttribute("class", "looked");
+        };
     };
 
     current_div_prev(){
@@ -481,6 +534,14 @@ class questions{
             qwea.setAttribute("id", "temp_number");
             qwea.insertAdjacentHTML("beforeend", 'Это вопрос №' + `${this.current_position + 1}` +  '</br>');
             qweb.replaceWith(qwea);
+        };
+
+        let x = document.getElementById(`btn${qwerty.current_position}`);
+        let y = this.all_questions[this.order[this.current_position]].user_answer;
+        if (y != 0){
+            x.setAttribute("class", "answered");
+        } else {
+            x.setAttribute("class", "looked");
         };
     };
 
@@ -515,17 +576,34 @@ class questions{
         qwea.setAttribute("id", "temp_number");
         qwea.insertAdjacentHTML("beforeend", 'Это вопрос №' + `${this.current_position + 1}` +  '</br>');
         qweb.replaceWith(qwea);
+
+        let x = document.getElementById(`btn${qwerty.current_position}`);
+        let y = this.all_questions[this.order[this.current_position]].user_answer;
+        if (y != 0){
+            x.setAttribute("class", "answered");
+        } else {
+            x.setAttribute("class", "looked");
+        };
     }
 
 
     generate_buttons(){
-        for (let i = 0; i < this.current_number; i++){
+        let u = 0;
+        let btn = document.createElement('button');
+        btn.setAttribute("onclick", `qwerty.div_need(${u})`);
+        btn.setAttribute("id", `btn${u}`);
+        btn.setAttribute("class", "looked");
+        btn.append(`${u + 1}`);
+        this.button_div.push(btn);
+        for (let i = 1; i < this.current_number; i++){
             let btn = document.createElement('button');
             btn.setAttribute("onclick", `qwerty.div_need(${i})`);
+            btn.setAttribute("id", `btn${i}`);
+            btn.setAttribute("class", "standart");
             btn.append(`${i + 1}`);
             this.button_div.push(btn);
-        }
-    }
+        };
+    };
 
     finish_test(){
         clearInterval(this.timer_interval);
@@ -533,6 +611,7 @@ class questions{
         let finish_div = document.createElement('div');
         finish_div.prepend("Вы успешно завершили тест! Ознакомтесь с результатами ниже")
         let table = document.createElement('table');
+        table.border="1";
         table.setAttribute("class", "finish_table")
         let table_thead = document.createElement('thead');
 
@@ -542,6 +621,7 @@ class questions{
             th.insertAdjacentHTML("beforeend", `${sample_thead[column]}`);
             table_thead.append(th);
         }
+        table_thead.setAttribute("class", "right");
         table.append(table_thead);
 
         let table_tbody = document.createElement('tbody');
@@ -562,6 +642,7 @@ class questions{
             th4.insertAdjacentHTML("beforeend", `${this.all_questions[`${this.order[line]}`].user_score}`);
             tr.append(th4);
             this.all_score += this.all_questions[this.order[line]].user_score;
+            this.all_questions[this.order[line]].user_score == 1 ? tr.setAttribute("class", "right") : tr.setAttribute("class", "wrong");
             table_tbody.append(tr);
         };
         table.append(table_tbody);
