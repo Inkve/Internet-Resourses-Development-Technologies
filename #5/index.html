@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЛБ №5</title>
     <script type="text/javascript" src=".\JS\jquery-3.6.0.js"> </script>
+    <script type="text/javascript" src=".\JS\class.js"> </script>
     <script type="text/javascript" src=".\JS\functions.js"> </script>
     <link href=".\CSS\styles.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -20,7 +21,13 @@
         <span>
             Количество фигур: <input type="text" oninput="input_check()" value="5" id="input_number">
         </span>
+        <span>
+            <button id="btn" onclick="test()"> Нажми меня! </button>
+        </span>
 
+        <span>
+            <canvas id="draw" width="1280" height="720"> </canvas>
+        </span>
 
     </div>
 

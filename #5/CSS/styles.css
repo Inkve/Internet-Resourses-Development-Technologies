@@ -1,5 +1,6 @@
 body{
     background-color:rgba(216, 218, 96, 0.829);
+    max-width: 80%;
 }
 
 h1{
@@ -11,6 +12,11 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+}
+
+#btn{
+    border-radius: 20px;
 }
 
 #input_number{
