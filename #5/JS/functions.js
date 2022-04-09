@@ -31,10 +31,8 @@ function input_check(){
 
 let all_figures = [];
 
-function random_color(){
-    color_base = ["silver", "maroon", "red", "purple", "green", "lime", "olive", "yellow", "blue", "aqua", "teal", "gray"];
-    let number = Math.round(Math.random() * color_base.length);
-    return color_base[number];
+function random_triangle(){
+    let i;
 };
 
 
@@ -42,7 +40,10 @@ function random_color(){
 function test(){
     let one = new triangle(225, 150, 75, 100, 200, 50, 0.1, 0.1, `${random_color()}`);
     let two = new triangle(450, 360, 354, 244, 523, 784, 0.1, -0.1, `${random_color()}`);
-    let three = new quadrilaterial(1000, 572, 200, 100, -0.1, -0.1, `${random_color()}`)
+    let three = new rectangle(1000, 572, 200, 100, -0.1, -0.1, `${random_color()}`);
+    // let onee = new triangle(225, 150, 75, 100, 200, 50, 0.1, 0.1, `${random_color()}`);
+    // let two = new triangle(450, 360, 354, 244, 523, 784, 0.1, -0.1, `${random_color()}`);
+    // let three = new rectangle(1000, 572, 200, 100, -0.1, -0.1, `${random_color()}`);
     
     all_figures.push(one);
     all_figures.push(two);

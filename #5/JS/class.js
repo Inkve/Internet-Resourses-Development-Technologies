@@ -44,7 +44,7 @@ class triangle{
     };
 };
 
-class quadrilaterial{
+class rectangle{
     peak_1_x;
     peak_1_y;
     peak_2_x;
