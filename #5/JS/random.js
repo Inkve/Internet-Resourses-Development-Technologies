@@ -43,6 +43,14 @@ function random_int_plus(min, max){
     return x
 };
 
+function random_plus(min, max){
+    let x = Math.random() * max;
+    while (x < min){
+        x = Math.random() * max;
+    }
+    return x
+};
+
 function random_triangle(){
     let x = random_int_plus(200, 1000);
     let y = random_int_plus(200, 500);

@@ -45,7 +45,7 @@ function test(){
     //let three = new rectangle(1000, 572, 200, 100, -0.1, -0.1, `${random_color()}`);
 
 
-    for (let i = 0; i < 20; i++){
+    for (let i = 0; i < 2000; i++){
         all_figures.push(random_triangle());
         
         // all_figures.push(random_rectangle());
