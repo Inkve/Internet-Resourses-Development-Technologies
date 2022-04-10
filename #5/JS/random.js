@@ -15,7 +15,54 @@ function random_color(){
         "salmon", "sandybrown", "seagreen", "seashell", "sienna", "silver", "skyblue", "slateblue", "slategray", "snow", "spring­green",
         "steelblue", "tan", "teal", "thistle", "tomato", "turquoise","violet", "wheat","white", "whitesmoke", "yellow", "yellow­green"];
     let number = Math.round(Math.random() * color_base.length);
-    console.log('number: ', number);
-    console.log('olor_base.length: ', color_base.length);
     return color_base[number];
 };
+
+function random_sign(numbers){
+    let x = Math.random();
+    if (x >= 0.5){
+        return numbers;
+    } else {
+        return Number("-" + numbers);
+    };
+};
+
+function random_int(min, max){
+    let x = Math.round(Math.random() * max);
+    while (x < min){
+        x = Math.round(Math.random() * max);
+    }
+    return random_sign(x)
+};
+
+function random_int_plus(min, max){
+    let x = Math.round(Math.random() * max);
+    while (x < min){
+        x = Math.round(Math.random() * max);
+    }
+    return x
+};
+
+function random_triangle(){
+    let x = random_int_plus(200, 1000);
+    let y = random_int_plus(200, 500);
+    let instance = new triangle(x, y, x + random_int(50, 200), y + random_int(50, 200), x + random_int(50, 200), y + random_int(50, 200),
+                                random_int(1, 3), random_int(1, 3), `${random_color()}`);
+    return instance;
+};
+
+function random_square(){
+    let x = random_int_plus(1000);
+    let y = random_int_plus(500);
+    let z = random_int(200);
+    let instance = new rectangle(x, y, z, z, random_int(3), random_int(3), `${random_color()}`);
+    return instance;
+};
+
+function random_rectangle(){
+    let x = random_int_plus(1000);
+    let y = random_int_plus(500);
+    let instance = new rectangle(x, y, random_int(200), random_int(200), random_int(3), random_int(3), `${random_color()}`);
+    return instance;
+};
+
