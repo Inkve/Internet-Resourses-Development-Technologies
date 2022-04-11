@@ -1,79 +1,3 @@
-$('document').ready(function(){
-    $("#btn").click(function(){
-        test();
-        });
-});
-
-function input_check(){
-    let input = document.getElementById("input_number");
-    let testing = new RegExp("^([0-9]*)$");
-    let number = input.value.toString();
-    let result = "";
-    for (element of number){
-        if ((testing.test(element)) && (result.length < 2)){
-            result += element;
-        } else {
-            if (result.length >= 2){
-                break;
-            };
-        };
-    };
-    result = Number(result);
-    result == 0 ? input.value = "Введите какое-нибудь число" : input.value = result;
-};
-  
-
-let all_figures = [];
-
-function test(){
-    for (let i = 0; i < 2; i++){
-        all_figures.push(random_triangle());
-        all_figures[i].first_draw();
-    }
-    
-    setInterval("draw_all()", 10);
-     
-
-
-
-
-
-
-
-
-    // document.getElementById("one").style.borderBottomColor = `${random_color()}`
-    // document.getElementById("one").style.borderLeft = `${random_color()}`
-    // document.getElementById("one").style.borderTop = `${random_color()}`
-    
-    // //document.getElementById("one").style.background = `${random_color()}`
-    
-    // $('pacman').animate({
-    //     top : `${random_plus(0, 500)}`,
-    //     left : `${random_plus(0, 1000)}`
-    // }, 1000)
-    // console.log("11")
-}
-
-
-
-
-
-function draw_all(){
-    for (let i = 0; i < all_figures.length; i++){
-        all_figures[i].draw();
-    }
-};
-
-
-function random_plus(min, max){
-    let x = Math.random() * max;
-    while (x < min){
-        x = Math.random() * max;
-    }
-    return x
-};
-
-
 function random_color(){
     color_base = ["antiquewhite", "aqua", "aquamarine", "beige", "bisque", "black", "blanche­dalmond", "blue", "blueviolet",
         "brown", "burlywood", "cadetblue", "chartreuse", "chocolate", "coral", "corn­flowerblue", "cornsilk", "crimson",
@@ -93,3 +17,60 @@ function random_color(){
     let number = Math.round(Math.random() * color_base.length);
     return color_base[number];
 };
+
+function random_sign(numbers){
+    let x = Math.random();
+    if (x >= 0.5){
+        return numbers;
+    } else {
+        return Number("-" + numbers);
+    };
+};
+
+function random_int(min, max){
+    let x = Math.round(Math.random() * max);
+    while (x < min){
+        x = Math.round(Math.random() * max);
+    }
+    return random_sign(x)
+};
+
+function random_int_plus(min, max){
+    let x = Math.round(Math.random() * max);
+    while (x < min){
+        x = Math.round(Math.random() * max);
+    }
+    return x
+};
+
+function random_plus(min, max){
+    let x = Math.random() * max;
+    while (x < min){
+        x = Math.random() * max;
+    }
+    return x
+};
+
+function random_triangle(){
+    let x = random_int_plus(200, 1000);
+    let y = random_int_plus(200, 500);
+    let instance = new triangle(x, y, x + random_int(50, 200), y + random_int(50, 200), x + random_int(50, 200), y + random_int(50, 200),
+                                random_int(1, 3), random_int(1, 3), `${random_color()}`);
+    return instance;
+};
+
+function random_square(){
+    let x = random_int_plus(200, 1000);
+    let y = random_int_plus(200, 500);
+    let z = random_int(50, 200);
+    let instance = new rectangle(x, y, z, z, random_int(1, 3), random_int(1, 3), `${random_color()}`);
+    return instance;
+};
+
+function random_rectangle(){
+    let x = random_int_plus(200, 1000);
+    let y = random_int_plus(200, 500);
+    let instance = new rectangle(x, y, random_int(50 ,200), random_int(50, 200), random_int(1, 3), random_int(1, 3), `${random_color()}`);
+    return instance;
+};
+

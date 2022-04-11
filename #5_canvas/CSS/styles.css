@@ -1,0 +1,27 @@
+body{
+    background-color:rgba(216, 218, 96, 0.829);
+    max-width: 80%;
+}
+
+h1{
+    text-align: center;
+    color: coral;
+}
+
+.settings{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#btn{
+    border-radius: 20px;
+}
+
+#input_number{
+    width: 180px;
+    border-radius: 15px;
+    text-align: center;
+    background-color: antiquewhite;
+}

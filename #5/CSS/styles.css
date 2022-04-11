@@ -4,7 +4,9 @@ body{
 }
 
 h1{
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: coral;
 }
 
@@ -24,4 +26,78 @@ h1{
     border-radius: 15px;
     text-align: center;
     background-color: antiquewhite;
+}
+
+span{
+    max-width: 60%;
+    color: rgb(93, 71, 194);
+}
+
+.circle{
+    width: 60px; 
+    height: 60px;
+    border-radius: 50%;
+    background-color: aqua;
+    position: fixed;
+}
+
+.triangle{
+    width: 0; 
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 80px solid white;
+    position: fixed;
+    /* background-color: blue; */
+}
+
+.triangle_reversed{
+    width: 0; 
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-top: 80px solid #79849B;
+    position: fixed;
+}
+
+.hexagon{
+    margin: 20px 0; 
+    width: 100px; 
+    height: 55px;
+    background-color: white;
+    position: fixed;
+}
+
+.hexagon:before, 
+.hexagon:after {
+    content: "";
+    width: 0; 
+    height: 0;
+    position: absolute; 
+    left: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}
+
+.hexagon:before {
+    top: -25px;
+    border-bottom: 25px solid white;
+}
+
+.hexagon:after {
+    bottom: -25px;
+    border-top: 25px solid white;
+}
+
+.pacman{
+    width: 0; 
+    height: 0;
+    border-right: 30px solid transparent;
+    border-top: 30px solid #F4B915;
+    border-left: 30px solid #F4B915;
+    border-bottom: 30px solid #F4B915;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
 }

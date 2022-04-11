@@ -1,0 +1,7 @@
+#one{
+    width: 75px;
+    height: 75px;
+    background-color: red;
+    position: fixed;
+    border-radius: 50%;
+};

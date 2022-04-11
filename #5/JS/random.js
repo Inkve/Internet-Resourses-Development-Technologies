@@ -52,25 +52,9 @@ function random_plus(min, max){
 };
 
 function random_triangle(){
-    let x = random_int_plus(200, 1000);
-    let y = random_int_plus(200, 500);
+    let x = random_int_plus(200, 300);
+    let y = random_int_plus(200, 250);
     let instance = new triangle(x, y, x + random_int(50, 200), y + random_int(50, 200), x + random_int(50, 200), y + random_int(50, 200),
                                 random_int(1, 3), random_int(1, 3), `${random_color()}`);
     return instance;
 };
-
-function random_square(){
-    let x = random_int_plus(1000);
-    let y = random_int_plus(500);
-    let z = random_int(200);
-    let instance = new rectangle(x, y, z, z, random_int(3), random_int(3), `${random_color()}`);
-    return instance;
-};
-
-function random_rectangle(){
-    let x = random_int_plus(1000);
-    let y = random_int_plus(500);
-    let instance = new rectangle(x, y, random_int(200), random_int(200), random_int(3), random_int(3), `${random_color()}`);
-    return instance;
-};
-
