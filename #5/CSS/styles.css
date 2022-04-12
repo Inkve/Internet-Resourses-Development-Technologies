@@ -1,6 +1,5 @@
 body{
     background-color:rgba(216, 218, 96, 0.829);
-    max-width: 80%;
 }
 
 h1{
@@ -8,6 +7,11 @@ h1{
     flex-direction: column;
     align-items: center;
     color: coral;
+}
+
+svg{
+    min-width: 100%;
+    min-height: 72vh;
 }
 
 .settings{
@@ -29,7 +33,7 @@ h1{
 }
 
 span{
-    max-width: 60%;
+    max-width: 40%;
     color: rgb(93, 71, 194);
 }
 
