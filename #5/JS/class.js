@@ -95,10 +95,6 @@ class triangle extends figure{
         element.setAttribute("points", `${coordinates}`)
         element.setAttribute("id", `triangle_${this.number}`)
         element.setAttribute("fill", `${random_color()}`)
-        element.addEventListener('click', function() {
-            let t = document.getElementById(`rectangle_${this.number}`);
-            t.setAttribute("fill", `${random_color()}`)
-        });
         svg.append(element);
     }
 
@@ -118,8 +114,8 @@ class triangle extends figure{
                 this.udpate_coordinate();
                 this.draw();    
             } else{
-                let t = document.getElementById(`triangle_${this.number}`);
-                t.setAttribute("transform", `translate(${this.x}, ${this.y})`);
+                let element = document.getElementById(`triangle_${this.number}`);
+                element.setAttribute("transform", `translate(${this.x}, ${this.y})`);
                 this.udpate_coordinate();
             };
         };
@@ -158,7 +154,7 @@ class rectangle extends figure{
             console.log("CLICK!");
         });
         svg.append(element);
-    }
+    };
 
     draw(){
         if (this.shown){
