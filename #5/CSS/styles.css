@@ -12,6 +12,7 @@ h1{
 svg{
     min-width: 100%;
     min-height: 72vh;
+    color-interpolation-filters: linearRGB;
 }
 
 .settings{

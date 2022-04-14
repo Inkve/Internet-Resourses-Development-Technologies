@@ -26,17 +26,27 @@ function input_check(){
 let all_figures = [];
 
 function test(){
-    for (let i = 0; i < 500; i++){
+    document.getElementById('btn').disabled = true;
+    for (let i = 0; i < 20; i++){
         all_figures.push(random_triangle(i));
+    }
+
+    for (let i = 0; i < 20; i++){
         all_figures.push(random_rectangle(i));
+    }
+
+    for (let i = 20; i < 30; i++){
+        all_figures.push(random_square(i));
     }
 
     for (let i = 0; i < all_figures.length; i++){
         all_figures[i].first_draw();
     }
 
-    setInterval("draw_all()", 10);
+    draw_all();
 }
+
+
 
 
 
@@ -46,15 +56,28 @@ function draw_all(){
     for (let i = 0; i < all_figures.length; i++){
         all_figures[i].draw();
     }
+    check();
+    window.requestAnimationFrame(draw_all);
 };
 
-
-function random_plus(min, max){
-    let x = Math.random() * max;
-    while (x < min){
-        x = Math.random() * max;
-    }
-    return x
+function check(){
+    for (let y = 0; y < all_figures.length; y++){
+        for (let i = 1; i < all_figures.length; i++){
+            if (y != i){
+                for (let p = 0; p < all_figures[y].coordinates.length; p++){
+                    for (let t = 0; t < all_figures[i].coordinates.length; t++){
+                        if (all_figures[y].shown && all_figures[i].shown){
+                            if ((Math.abs(all_figures[i].coordinates[t][0] - all_figures[y].coordinates[p][0]) <= 0.5) && (Math.abs(all_figures[i].coordinates[t][1] - all_figures[y].coordinates[p][1]) <= 0.5)){
+                                all_figures[y].hide();
+                                all_figures[i].hide();
+                                return "fff"
+                            };
+                        };
+                    };
+                };
+            };
+        };
+    };
 };
 
 
