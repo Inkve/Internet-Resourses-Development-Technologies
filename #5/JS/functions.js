@@ -29,8 +29,13 @@ let particles_arr = [];
 function test(){
     document.getElementById('btn').disabled = true;
     number = document.getElementById("input_number").value;
-    generate_all(number);
-    draw_all();
+    let testing = new RegExp("^([0-9]*)$");
+    if(testing.test(number)){
+        generate_all(number);
+        draw_all();
+    } else {
+        window.alert("Вы забыли ввести число!");
+    };
 };
 
 function draw_all(){
@@ -40,7 +45,6 @@ function draw_all(){
     for (let i = 0; i < particles_arr.length; i++){
         particles_arr[i].draw();
     }
-
     check();
     window.requestAnimationFrame(draw_all);
 };
@@ -52,7 +56,7 @@ function check(){
                 for (let p = 0; p < all_figures[y].coordinates.length; p++){
                     for (let t = 0; t < all_figures[i].coordinates.length; t++){
                         if (all_figures[y].shown && all_figures[i].shown){
-                            if ((Math.abs(all_figures[i].coordinates[t][0] - all_figures[y].coordinates[p][0]) <= 3) && (Math.abs(all_figures[i].coordinates[t][1] - all_figures[y].coordinates[p][1]) <= 3)){
+                            if ((Math.abs(all_figures[i].coordinates[t][0] - all_figures[y].coordinates[p][0]) <= 5) && (Math.abs(all_figures[i].coordinates[t][1] - all_figures[y].coordinates[p][1]) <= 5)){
                                 all_figures[y].hide(all_figures[i].coordinates[t][0], all_figures[i].coordinates[t][1]);
                                 all_figures[i].hide(all_figures[i].coordinates[t][0], all_figures[i].coordinates[t][1]);
                                 if (y > i){
@@ -61,8 +65,8 @@ function check(){
                                 } else {
                                     all_figures.splice(i, 1);
                                     all_figures.splice(y, 1);
-                                }
-                                return ""
+                                };
+                                return "";
                             };
                         };
                     };

@@ -20,7 +20,7 @@ class figure{
         this.decrease_x = x_decrease;
         this.decrease_y = y_decrease;
         this.color = color;
-        this.screen_heigth = window.screen.height * 0.69;
+        this.screen_heigth = window.screen.height * 0.63;
         this.screen_width = window.screen.width * 0.96;
         this.x = 0;
         this.y = 0;  
@@ -61,20 +61,17 @@ class figure{
                 let xy1 = this.arr_y[i];
                 let xx2 = this.arr_x[i + 1];
                 let xy2 = this.arr_y[i + 1];
-                let len = Math.round(Math.sqrt((xx2 - xx1)*(xx2 - xx1) + (xy2 - xy1)*(xy2 - xy1)) / 1.5);
+                let len = Math.round(Math.sqrt((xx2 - xx1)*(xx2 - xx1) + (xy2 - xy1)*(xy2 - xy1)) / 1.8);
                 let dx = (xx2 - xx1) / len;
                 let dy = (xy2 - xy1) / len;
                 for (let q = 0; q < len; q++){
                     temp_coordinates.push([xx1 + dx * q, xy1 + dy * q]);
-                }
+                };
                 this.coordinates = temp_coordinates;
-            }
+            };
         };
     };
-}
-
-
-
+};
 
 class triangle extends figure{
     constructor(_number, x_1, y_1, x_2, y_2, x_3, y_3, x_decrease, y_decrease, color){
@@ -93,13 +90,13 @@ class triangle extends figure{
         let element = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
         let coordinates = "";
         for (let i = 0; i < this.arr_x.length; i++){
-            coordinates += `${this.arr_x[i]}` + " " + `${this.arr_y[i]}` + " "
+            coordinates += `${this.arr_x[i]}` + " " + `${this.arr_y[i]}` + " ";
         }
-        element.setAttribute("points", `${coordinates}`)
-        element.setAttribute("id", `triangle_${this.number}`)
-        element.setAttribute("fill", `${random_color()}`)
+        element.setAttribute("points", `${coordinates}`);
+        element.setAttribute("id", `triangle_${this.number}`);
+        element.setAttribute("fill", `${random_color()}`);
         svg.append(element);
-    }
+    };
 
     draw(){
         if (this.shown){
@@ -155,11 +152,11 @@ class rectangle extends figure{
         let element = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
         let coordinates = "";
         for (let i = 0; i < this.arr_x.length; i++){
-            coordinates += `${this.arr_x[i]}` + " " + `${this.arr_y[i]}` + " "
-        }
-        element.setAttribute("points", `${coordinates}`)
-        element.setAttribute("id", `rectangle_${this.number}`)
-        element.setAttribute("fill", `${random_color()}`)
+            coordinates += `${this.arr_x[i]}` + " " + `${this.arr_y[i]}` + " ";
+        };
+        element.setAttribute("points", `${coordinates}`);
+        element.setAttribute("id", `rectangle_${this.number}`);
+        element.setAttribute("fill", `${random_color()}`);
         element.addEventListener('click', function() {
             console.log("CLICK!");
         });
@@ -179,14 +176,13 @@ class rectangle extends figure{
                     this.decrease_y = -this.decrease_y;
                 } else {
                     this.decrease_x = -this.decrease_x;
-
                     this.decrease_y = -this.decrease_y;
                 };
                 this.udpate_coordinate();
                 this.draw();    
             } else{
-                let t = document.getElementById(`rectangle_${this.number}`);
-                t.setAttribute("transform", `translate(${this.x}, ${this.y})`);
+                let element = document.getElementById(`rectangle_${this.number}`);
+                element.setAttribute("transform", `translate(${this.x}, ${this.y})`);
                 this.udpate_coordinate();
             };
         };
@@ -224,11 +220,11 @@ class particles extends figure{
         let element = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
         let coordinates = "";
         for (let i = 0; i < this.arr_x.length; i++){
-            coordinates += `${this.arr_x[i]}` + " " + `${this.arr_y[i]}` + " "
-        }
-        element.setAttribute("points", `${coordinates}`)
-        element.setAttribute("id", `particle_${this.number}`)
-        element.setAttribute("fill", `${random_color()}`)
+            coordinates += `${this.arr_x[i]}` + " " + `${this.arr_y[i]}` + " ";
+        };
+        element.setAttribute("points", `${coordinates}`);
+        element.setAttribute("id", `particle_${this.number}`);
+        element.setAttribute("fill", `${random_color()}`);
         element.addEventListener('click', function() {
             console.log("CLICK!");
         });
@@ -240,7 +236,7 @@ class particles extends figure{
             this.hide();
             let element = document.getElementById(`particle_${this.number}`);
             element.setAttribute("transform", `translate(${this.x}, ${this.y})`);
-            element.setAttribute("fill", `${random_color()}`)
+            element.setAttribute("fill", `${random_color()}`);
             this.udpate_coordinate();
         };
         if (this.percent < 0){
