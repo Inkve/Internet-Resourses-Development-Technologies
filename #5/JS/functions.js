@@ -29,20 +29,7 @@ let particles_arr = [];
 function test(){
     document.getElementById('btn').disabled = true;
     number = document.getElementById("input_number").value;
-    while (number){
-        if (number){
-            all_figures.push(random_triangle(number));
-            number--;
-        };
-        if (number){
-            all_figures.push(random_rectangle(number));
-            number--;
-        };
-        if (number){
-            all_figures.push(random_square(number));
-            number--;
-        };
-    };
+    generate_all(number);
     draw_all();
 };
 
