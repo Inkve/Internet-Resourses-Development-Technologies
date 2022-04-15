@@ -60,16 +60,16 @@ function random_triangle(number){
 };
 
 function random_rectangle(number){
-    let x = random_int_plus(51, window.screen.width * 0.97 - 51);
-    let y = random_int_plus(51, window.screen.height * 0.73 - 51);
-    let instance = new rectangle(number, x, y, random_int(15, 50), random_int(15, 50), random_int(1, 3), random_int(1, 3), `${random_color()}`);
+    let x = random_int_plus(71, window.screen.width * 0.97 - 71);
+    let y = random_int_plus(71, window.screen.height * 0.73 - 71);
+    let instance = new rectangle(number, x, y, random_int(25, 70), random_int(25, 70), random_int(1, 3), random_int(1, 3), `${random_color()}`);
     return instance;
 };
 
 function random_square(number){
-    let x = random_int_plus(51, window.screen.width * 0.97 - 51);
-    let y = random_int_plus(51, window.screen.height * 0.73 - 51);
-    let z = random_int(15, 50);
+    let x = random_int_plus(71, window.screen.width * 0.97 - 71);
+    let y = random_int_plus(71, window.screen.height * 0.73 - 71);
+    let z = random_int(25, 70);
     let instance = new rectangle(number, x, y, z, z, random_int(1, 3), random_int(1, 3), `${random_color()}`);
     return instance;
 };
