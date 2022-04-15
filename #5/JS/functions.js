@@ -24,6 +24,7 @@ function input_check(){
   
 
 let all_figures = [];
+let particles_arr = [];
 
 function test(){
     document.getElementById('btn').disabled = true;
@@ -42,9 +43,6 @@ function test(){
             number--;
         };
     };
-    for (let i = 0; i < all_figures.length; i++){
-        all_figures[i].first_draw();
-    }
     draw_all();
 };
 
@@ -52,6 +50,10 @@ function draw_all(){
     for (let i = 0; i < all_figures.length; i++){
         all_figures[i].draw();
     }
+    for (let i = 0; i < particles_arr.length; i++){
+        particles_arr[i].draw();
+    }
+
     check();
     window.requestAnimationFrame(draw_all);
 };
@@ -64,8 +66,8 @@ function check(){
                     for (let t = 0; t < all_figures[i].coordinates.length; t++){
                         if (all_figures[y].shown && all_figures[i].shown){
                             if ((Math.abs(all_figures[i].coordinates[t][0] - all_figures[y].coordinates[p][0]) <= 0.5) && (Math.abs(all_figures[i].coordinates[t][1] - all_figures[y].coordinates[p][1]) <= 0.5)){
-                                all_figures[y].hide();
-                                all_figures[i].hide();
+                                all_figures[y].hide(all_figures[i].coordinates[t][0], all_figures[i].coordinates[t][1]);
+                                all_figures[i].hide(all_figures[i].coordinates[t][0], all_figures[i].coordinates[t][1]);
                                 if (y > i){
                                     all_figures.splice(y, 1);
                                     all_figures.splice(i, 1);
@@ -73,7 +75,7 @@ function check(){
                                     all_figures.splice(i, 1);
                                     all_figures.splice(y, 1);
                                 }
-                                return "fff"
+                                return ""
                             };
                         };
                     };

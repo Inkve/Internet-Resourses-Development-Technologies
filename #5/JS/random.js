@@ -52,24 +52,30 @@ function random_plus(min, max){
 };
 
 function random_triangle(number){
-    let x = random_int_plus(50, window.screen.width * 0.97 - 50);
-    let y = random_int_plus(50, window.screen.height * 0.73 - 50);
-    let instance = new triangle(number, x, y, x + random_int(15, 50), y + random_int(15, 50), x + random_int(15, 50), y + random_int(15, 50),
+    let x = random_int_plus(71, window.screen.width * 0.97 - 71);
+    let y = random_int_plus(71, window.screen.height * 0.73 - 71);
+    let instance = new triangle(number, x, y, x + random_int(25, 70), y + random_int(25, 70), x + random_int(25, 70), y + random_int(25, 70),
                                 random_int(1, 3), random_int(1, 3), `${random_color()}`);
     return instance;
 };
 
 function random_rectangle(number){
-    let x = random_int_plus(50, window.screen.width * 0.97 - 50);
-    let y = random_int_plus(50, window.screen.height * 0.73 - 50);
+    let x = random_int_plus(51, window.screen.width * 0.97 - 51);
+    let y = random_int_plus(51, window.screen.height * 0.73 - 51);
     let instance = new rectangle(number, x, y, random_int(15, 50), random_int(15, 50), random_int(1, 3), random_int(1, 3), `${random_color()}`);
     return instance;
 };
 
 function random_square(number){
-    let x = random_int_plus(50, window.screen.width * 0.97 - 50);
-    let y = random_int_plus(50, window.screen.height * 0.73 - 50);
+    let x = random_int_plus(51, window.screen.width * 0.97 - 51);
+    let y = random_int_plus(51, window.screen.height * 0.73 - 51);
     let z = random_int(15, 50);
     let instance = new rectangle(number, x, y, z, z, random_int(1, 3), random_int(1, 3), `${random_color()}`);
+    return instance;
+};
+
+function random_square_particle(number, x, y){
+    let z = random_int(15, 30);
+    let instance = new particles(number, x, y, z, z, random_int(1, 5), random_int(1, 5), `${random_color()}`);
     return instance;
 };
