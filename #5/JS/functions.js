@@ -27,10 +27,10 @@ let all_figures = [];
 let particles_arr = [];
 
 function test(){
-    document.getElementById('btn').disabled = true;
     number = document.getElementById("input_number").value;
     let testing = new RegExp("^([0-9]*)$");
     if(testing.test(number)){
+        document.getElementById('btn').disabled = true;
         generate_all(number);
         draw_all();
     } else {

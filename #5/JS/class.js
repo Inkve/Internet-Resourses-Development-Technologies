@@ -247,7 +247,7 @@ class particles extends figure{
     hide(){
         if (this.percent >= 0){
             $(`#particle_${this.number}`).fadeTo(30, this.percent / 100);
-            this.percent = this.percent - 5;
+            this.percent = this.percent - 4;
         };
     };
 };
