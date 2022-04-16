@@ -20,8 +20,8 @@ class figure{
         this.decrease_x = x_decrease;
         this.decrease_y = y_decrease;
         this.color = color;
-        this.screen_heigth = window.screen.height * 0.69;
-        this.screen_width = window.screen.width * 0.96;
+        this.screen_heigth = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * 0.75;
+        this.screen_width = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) * 0.96;
         this.x = 0;
         this.y = 0;  
         this.coordinates = [];
