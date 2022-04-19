@@ -11,7 +11,7 @@ h1{
 
 svg{
     min-width: 98vw;
-    min-height: 75vh;
+    min-height: 68vh;
     color-interpolation-filters: linearRGB;
     display: flex;
     flex-direction: column;

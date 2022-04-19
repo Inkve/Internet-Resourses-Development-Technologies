@@ -56,7 +56,7 @@ function generate_all(number){
     let allow_x = [];
     let allow_y = [];
     let x1 = Math.round((Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0) * 0.96) / Math.round(Math.sqrt(number) + 3)) ;
-    let y1 = Math.round((Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * 0.75) / Math.round(Math.sqrt(number) + 3));
+    let y1 = Math.round((Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0) * 0.68) / Math.round(Math.sqrt(number) + 3));
     for (let i = 0; i <= Math.round(Math.sqrt(number)); i++){
         for (let y = 0; y <= Math.round(Math.sqrt(number)); y++){
             allow_x.push(random_int_plus(x1 * i, x1 * (i + 1)));
