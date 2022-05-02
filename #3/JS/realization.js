@@ -1,23 +1,21 @@
 var history_human = [];
 
 function test(input_id){
-    var input = document.getElementById(input_id);
-    var check = document.getElementById("check");
-    testing = new RegExp("^(/ /)*([0-9]*)$");
-    a = input.value.toString();
-    if (!testing.test(a)){
-        b = "";
-	if (testing.test(a)){
-            document.getElementById(input_id).value = testing.exec(a)[0];
-	} else {
-            for (o of a){
-                if (testing.test(o)){
-                    b += o;
-                }
-            }
-            document.getElementById(input_id).value = b;
-	}
+    let input = document.getElementById(input_id);
+    let testing = new RegExp("^([0-9]*)$");
+    let number = input.value.toString();
+    let result = "";
+    for (element of number){
+        if ((testing.test(element)) && (result.length < 2)){
+            result += element;
+        } else {
+            if (result.length >= 2){
+                break;
+            };
+        };
     };
+    result = Number(result);
+    result == 0 ? input.value = "" : input.value = result;
 };
 
 function transform(){
