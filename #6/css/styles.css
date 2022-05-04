@@ -13,10 +13,24 @@ a{
     color: #93a243;
 }
 
-.start_div{
+button{
+    background-color: #93a243;
+    border-radius: 8px;
+}
+
+.standart_div{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
     font-size: 20px;
 }
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 17px;
+}
+
