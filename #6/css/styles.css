@@ -1,0 +1,22 @@
+body{
+    background-color: #ffffcc;
+    color: #e15f69;
+}
+
+img{
+    max-width: 45%;
+    border-radius: 40px;
+    box-shadow: 15px 8px 15px #a5c4b5;
+}
+
+a{
+    color: #93a243;
+}
+
+.start_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 20px;
+}

@@ -6,10 +6,10 @@ function test(input_id){
     let number = input.value.toString();
     let result = "";
     for (element of number){
-        if ((testing.test(element)) && (result.length < 2)){
+        if ((testing.test(element)) && (result.length < 3)){
             result += element;
         } else {
-            if (result.length >= 2){
+            if (result.length >= 3){
                 break;
             };
         };
