@@ -6,13 +6,10 @@ $('document').ready(function(){
 
 function check_login(){
     let login = document.getElementById("login").value;
-    console.log('login: ', login);
     let password = document.getElementById("password").value;
-    console.log('password: ', password);
     let xnr = new XMLHttpRequest();
     xnr.open("POST", "check_login.php");
     xnr.onload = function(){
-        console.log('xnr.responseText: ', xnr.responseText);
         errors = JSON.parse(xnr.responseText);
         let log_err_login = document.getElementById("log_err_login");
         log_err_login.innerHTML = errors['login_err'];

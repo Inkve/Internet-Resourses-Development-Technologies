@@ -12,10 +12,10 @@
         <h2> Форма заказа книги в онлайн магазине </h2>
         <span> Приветсвуем Вас на странице авторизации! </span>
         <form class="login">
-            <span> Ваш логин: </span>
-            <input type="text" id="login"> <span id="log_err_login"> </span> 
-            <span> Ваш пароль: </span>
-            <input type="password" id="password"> <span id="log_err_password"> </span> 
+            <span> Ваш логин: </span> <span id="log_err_login"> </span>
+            <input type="text" id="login">
+            <span> Ваш пароль: </span> <span id="log_err_password"> </span> 
+            <input type="password" id="password"> 
         </form>
         <button  id="login_button"> Войти </button>
     </div>
