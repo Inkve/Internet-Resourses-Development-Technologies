@@ -1,27 +1,40 @@
 $('document').ready(function(){
-    $("#login_button").click(function(){
-    check_login();
+    $("#reg_button").click(function(){
+    check_registration();
     });
 });
 
-function check_login(){
+function check_registration(){
+    let name = document.getElementById("name").value;
+    let age = document.getElementById("age").value;
+    let mail = document.getElementById("mail").value;
     let login = document.getElementById("login").value;
-    console.log('login: ', login);
-    let password = document.getElementById("password").value;
-    console.log('password: ', password);
+    let password1 = document.getElementById("password1").value;
+    let password2 = document.getElementById("password1").value;
     let xnr = new XMLHttpRequest();
-    xnr.open("POST", "check_login.php");
+    xnr.open("POST", "check_registration.php");
     xnr.onload = function(){
-        console.log('xnr.responseText: ', xnr.responseText);
         errors = JSON.parse(xnr.responseText);
-        let log_err_login = document.getElementById("log_err_login");
+        let log_err_name = document.getElementById("reg_err_name");
+        log_err_name.innerHTML = errors['name_err'];
+        let log_err_age = document.getElementById("reg_err_age");
+        log_err_age.innerHTML = errors['age_err'];
+        let log_err_mail = document.getElementById("reg_err_mail");
+        log_err_mail.innerHTML = errors['mail_err'];
+        let log_err_login = document.getElementById("reg_err_login");
         log_err_login.innerHTML = errors['login_err'];
-        let log_err_password = document.getElementById("log_err_password");
-        log_err_password.innerHTML = errors['password_err'];
+        let log_err_password1 = document.getElementById("reg_err_password1");
+        log_err_password1.innerHTML = errors['password1_err'];
+        let log_err_password2 = document.getElementById("reg_err_password2");
+        log_err_password2.innerHTML = errors['password2_err'];
     };
-    let login_data = {
+    let reg_data = {
+        name: name,
+        age: age,
+        mail: mail,
         login: login,
-        password: password
+        password1: password1,
+        password2: password2
     };
-    xnr.send(JSON.stringify(login_data));
+    xnr.send(JSON.stringify(reg_data));
 };
