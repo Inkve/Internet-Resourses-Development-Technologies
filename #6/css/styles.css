@@ -41,3 +41,11 @@ button{
     gap: 0.4rem;
     font-size: 17px;
 }
+
+.error{
+    color: red;
+}
+
+.message{
+    color: green;
+}

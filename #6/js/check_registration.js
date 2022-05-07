@@ -10,7 +10,7 @@ function check_registration(){
     let mail = document.getElementById("mail").value;
     let login = document.getElementById("login").value;
     let password1 = document.getElementById("password1").value;
-    let password2 = document.getElementById("password1").value;
+    let password2 = document.getElementById("password2").value;
     let xnr = new XMLHttpRequest();
     xnr.open("POST", "check_registration.php");
     xnr.onload = function(){
@@ -27,6 +27,12 @@ function check_registration(){
         log_err_password1.innerHTML = errors['password1_err'];
         let log_err_password2 = document.getElementById("reg_err_password2");
         log_err_password2.innerHTML = errors['password2_err'];
+        
+        console.log("errors['succesful']: ", errors['successful']);
+        if (errors['successful']){
+            document.getElementById("message").innerHTML = "Регистрация прошла успешно! <br> Теперь зайди в свой аккаунт!";
+            setTimeout("location.assign('index.php')", 1000);
+        };
     };
     let reg_data = {
         name: name,

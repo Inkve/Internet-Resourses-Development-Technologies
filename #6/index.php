@@ -11,7 +11,7 @@
         <img src=".\images\store.jpg">
         <span> Приветсвуем Вас на самом прекрасном онлайн-магазине для заказа книг! </span>
         <span> Только у нас в ассортименте более 100 тысяч книг писателей со всего мира! </span>
-        <span> Чтобы сделать заказ <a href="php/login.php"> авторизуйтесь </a> или <a href="php/registration.php"> зарегистрируйтесь </a> </span>
+        <span> Чтобы сделать заказ <a href="login.php"> авторизуйтесь </a> или <a href="registration.php"> зарегистрируйтесь </a> </span>
     </div>
 </body>
 </html>
