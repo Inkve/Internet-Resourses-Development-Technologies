@@ -1,7 +1,6 @@
 body{
     background-color: #ffffcc;
     color: #e15f69;
-    max-width: 90%;
 }
 
 img{
@@ -23,18 +22,22 @@ input{
     border-radius: 5px;
     box-shadow: 2px 2px 2px #a5c4b5;
     text-align: center;
-    min-width: 100%;
     color: #e15f69;
     background-color: beige;
     padding: 0;
+    gap: 0;
+    min-width: 40%;
+    max-width: 40%;
 }
 
 .standart_div{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
     font-size: 20px;
+    max-width: 90%;
+    text-align: center;
 }
 
 .login{
@@ -42,7 +45,8 @@ input{
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
-    font-size: 17px;
+    min-width: 75%;
+    max-width: 75%;
 }
 
 .registration{
@@ -51,14 +55,19 @@ input{
     align-items: center;
     gap: 0.4rem;
     font-size: 17px;
-    min-width: 30%;
+    min-width: 75%;
+    min-height: 70%;
+    max-width: 75%;
 }
 
 .error{
     color: red;
+    text-align: center;
+    gap: 0.4rem;
 }
 
 .message{
     color: green;
+    text-align: center;
 }
 

@@ -14,18 +14,42 @@
     $password2 = $data->password2;
     $successful = True;
     $file_data = json_decode(file_get_contents("data\users.json"));
-
+    
+    if ($name == null){
+        $name_error = "Поле Имя не может быть пустым!";
+        $successful = false;
+    };
+    if ($age == null){
+        $age_error = "Поле Возраст не может быть пустым!";
+        $successful = false;
+    };
+    if ($mail == null){
+        $mail_error = "Поле Почта не может быть пустым!";
+        $successful = false;
+    };
+    if ($login == null){
+        $login_error = "Поле Логин не может быть пустым!";
+        $successful = false;
+    };
     foreach ($file_data as $element){
         if ($element->login == $login){
             $login_error = "Пользователь с таким логином уже существует!";
             $successful = false;
-            break;
         };
+    };
+    if ($password1 == null){
+        $password1_error = "Поле Пароль не может быть пустым!";
+        $successful = false;
+    };
+    if ($password2 == null){
+        $password2_error = "Поле Повторение пароля не может быть пустым!";
+        $successful = false;
     };
     if ($password1 != $password2){
         $password2_error = "Пароли различны!";
         $successful = false;
     };
+
 
 
     if ($successful){

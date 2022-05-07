@@ -16,20 +16,60 @@ function check_registration(){
     xnr.onload = function(){
         errors = JSON.parse(xnr.responseText);
         let log_err_name = document.getElementById("reg_err_name");
-        log_err_name.innerHTML = errors['name_err'];
+        if (errors['name_err'] != ""){
+            log_err_name.innerHTML = errors['name_err'];
+            $("#name").hide();
+            $("#reg_err_name").show();
+            setTimeout('$("#reg_err_name").hide()', 1500);
+            setTimeout('$("#name").show()', 1500);
+        };
         let log_err_age = document.getElementById("reg_err_age");
-        log_err_age.innerHTML = errors['age_err'];
+        if (errors['age_err'] != ""){
+            log_err_age.innerHTML = errors['age_err'];
+            $("#age").hide();
+            $("#reg_err_age").show();
+            setTimeout('$("#reg_err_age").hide()', 1500);
+            setTimeout('$("#age").show()', 1500);
+        };
         let log_err_mail = document.getElementById("reg_err_mail");
-        log_err_mail.innerHTML = errors['mail_err'];
+        if (errors['mail_err'] != ""){
+            log_err_mail.innerHTML = errors['mail_err'];
+            $("#mail").hide();
+            $("#reg_err_mail").show();
+            setTimeout('$("#reg_err_mail").hide()', 1500);
+            setTimeout('$("#mail").show()', 1500);
+        };
         let log_err_login = document.getElementById("reg_err_login");
-        log_err_login.innerHTML = errors['login_err'];
+        if (errors['login_err'] != ""){
+            log_err_login.innerHTML = errors['login_err'];
+            $("#login").hide();
+            $("#reg_err_login").show();
+            setTimeout('$("#reg_err_login").hide()', 1500);
+            setTimeout('$("#login").show()', 1500);
+        };
         let log_err_password1 = document.getElementById("reg_err_password1");
-        log_err_password1.innerHTML = errors['password1_err'];
+        if (errors['password1_err'] != ""){
+            log_err_password1.innerHTML = errors['password1_err'];
+            $("#password1").hide();
+            $("#reg_err_password1").show();
+            setTimeout('$("#reg_err_password1").hide()', 1500);
+            setTimeout('$("#password1").show()', 1500);
+        };
         let log_err_password2 = document.getElementById("reg_err_password2");
-        log_err_password2.innerHTML = errors['password2_err'];
+        if (errors['password2_err'] != ""){
+            log_err_password2.innerHTML = errors['password2_err'];
+            $("#password2").hide();
+            $("#reg_err_password2").show();
+            setTimeout('$("#reg_err_password2").hide()', 1500);
+            setTimeout('$("#password2").show()', 1500);
+        };
+
+
+
+        
         
         if (errors['successful']){
-            document.getElementById("message").innerHTML = "Регистрация прошла успешно! <br> Теперь зайди в свой аккаунт!";
+            document.getElementById("message").innerHTML = " <br> Регистрация прошла успешно! <br> Теперь зайди в свой аккаунт!";
             setTimeout("window.location.replace('index.php')", 1000);
         };
     };

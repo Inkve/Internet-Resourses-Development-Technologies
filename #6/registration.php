@@ -10,7 +10,6 @@
     <div class="standart_div"> 
         <h2> Форма заказа книги в онлайн магазине </h2>
         <span> Приветствуем Вас на странице регистрации! </span>
-        <span id="message" class="message"> </span>
         <form class="registration">
             <span> Вашe имя: </span> <span id="reg_err_name" class="error"> </span> 
             <input type="text" id="name" placeholder="Имя"> 
@@ -27,6 +26,7 @@
         </form>
         <button  id="reg_button"> Зарегирироваться </button>
         <span> Уже есть аккаунт? Тогда <a href="login.php"> зайди </a> в него! <span>
+        <span id="message" class="message"> </span>
     </div>
 </body>
 </html>
