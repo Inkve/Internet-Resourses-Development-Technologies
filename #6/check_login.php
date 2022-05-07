@@ -36,7 +36,8 @@
     
     $errors = array(
         "login_err" => $login_error,
-        "password_err" => $password_error
+        "password_err" => $password_error,
+        "successful" => $successful
     );
     echo json_encode($errors);
 ?>

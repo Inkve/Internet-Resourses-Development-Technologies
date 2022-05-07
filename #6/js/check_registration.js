@@ -28,10 +28,9 @@ function check_registration(){
         let log_err_password2 = document.getElementById("reg_err_password2");
         log_err_password2.innerHTML = errors['password2_err'];
         
-        console.log("errors['succesful']: ", errors['successful']);
         if (errors['successful']){
             document.getElementById("message").innerHTML = "Регистрация прошла успешно! <br> Теперь зайди в свой аккаунт!";
-            setTimeout("location.assign('index.php')", 1000);
+            setTimeout("window.location.replace('index.php')", 1000);
         };
     };
     let reg_data = {

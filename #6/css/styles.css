@@ -1,6 +1,7 @@
 body{
     background-color: #ffffcc;
     color: #e15f69;
+    max-width: 90%;
 }
 
 img{
@@ -16,6 +17,16 @@ a{
 button{
     background-color: #93a243;
     border-radius: 8px;
+}
+
+input{
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #a5c4b5;
+    text-align: center;
+    min-width: 100%;
+    color: #e15f69;
+    background-color: beige;
+    padding: 0;
 }
 
 .standart_div{
@@ -40,6 +51,7 @@ button{
     align-items: center;
     gap: 0.4rem;
     font-size: 17px;
+    min-width: 30%;
 }
 
 .error{
@@ -49,3 +61,4 @@ button{
 .message{
     color: green;
 }
+
