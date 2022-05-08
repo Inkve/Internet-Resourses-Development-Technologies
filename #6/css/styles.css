@@ -3,71 +3,25 @@ body{
     color: #e15f69;
 }
 
-img{
-    max-width: 45%;
-    border-radius: 40px;
-    box-shadow: 15px 8px 15px #a5c4b5;
-}
-
-a{
-    color: #93a243;
-}
-
-button{
-    background-color: #93a243;
-    border-radius: 8px;
-}
-
-input{
-    border-radius: 5px;
-    box-shadow: 2px 2px 2px #a5c4b5;
-    text-align: center;
-    color: #e15f69;
-    background-color: beige;
-    padding: 0;
-    gap: 0;
-    min-width: 40%;
-    max-width: 40%;
-}
-
 .standart_div{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
     font-size: 20px;
+    margin-left: 5%;
     max-width: 90%;
     text-align: center;
 }
 
-.login{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    min-width: 75%;
-    max-width: 75%;
+.link{
+    color: #93a243;
+    text-decoration: underline;
 }
 
-.registration{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 17px;
-    min-width: 75%;
-    min-height: 70%;
-    max-width: 75%;
-}
-
-.error{
-    color: red;
-    text-align: center;
-    gap: 0.4rem;
-}
-
-.message{
-    color: green;
-    text-align: center;
+#header{
+    box-shadow: none;
+    width: 5%;
+    border-radius: 0;
 }
 

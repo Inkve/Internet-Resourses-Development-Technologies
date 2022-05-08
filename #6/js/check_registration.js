@@ -1,6 +1,12 @@
 $('document').ready(function(){
     $("#reg_button").click(function(){
-    check_registration();
+        check_registration();
+    });
+    $("#header").click(function(){
+        window.location.replace('../index.html');
+    });
+    $("#reg_2_log").click(function(){
+        window.location.replace('login.html');
     });
 });
 
@@ -12,7 +18,7 @@ function check_registration(){
     let password1 = document.getElementById("password1").value;
     let password2 = document.getElementById("password2").value;
     let xnr = new XMLHttpRequest();
-    xnr.open("POST", "check_registration.php");
+    xnr.open("POST", "../php/check_registration.php");
     xnr.onload = function(){
         errors = JSON.parse(xnr.responseText);
         let log_err_name = document.getElementById("reg_err_name");
@@ -70,7 +76,7 @@ function check_registration(){
         
         if (errors['successful']){
             document.getElementById("message").innerHTML = " <br> Регистрация прошла успешно! <br> Теперь зайди в свой аккаунт!";
-            setTimeout("window.location.replace('index.php')", 1000);
+            setTimeout("window.location.replace('../index.html')", 1000);
         };
     };
     let reg_data = {

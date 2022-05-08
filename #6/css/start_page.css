@@ -1,0 +1,11 @@
+img{
+    max-width: 45%;
+    border-radius: 40px;
+    box-shadow: 15px 8px 15px #a5c4b5;
+}
+
+#header{
+    box-shadow: none;
+    width: 5%;
+    border-radius: 0;
+}

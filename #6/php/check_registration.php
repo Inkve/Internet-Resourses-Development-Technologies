@@ -13,7 +13,7 @@
     $password1 = $data->password1;
     $password2 = $data->password2;
     $successful = True;
-    $file_data = json_decode(file_get_contents("data\users.json"));
+    $file_data = json_decode(file_get_contents("../data/users.json"));
     
     if ($name == null){
         $name_error = "Поле Имя не может быть пустым!";
@@ -61,7 +61,7 @@
             "password" => $password1
         );
         array_push($file_data, $current_user);
-        file_put_contents("data\users.json", json_encode($file_data));
+        file_put_contents("../data/users.json", json_encode($file_data));
     };
     $errors = array(
         "name_err" => $name_error,

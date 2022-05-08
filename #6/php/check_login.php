@@ -1,12 +1,12 @@
 <?php
     $data = json_decode(file_get_contents("php://input"));
-    $login_error = "";
+    $login_error = "Такой пользователь не зарегистрирован!";
     $password_error = "";
     $login = $data->login;
     $password = $data->password;
-    $successful = true;
+    $successful = false;
 
-    $file_data = json_decode(file_get_contents("data\users.json"));
+    $file_data = json_decode(file_get_contents("../data/users.json"));
 
     foreach ($file_data as $element){
         if ($element->login == $login){
@@ -15,13 +15,11 @@
                 $successful = true;
                 break;
             } else {
+                $login_error = "";
                 $password_error = "Неправильный пароль!";
                 $successful = false;
                 break;
             };
-        } else {
-            $login_error = "Такой пользователь не зарегистрирован!";
-            $successful = false;
         };
     };
     

@@ -1,0 +1,38 @@
+button{
+    background-color: #93a243;
+    border-radius: 8px;
+}
+
+input{
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #a5c4b5;
+    text-align: center;
+    color: #e15f69;
+    background-color: rgba(176, 232, 177, 0.642);
+    padding: 0;
+    min-width: 40%;
+    max-width: 40%;
+}
+
+.registration{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 17px;
+    min-width: 75%;
+    max-width: 75%;
+}
+
+.error{
+    display: none;
+    color: red;
+    text-align: center;
+    gap: 0rem;
+    padding: 0rem;
+}
+
+.message{
+    color: green;
+    text-align: center;
+}
