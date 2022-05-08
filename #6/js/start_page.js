@@ -1,6 +1,6 @@
 $('document').ready(function(){
     $("#header").click(function(){
-        window.location.replace('../index.html');
+        window.location.replace('index.html');
     });
     $("#start_2_reg").click(function(){
         window.location.replace('php/registration.php');
