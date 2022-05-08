@@ -8,6 +8,24 @@ $('document').ready(function(){
     $("#reg_2_log").click(function(){
         window.location.replace('login.html');
     });
+    document.getElementById("name").addEventListener("input", function(){
+        check_name();
+    });
+    document.getElementById("age").addEventListener("input", function(){
+        check_age();
+    });
+    document.getElementById("mail").addEventListener("input", function(){
+        check_no_russian("mail");
+    });
+    document.getElementById("login").addEventListener("input", function(){
+        check_extra("login");
+    });
+    document.getElementById("password1").addEventListener("input", function(){
+        check_extra("password1");
+    });
+    document.getElementById("password2").addEventListener("input", function(){
+        check_extra("password2");
+    });
 });
 
 function check_registration(){
@@ -21,59 +39,12 @@ function check_registration(){
     xnr.open("POST", "../php/check_registration.php");
     xnr.onload = function(){
         errors = JSON.parse(xnr.responseText);
-        let log_err_name = document.getElementById("reg_err_name");
-        if (errors['name_err'] != ""){
-            log_err_name.innerHTML = errors['name_err'];
-            $("#name").hide();
-            $("#reg_err_name").show();
-            setTimeout('$("#reg_err_name").hide()', 1500);
-            setTimeout('$("#name").show()', 1500);
-        };
-        let log_err_age = document.getElementById("reg_err_age");
-        if (errors['age_err'] != ""){
-            log_err_age.innerHTML = errors['age_err'];
-            $("#age").hide();
-            $("#reg_err_age").show();
-            setTimeout('$("#reg_err_age").hide()', 1500);
-            setTimeout('$("#age").show()', 1500);
-        };
-        let log_err_mail = document.getElementById("reg_err_mail");
-        if (errors['mail_err'] != ""){
-            log_err_mail.innerHTML = errors['mail_err'];
-            $("#mail").hide();
-            $("#reg_err_mail").show();
-            setTimeout('$("#reg_err_mail").hide()', 1500);
-            setTimeout('$("#mail").show()', 1500);
-        };
-        let log_err_login = document.getElementById("reg_err_login");
-        if (errors['login_err'] != ""){
-            log_err_login.innerHTML = errors['login_err'];
-            $("#login").hide();
-            $("#reg_err_login").show();
-            setTimeout('$("#reg_err_login").hide()', 1500);
-            setTimeout('$("#login").show()', 1500);
-        };
-        let log_err_password1 = document.getElementById("reg_err_password1");
-        if (errors['password1_err'] != ""){
-            log_err_password1.innerHTML = errors['password1_err'];
-            $("#password1").hide();
-            $("#reg_err_password1").show();
-            setTimeout('$("#reg_err_password1").hide()', 1500);
-            setTimeout('$("#password1").show()', 1500);
-        };
-        let log_err_password2 = document.getElementById("reg_err_password2");
-        if (errors['password2_err'] != ""){
-            log_err_password2.innerHTML = errors['password2_err'];
-            $("#password2").hide();
-            $("#reg_err_password2").show();
-            setTimeout('$("#reg_err_password2").hide()', 1500);
-            setTimeout('$("#password2").show()', 1500);
-        };
-
-
-
-        
-        
+        replace(errors, 'name_err', 'reg_err_name', 'name');
+        replace(errors, 'age_err', 'reg_err_age', 'age');
+        replace(errors, 'mail_err', 'reg_err_mail', 'mail');
+        replace(errors, 'login_err', 'reg_err_login', 'login');
+        replace(errors, 'password1_err', 'reg_err_password1', 'password1');
+        replace(errors, 'password2_err', 'reg_err_password2', 'password2');
         if (errors['successful']){
             document.getElementById("message").innerHTML = " <br> Регистрация прошла успешно! <br> Теперь зайди в свой аккаунт!";
             setTimeout("window.location.replace('../index.html')", 1000);
@@ -88,4 +59,55 @@ function check_registration(){
         password2: password2
     };
     xnr.send(JSON.stringify(reg_data));
+};
+
+function replace(data, field_id, span_id, input_id){
+    let log_err = document.getElementById(span_id);
+    if (data[field_id] != ""){
+        log_err.innerHTML = data[field_id];
+        $(`#${input_id}`).hide();
+        $(`#${span_id}`).show();
+        setTimeout(() => {
+            $(`#${span_id}`).hide();
+            $(`#${input_id}`).show();
+        }, 1500);
+    };
+};
+
+function check_name(){
+    let input = document.getElementById("name");
+    let testing = new RegExp("^[а-яА-Я]{1,30}$");
+    let result = "";
+    for (element of input.value){
+        if ((testing.test(element)) && (result.length < 30)){
+            result += element;
+        };
+    };
+    result == "" ? input.value = "" : input.value = result;
+};
+
+function check_age(){
+    let input = document.getElementById("age");
+    let testing = new RegExp("^([0-9]*)$");
+    let number = input.value.toString();
+    let result = "";
+    for (element of number){
+        if ((testing.test(element)) && (result.length < 3)){
+            result += element;
+        };
+    };
+    result = Number(result);
+    result == 0 ? input.value = "" : input.value = result;
+};
+
+function check_extra(id){
+    let input = document.getElementById(id);
+    let testing = new RegExp("^([a-z,A-Z,0-9]){1,30}$");
+    let result = "";
+    for (element of input.value){
+        if (testing.test(element)){
+            result += element;
+        };
+    };
+    result == "" ? input.value = "" : input.value = result;
 };

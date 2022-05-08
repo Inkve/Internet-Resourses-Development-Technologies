@@ -1,64 +1,39 @@
 <?php
     $data = json_decode(file_get_contents("php://input"));
-    $name_error = "";
-    $age_error = "";
-    $mail_error = "";
-    $login_error = "";
-    $password1_error = "";
-    $password2_error = "";
-    $name = $data->name;
-    $age = $data->age;
-    $mail = $data->mail;
-    $login = $data->login;
-    $password1 = $data->password1;
-    $password2 = $data->password2;
     $successful = True;
     $file_data = json_decode(file_get_contents("../data/users.json"));
-    
-    if ($name == null){
-        $name_error = "Поле Имя не может быть пустым!";
+    $name_error = check_name($data);
+    if ($name_error != ""){
         $successful = false;
     };
-    if ($age == null){
-        $age_error = "Поле Возраст не может быть пустым!";
+    $age_error = check_age($data);
+    if ($age_error != ""){
         $successful = false;
     };
-    if ($mail == null){
-        $mail_error = "Поле Почта не может быть пустым!";
+    $mail_error = check_mail($data);
+    if ($mail_error != ""){
         $successful = false;
     };
-    if ($login == null){
-        $login_error = "Поле Логин не может быть пустым!";
+    $login_error = check_login($data, $file_data);
+    if ($login_error != ""){
         $successful = false;
     };
-    foreach ($file_data as $element){
-        if ($element->login == $login){
-            $login_error = "Пользователь с таким логином уже существует!";
-            $successful = false;
-        };
-    };
-    if ($password1 == null){
-        $password1_error = "Поле Пароль не может быть пустым!";
+    $password_ = check_password($data);
+    $password1_error = $password_[0];
+    if ($password1_error != ""){
         $successful = false;
     };
-    if ($password2 == null){
-        $password2_error = "Поле Повторение пароля не может быть пустым!";
+    $password2_error = $password_[1];
+    if ($password2_error != ""){
         $successful = false;
     };
-    if ($password1 != $password2){
-        $password2_error = "Пароли различны!";
-        $successful = false;
-    };
-
-
-
     if ($successful){
         $current_user = array(
-            "name" => $name,
-            "age" => $age,
-            "mail" => $mail,
-            "login" => $login,
-            "password" => $password1
+            "name" => $data->name,
+            "age" => $data->age,
+            "mail" => $data->mail,
+            "login" => $data->login,
+            "password" => $data->password1
         );
         array_push($file_data, $current_user);
         file_put_contents("../data/users.json", json_encode($file_data));
@@ -73,4 +48,136 @@
         "successful" => $successful
     );
     echo json_encode($errors);
+?>
+
+<?php
+function check_name($data){
+    $name = $data->name;
+    $pattern_name = '/^[а-яА-Я]{1,30}+$/iu';
+    if ($name == null){
+        return "Поле Имя не может быть пустым!";
+    };
+    if (!preg_match($pattern_name, $name)){
+        return "В поле Имя допустимы лишь буквы кириллицы";
+    };
+    return '';
+};
+?>
+
+<?php
+function check_age($data){
+    $age = $data->age;
+    $pattern_age = '/^(?:100|[1-9]\d|[1-9])$/';
+    if ($age == null){
+        return "Поле Возраст не может быть пустым!";
+    };
+    if ($age > 100){
+        return "Укажите Ваш реальный возраст";
+    };
+    if (!preg_match($pattern_age, $age)){
+        return "В поле Возраст допустимы лишь цифры";
+    };
+    return '';
+};
+?>
+
+<?php
+function check_mail($data){
+    $mail = $data->mail;
+    if ($mail == null){
+        return "Поле Почта не может быть пустым!";
+    };
+    if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        return "Некорректная почта!";
+    };
+    return '';
+};
+?>
+
+<?php
+function check_login($data, $file_data){
+    $login = $data->login;
+    if ($login == null){
+        return "Поле Логин не может быть пустым!";
+    };
+    if (!preg_match('/^[a-zA-z]{1}[a-zA-Z1-9]{0,20}$/', $login)){
+        return 'Логин должен начинаться с буквы!';
+    };
+    foreach ($file_data as $element){
+        if ($element->login == $login){
+            return "Пользователь с таким логином уже существует!";
+        };
+    };
+    if (preg_match('/^[a-zA-z]{1}[a-zA-Z1-9]{0,2}$/', $login)){
+        return 'Длина Логина как минимум 4 символа!';
+    };
+    return '';
+};
+?>
+
+<?php
+function check_password($data){
+    $password1 = $data->password1;
+    $password2 = $data->password2;
+    $password2_error = "";
+    $pattern_password = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/';
+    if ($password1 == null){
+        $password1_error = "Поле Пароль не может быть пустым!";
+    };
+    if (preg_match('/^([a-z]){1,12}$/', $password1)){
+        $password1_error = "Добавьте хотя-бы одну заглавную букву и цифру!";
+    };
+    if (preg_match('/^([A-Z]){1,12}$/', $password1)){
+        $password1_error = "Добавьте хотя-бы одну строчную букву и цифру!";
+    };
+    if (preg_match('/^([1-9]){1,12}$/', $password1)){
+        $password1_error = "Добавьте хотя-бы одну строчную и заглавные буквы!";
+    };
+    if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{1,12}$/', $password1)){
+        $password1_error = "Добавьте хотя-бы одну цифру!";
+    };
+    if (preg_match('/(?=.*[a-z])(?=.*\d)[a-z\d]{1,12}$/', $password1)){
+        $password1_error = "Добавьте хотя-бы одну заглавную букву!";
+    };
+    if (preg_match('/(?=.*[A-Z])(?=.*\d)[A-Z\d]{1,12}$/', $password1)){
+        $password1_error = "Добавьте хотя-бы одну строчную букву!";
+    };
+    if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{1,5}$/', $password1)){
+        $password1_error = "Как минимум 6 символов!";
+    };
+    if (preg_match($pattern_password, $password1)){
+        $password1_error = "";
+    };
+    if ($password2 == null){
+        $password2_error = "Поле Пароль не может быть пустым!";
+    };
+    if (preg_match('/^([a-z]){1,12}$/', $password2)){
+        $password2_error = "Добавьте хотя-бы одну заглавную букву и цифру!";
+    };
+    if (preg_match('/^([A-Z]){1,12}$/', $password2)){
+        $password2_error = "Добавьте хотя-бы одну строчную букву и цифру!";
+    };
+    if (preg_match('/^([1-9]){1,12}$/', $password2)){
+        $password2_error = "Добавьте хотя-бы одну строчную и заглавные буквы!";
+    };
+    if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{1,12}$/', $password2)){
+        $password2_error = "Добавьте хотя-бы одну цифру!";
+    };
+    if (preg_match('/(?=.*[a-z])(?=.*\d)[a-z\d]{1,12}$/', $password2)){
+        $password2_error = "Добавьте хотя-бы одну заглавную букву!";
+    };
+    if (preg_match('/(?=.*[A-Z])(?=.*\d)[A-Z\d]{1,12}$/', $password2)){
+        $password2_error = "Добавьте хотя-бы одну строчную букву!";
+    };
+    if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{1,5}$/', $password2)){
+        $password2_error = "Как минимум 6 символов!";
+    };
+    if (preg_match($pattern_password, $password2)){
+        $password2_error = "";
+    };
+    if ($password1 != $password2){
+        $password2_error = "Пароли различны!";
+    };
+    return [$password1_error, $password2_error];
+};
 ?>

@@ -32,6 +32,11 @@
 
 
     
+    if ($successful){
+        session_start();
+        $_SESSION['login'] = $login;
+        $_SESSION['password'] = $password;
+    }
     $errors = array(
         "login_err" => $login_error,
         "password_err" => $password_error,
@@ -39,3 +44,5 @@
     );
     echo json_encode($errors);
 ?>
+
+
