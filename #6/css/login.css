@@ -12,6 +12,8 @@ input{
     padding: 0;
     min-width: 40%;
     max-width: 40%;
+    min-height: 20px;
+    max-height: 20px;
 }
 
 .login{
@@ -30,6 +32,8 @@ input{
     text-align: center;
     gap: 0rem;
     padding: 0rem;
+    min-height: 20px;
+    max-height: 20px;
 }
 
 .message{

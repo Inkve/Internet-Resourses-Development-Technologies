@@ -17,6 +17,7 @@ body{
 .link{
     color: #93a243;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 #header{
