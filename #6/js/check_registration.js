@@ -6,7 +6,7 @@ $('document').ready(function(){
         window.location.replace('../index.html');
     });
     $("#reg_2_log").click(function(){
-        window.location.replace('login.html');
+        window.location.replace('login.php');
     });
     document.getElementById("name").addEventListener("input", function(){
         check_name();
@@ -36,7 +36,7 @@ function check_registration(){
     let password1 = document.getElementById("password1").value;
     let password2 = document.getElementById("password2").value;
     let xnr = new XMLHttpRequest();
-    xnr.open("POST", "../php/check_registration.php");
+    xnr.open("POST", "check_registration.php");
     xnr.onload = function(){
         errors = JSON.parse(xnr.responseText);
         replace(errors, 'name_err', 'reg_err_name', 'name');

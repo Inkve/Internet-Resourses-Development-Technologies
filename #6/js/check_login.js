@@ -6,7 +6,7 @@ $('document').ready(function(){
         window.location.replace('../index.html');
     });
     $("#log_2_reg").click(function(){
-        window.location.replace('registration.html');
+        window.location.replace('registration.php');
     });
     document.getElementById("login").addEventListener("input", function(){
         check_extra("login");
@@ -20,7 +20,7 @@ function check_login(){
     let login = document.getElementById("login").value;
     let password = document.getElementById("password").value;
     let xnr = new XMLHttpRequest();
-    xnr.open("POST", "../php/check_login.php");
+    xnr.open("POST", "check_login.php");
     xnr.onload = function(){
         console.log('xnr.responseText: ', xnr.responseText);
         errors = JSON.parse(xnr.responseText);
@@ -28,7 +28,7 @@ function check_login(){
         replace(errors, 'password_err', 'log_err_password', 'password');
         if (errors['successful']){
             document.getElementById("message").innerHTML = " <br> Авторизация прошла успешно! Если бы тут был личный кабинет, ты бы в него попал";
-            setTimeout("window.location.assign('../php/test.php')", 100);
+            setTimeout("window.location.assign('test.php')", 100);
         };
     };
     let login_data = {
