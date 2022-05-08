@@ -5,9 +5,7 @@
     $login = $data->login;
     $password = $data->password;
     $successful = false;
-
     $file_data = json_decode(file_get_contents("../data/users.json"));
-
     foreach ($file_data as $element){
         if ($element->login == $login){
             if ($element->password == $password){
@@ -22,16 +20,6 @@
             };
         };
     };
-    
-
-
-
-
-
-
-
-
-    
     if ($successful){
         session_start();
         $_SESSION['login'] = $login;
