@@ -24,7 +24,7 @@
                 <span> Ваш возраст: </span> <span id="reg_err_age" class="error"> </span> 
                 <input type="text" id="age" placeholder="Возраст"> 
                 <span> Ваша почта: </span> <span id="reg_err_mail"  class="error"> </span> 
-                <input type="mail" id="mail" placeholder="Почта">  
+                <input type="email" id="mail" placeholder="Почта">  
                 <span> Ваш будущий логин: </span> <span id="reg_err_login" class="error"> </span> 
                 <input type="text" id="login" placeholder="Логин"> 
                 <span> Ваш будущий пароль: </span> <span id="reg_err_password1" class="error"> </span> 
