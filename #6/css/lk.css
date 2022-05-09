@@ -25,6 +25,10 @@ button{
     border-radius: 8px;
 }
 
+.smaller{
+    font-size: 17px;
+}
+
 .lk{
     display: flex;
     flex-direction: column;
@@ -52,6 +56,12 @@ button{
     max-height: 20px;
 }
 
+.message{
+    color: green;
+    text-align: center;
+    margin-top: 0;
+}
+
 #right_login{
     float: right;
     margin-right: 5%;
@@ -61,6 +71,3 @@ button{
     float: right;
     margin-right: 5%;
 }
-
-
-

@@ -3,6 +3,11 @@ body{
     color: #e15f69;
 }
 
+h2{
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
 .standart_div{
     display: flex;
     flex-direction: column;
@@ -26,4 +31,3 @@ body{
     border-radius: 0;
     cursor: pointer;
 }
-

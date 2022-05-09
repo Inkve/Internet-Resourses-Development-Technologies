@@ -2,11 +2,14 @@ $('document').ready(function(){
     $("#header").click(function(){
         window.location.replace('../index.html');
     });
-    $("#send_app").click(function(){
-        check_app();
-    });
     $("#right_exit").click(function(){
         window.location.replace('../php/logout.php');
+    });
+    $("#history").click(function(){
+        window.location.replace('../php/history.php');
+    });
+    $("#send_app").click(function(){
+        check_app();
     });
     document.getElementById("count").addEventListener("input", function(){
         check_number("count");
@@ -38,7 +41,7 @@ function check_app(){
         replace(errors, 'adress_err', 'app_err_adress', 'adress');
         replace(errors, 'comment_err', 'app_err_comment', 'comment');
         if (errors['successful']){
-            document.getElementById("message").innerHTML = " <br> Завяка принята!";
+            document.getElementById("message").innerHTML = "Ваша заявка принята!";
         };
     };
     let app_data = {

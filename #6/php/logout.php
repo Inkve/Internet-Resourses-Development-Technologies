@@ -1,5 +1,13 @@
 <?php
     session_start();
+    $login = $_SESSION['login'];
+    $password = $_SESSION['password'];
+    if ($login == null and $password == null){
+        header('Location: login.php');
+    };
+?>
+<?php
+    session_start();
     session_reset();
     session_destroy();
 ?>
@@ -8,9 +16,9 @@
         <meta charset="UTF-8">
         <title> ЛБ №6 </title>
         <link type="text/css" rel="stylesheet" href="../css/styles.css"/>
-        <!-- <link type="text/css" rel="stylesheet" href="css/start_page.css"/> -->
+        <link type="text/css" rel="stylesheet" href="../css/logout.css"/>
         <script type="text/javascript" src="../js/jquery-3.6.0.js"> </script>
-        <!-- <script type="text/javascript" src="js/start_page.js"> </script> -->
+        <script type="text/javascript" src="../js/logout.js"> </script>
     </head>
     <body>
         <header>

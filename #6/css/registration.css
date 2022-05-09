@@ -39,4 +39,5 @@ input{
 .message{
     color: green;
     text-align: center;
+    margin-top: 0;
 }

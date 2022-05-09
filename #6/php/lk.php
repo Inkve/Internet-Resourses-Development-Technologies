@@ -37,10 +37,12 @@
             <h2> 
                 Форма заказа книги в онлайн магазине 
             </h2>
-            <div>
+            <div class="smaller">
                 <span> Приветствуем Вас, <?php echo $name ?>, в личном кабинете! </span> 
                 <br>
                 <span> Здесь Вы можете сделать заявку на доставку книги </span>
+                <br>
+                <span> Свои прошлые заявки, можно посмотреть <span class="link" id="history"> здесь </span> </span>
             </div>
             <form class="lk">
                 <span> Автор книги: </span> <span id="app_err_author" class="error"> </span>

@@ -27,7 +27,7 @@ function check_login(){
         replace(errors, 'login_err', 'log_err_login', 'login');
         replace(errors, 'password_err', 'log_err_password', 'password');
         if (errors['successful']){
-            document.getElementById("message").innerHTML = " <br> Авторизация прошла успешно!";
+            document.getElementById("message").innerHTML = "Авторизация прошла успешно!";
             setTimeout("window.location.replace('lk.php')", 1000);
         };
     };

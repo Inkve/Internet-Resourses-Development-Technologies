@@ -32,5 +32,3 @@
     );
     echo json_encode($errors);
 ?>
-
-
