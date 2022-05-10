@@ -1,0 +1,23 @@
+table{
+    margin: auto;
+    min-width: 80vw;
+    max-width: 80vw;
+    text-align: center;
+}
+
+.inputs{
+    box-shadow: none;
+    min-width: 1%;
+    min-height: 20px;
+    max-height: 20px;
+}
+
+#right_login{
+    float: right;
+    margin-right: 5%;
+}
+
+#right_exit{
+    float: right;
+    margin-right: 5%;
+}

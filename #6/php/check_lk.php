@@ -5,6 +5,12 @@
     session_start();
     $login = $_SESSION['login'];
     $password = $_SESSION['password'];
+    $temp_user_data = [];
+    foreach ($file_data as $element){
+        if (property_exists($element, $login)){
+            array_push($temp_user_data, $element->$login);
+        };    
+    };
     $author_err = check_author($data);
     if ($author_err != null){
         $successful = false;
@@ -33,8 +39,18 @@
     if ($comment_err != null){
         $successful = false;
     };
+    foreach ($temp_user_data as $element){
+        if ($element->author == $data->author and $element->naming == $data->naming
+        and $element->count == $data->count and $element->tel == $data->tel and
+        $element->index == $data->index and $element->adress == $data->adress
+        and $element->way1 == $data->way1 and $element->way2 == $data->way2){
+            $comment_err = "Такая заявка уже существует! Еe номер $element->number";
+            $successful = false;
+        };
+    };
     if ($successful){
         $current_data = array(
+            "number" => count($temp_user_data) + 1,
             "author" => $data->author,
             "naming" => $data->naming,
             "count" => $data->count,

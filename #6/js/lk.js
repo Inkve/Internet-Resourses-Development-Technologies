@@ -6,7 +6,7 @@ $('document').ready(function(){
         window.location.replace('../php/logout.php');
     });
     $("#history").click(function(){
-        window.location.replace('../php/history.php');
+        window.location.assign('../php/history.php');
     });
     $("#send_app").click(function(){
         check_app();
@@ -41,7 +41,11 @@ function check_app(){
         replace(errors, 'adress_err', 'app_err_adress', 'adress');
         replace(errors, 'comment_err', 'app_err_comment', 'comment');
         if (errors['successful']){
-            document.getElementById("message").innerHTML = "Ваша заявка принята!";
+            $("#message").show();
+                document.getElementById("message").innerHTML = "Ваша заявка принята!";
+            setTimeout(() => {
+                $("#message").hide();
+            }, 2000);
         };
     };
     let app_data = {

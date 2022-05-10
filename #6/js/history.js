@@ -1,0 +1,11 @@
+$('document').ready(function(){
+    $("#header").click(function(){
+        window.location.replace('../index.html');
+    });
+    $("#his_2_lk").click(function(){
+        window.location.replace('../php/lk.php');
+    });
+    $("#right_exit").click(function(){
+        window.location.replace('../php/logout.php');
+    });
+});

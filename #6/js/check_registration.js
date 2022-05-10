@@ -46,7 +46,7 @@ function check_registration(){
         replace(errors, 'password1_err', 'reg_err_password1', 'password1');
         replace(errors, 'password2_err', 'reg_err_password2', 'password2');
         if (errors['successful']){
-            document.getElementById("message").innerHTML = " <br> Регистрация прошла успешно! <br> Теперь зайди в свой аккаунт!";
+            document.getElementById("message").innerHTML = "Регистрация прошла успешно! <br> Теперь зайди в свой аккаунт!";
             setTimeout("window.location.replace('../index.html')", 1000);
         };
     };
