@@ -14,9 +14,6 @@ $('document').ready(function(){
     document.getElementById("age").addEventListener("input", function(){
         check_age();
     });
-    document.getElementById("mail").addEventListener("input", function(){
-        check_no_russian("mail");
-    });
     document.getElementById("login").addEventListener("input", function(){
         check_extra("login");
     });
