@@ -1,7 +1,13 @@
 <?php
     session_start();
-    $login = $_SESSION['login'];
-    $password = $_SESSION['password'];
+    $login = "";
+    $password = "";
+    if (array_key_exists('login',  $_SESSION)){
+        $login = $_SESSION['login'];
+    };
+    if (array_key_exists('password',  $_SESSION)){
+        $password = $_SESSION['password'];
+    };
     if ($login == null and $password == null){
         echo false;
     } else {
