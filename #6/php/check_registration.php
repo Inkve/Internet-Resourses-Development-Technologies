@@ -161,26 +161,29 @@ function check_password($data){
     if ($password1 == null){
         $password1_error = "Поле Пароль не может быть пустым!";
     };
-    if (preg_match('/^([a-z]){1,12}$/', $password1)){
+    if (preg_match('/^([a-z]){1,100}$/', $password1)){
         $password1_error = "Добавьте хотя-бы одну заглавную букву и цифру!";
     };
-    if (preg_match('/^([A-Z]){1,12}$/', $password1)){
+    if (preg_match('/^([A-Z]){1,100}$/', $password1)){
         $password1_error = "Добавьте хотя-бы одну строчную букву и цифру!";
     };
-    if (preg_match('/^([1-9]){1,12}$/', $password1)){
+    if (preg_match('/^([\d]){1,100}$/', $password1)){
         $password1_error = "Добавьте хотя-бы одну строчную и заглавные буквы!";
     };
-    if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{1,12}$/', $password1)){
+    if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{1,100}$/', $password1)){
         $password1_error = "Добавьте хотя-бы одну цифру!";
     };
-    if (preg_match('/(?=.*[a-z])(?=.*\d)[a-z\d]{1,12}$/', $password1)){
+    if (preg_match('/(?=.*[a-z])(?=.*\d)[a-z\d]{1,100}$/', $password1)){
         $password1_error = "Добавьте хотя-бы одну заглавную букву!";
     };
-    if (preg_match('/(?=.*[A-Z])(?=.*\d)[A-Z\d]{1,12}$/', $password1)){
+    if (preg_match('/(?=.*[A-Z])(?=.*\d)[A-Z\d]{1,100}$/', $password1)){
         $password1_error = "Добавьте хотя-бы одну строчную букву!";
     };
     if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{1,5}$/', $password1)){
         $password1_error = "Как минимум 6 символов!";
+    };
+    if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{13,100}$/', $password1)){
+        $password1_error = "Слишком много символов!";
     };
     if (preg_match($pattern_password, $password1)){
         $password1_error = "";
@@ -188,26 +191,29 @@ function check_password($data){
     if ($password2 == null){
         $password2_error = "Поле Пароль не может быть пустым!";
     };
-    if (preg_match('/^([a-z]){1,12}$/', $password2)){
+    if (preg_match('/^([a-z]){1,100}$/', $password2)){
         $password2_error = "Добавьте хотя-бы одну заглавную букву и цифру!";
     };
-    if (preg_match('/^([A-Z]){1,12}$/', $password2)){
+    if (preg_match('/^([A-Z]){1,100}$/', $password2)){
         $password2_error = "Добавьте хотя-бы одну строчную букву и цифру!";
     };
-    if (preg_match('/^([1-9]){1,12}$/', $password2)){
+    if (preg_match('/^([\d]){1,100}$/', $password2)){
         $password2_error = "Добавьте хотя-бы одну строчную и заглавные буквы!";
     };
-    if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{1,12}$/', $password2)){
+    if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z]{1,100}$/', $password2)){
         $password2_error = "Добавьте хотя-бы одну цифру!";
     };
-    if (preg_match('/(?=.*[a-z])(?=.*\d)[a-z\d]{1,12}$/', $password2)){
+    if (preg_match('/(?=.*[a-z])(?=.*\d)[a-z\d]{1,100}$/', $password2)){
         $password2_error = "Добавьте хотя-бы одну заглавную букву!";
     };
-    if (preg_match('/(?=.*[A-Z])(?=.*\d)[A-Z\d]{1,12}$/', $password2)){
+    if (preg_match('/(?=.*[A-Z])(?=.*\d)[A-Z\d]{1,100}$/', $password2)){
         $password2_error = "Добавьте хотя-бы одну строчную букву!";
     };
     if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{1,5}$/', $password2)){
         $password2_error = "Как минимум 6 символов!";
+    };
+    if (preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{13,100}$/', $password2)){
+        $password2_error = "Слишком много символов!";
     };
     if (preg_match($pattern_password, $password2)){
         $password2_error = "";
