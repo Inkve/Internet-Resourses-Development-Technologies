@@ -52,8 +52,11 @@
 
 <?php
 function check_name($data){
-    setlocale(LC_ALL, "ru_RU.UTF-8");
-    $name = $data->name;
+    setlocale(LC_ALL, "ru_RU.UTF-8");$login = "";
+    $name = "";
+    if (property_exists($data, 'name')){
+        $name = $data->name;
+    };
     if ($name == null){
         return "Поле Имя не может быть пустым!";
     };
@@ -72,7 +75,10 @@ function check_name($data){
 
 <?php
 function check_age($data){
-    $age = $data->age;
+    $age = "";
+    if (property_exists($data, 'age')){
+        $age = $data->age;
+    };
     $pattern_age = '/^(?:100|[1-9]\d|[1-9])$/';
     if ($age == null){
         return "Поле Возраст не может быть пустым!";
@@ -89,7 +95,10 @@ function check_age($data){
 
 <?php
 function check_mail($data){
-    $mail = $data->mail;
+    $mail = "";
+    if (property_exists($data, 'mail')){
+        $mail = $data->mail;
+    };
     if ($mail == null){
         return "Поле Почта не может быть пустым!";
     };
@@ -102,7 +111,10 @@ function check_mail($data){
 
 <?php
 function check_login($data, $file_data){
-    $login = $data->login;
+    $login = "";
+    if (property_exists($data, 'login')){
+        $login = $data->login;
+    };
     if ($login == null){
         return "Поле Логин не может быть пустым!";
     };
@@ -123,8 +135,14 @@ function check_login($data, $file_data){
 
 <?php
 function check_password($data){
-    $password1 = $data->password1;
-    $password2 = $data->password2;
+    $password1 = "";
+    if (property_exists($data, 'password1')){
+        $password1 = $data->password1;
+    };
+    $password2 = "";
+    if (property_exists($data, 'password2')){
+        $password2 = $data->password2;
+    };
     $password2_error = "";
     $pattern_password = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/';
     if ($password1 == null){
