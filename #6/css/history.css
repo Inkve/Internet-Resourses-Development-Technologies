@@ -1,8 +1,12 @@
 table{
     margin: auto;
-    min-width: 80vw;
-    max-width: 80vw;
+    width: 100%;
     text-align: center;
+}
+
+table td{
+    width: 11%;
+    word-break: break-all;
 }
 
 .inputs{
