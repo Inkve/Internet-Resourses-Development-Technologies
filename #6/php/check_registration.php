@@ -156,6 +156,7 @@ function check_password($data){
         };
     };
     $password1_error = "";
+    $password2_error = "";
     $pattern_password = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,12}$/';
     if ($password1 == null){
         $password1_error = "Поле Пароль не может быть пустым!";
