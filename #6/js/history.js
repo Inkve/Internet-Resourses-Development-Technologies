@@ -18,7 +18,7 @@ function get_info(){
         let data = JSON.parse(xnr.responseText);
         console.log('data: ', data["data"]);
         if (!data["successful"]){
-            window.location.replace('../html/login.html')
+            window.location.replace('login.html')
         } else {
             let login_html = document.createElement("span");
             login_html.innerHTML = data["login"];

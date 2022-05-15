@@ -10,7 +10,7 @@ function get_info(){
     xnr.open("POST", "../php/logout.php");
     xnr.onload = function(){
         if (!xnr.responseText){
-            window.location.replace('../html/login.html')
+            window.location.replace('login.html')
         } else {
             setTimeout(() => {
                 window.location.replace('../index.html');
