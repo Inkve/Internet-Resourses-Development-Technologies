@@ -1,12 +1,13 @@
 $('document').ready(function(){
+    get_info();
     $("#header").click(function(){
         window.location.replace('../index.html');
     });
     $("#right_exit").click(function(){
-        window.location.replace('../php/logout.php');
+        window.location.replace('../html/logout.html');
     });
     $("#history").click(function(){
-        window.location.assign('../php/history.php');
+        window.location.assign('../html/history.html');
     });
     $("#send_app").click(function(){
         check_app();
@@ -30,7 +31,7 @@ function check_app(){
     let way2 = document.getElementById("way2").checked;
     let comment = document.getElementById("comment").value;
     let xnr = new XMLHttpRequest();
-    xnr.open("POST", "check_lk.php");
+    xnr.open("POST", "../php/check_lk.php");
     xnr.onload = function(){
         errors = JSON.parse(xnr.responseText);
         replace(errors, 'author_err', 'app_err_author', 'author');
@@ -87,4 +88,24 @@ function check_number(id){
     };
     result = Number(result);
     result == 0 ? input.value = "" : input.value = result;
+};
+
+function get_info(){
+    let xnr = new XMLHttpRequest();
+    xnr.open("POST", "../php/lk.php");
+    xnr.onload = function(){
+        let data = JSON.parse(xnr.responseText);
+        console.log('data: ', data["login"]);
+        if (!data["successful"]){
+            window.location.replace('../html/login.html')
+        } else {
+            let login_html = document.createElement("span");
+            login_html.innerHTML = data["login"];
+            document.getElementById("login_lk").replaceWith(login_html);
+            let name_html = document.createElement("span");
+            name_html.innerHTML = data["name"];
+            document.getElementById("name_lk").replaceWith(name_html);
+        };
+    };
+    xnr.send();
 };

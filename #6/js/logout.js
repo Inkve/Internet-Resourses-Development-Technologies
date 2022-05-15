@@ -1,8 +1,21 @@
 $('document').ready(function(){
+    get_info();
     $("#header").click(function(){
         window.location.replace('../index.html');
     });
-    setTimeout(() => {
-        window.location.replace('../index.html');
-    }, 3500);
 });
+
+function get_info(){
+    let xnr = new XMLHttpRequest();
+    xnr.open("POST", "../php/logout.php");
+    xnr.onload = function(){
+        if (!xnr.responseText){
+            window.location.replace('../html/login.html')
+        } else {
+            setTimeout(() => {
+                window.location.replace('../index.html');
+            }, 3500);
+        };
+    };
+    xnr.send();
+};

@@ -52,13 +52,19 @@
 
 <?php
 function check_name($data){
+    setlocale(LC_ALL, "ru_RU.UTF-8");
     $name = $data->name;
-    $pattern_name = '/^[а-яА-Я]{1,30}+$/iu';
     if ($name == null){
         return "Поле Имя не может быть пустым!";
     };
-    if (!preg_match($pattern_name, $name)){
+    if (!preg_match('/^[а-яА-Я]{1,30}+$/u', $name)){
         return "В поле Имя допустимы лишь буквы кириллицы";
+    };
+    if (!preg_match('/^[А-Я][а-яА-Я]{0,30}+$/u', $name)){
+        return "Имя должно начинаться с заглавной буквы!";
+    };
+    if (!preg_match('/^[А-Я][а-я]{0,30}+$/u', $name)){
+        return "Вторая и последующие буквы должны быть строчными!";
     };
     return '';
 };

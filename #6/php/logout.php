@@ -3,38 +3,11 @@
     $login = $_SESSION['login'];
     $password = $_SESSION['password'];
     if ($login == null and $password == null){
-        header('Location: login.php');
+        echo false;
+    } else {
+        session_start();
+        session_reset();
+        session_destroy();
+        echo true;
     };
 ?>
-<?php
-    session_start();
-    session_reset();
-    session_destroy();
-?>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title> ЛБ №6 </title>
-        <link type="text/css" rel="stylesheet" href="../css/styles.css"/>
-        <link type="text/css" rel="stylesheet" href="../css/logout.css"/>
-        <script type="text/javascript" src="../js/jquery-3.6.0.js"> </script>
-        <script type="text/javascript" src="../js/logout.js"> </script>
-    </head>
-    <body>
-        <header>
-            <img src="../images/book.png" id="header">
-        </header>
-        <div class="standart_div"> 
-            <h2> 
-                Форма заказа книги в онлайн магазине 
-            </h2>
-            <span>
-                Вы успешно вышли из личного кабинета
-                <br>
-                Спасибо, что были с нами!
-                <br>
-                Через несколько секунд Вы попадете на главную страницу
-            </span>
-        </div>
-    </body>
-</html>
