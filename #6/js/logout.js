@@ -9,6 +9,7 @@ function get_info(){
     let xnr = new XMLHttpRequest();
     xnr.open("POST", "../php/logout.php");
     xnr.onload = function(){
+        console.log('xnr.responseText: ', xnr.responseText);
         if (!xnr.responseText){
             window.location.replace('login.html')
         } else {

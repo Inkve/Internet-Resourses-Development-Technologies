@@ -95,7 +95,7 @@ function get_info(){
     xnr.open("POST", "../php/lk.php");
     xnr.onload = function(){
         let data = JSON.parse(xnr.responseText);
-        console.log('data: ', data["login"]);
+        console.log('data: ', data);
         if (!data["successful"]){
             window.location.replace('login.html')
         } else {
