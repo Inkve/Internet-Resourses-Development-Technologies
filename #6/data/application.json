@@ -1,1 +1,30 @@
-[]
+[
+    {
+        "admin": {
+            "number": 1,
+            "author": "\u041c\u0430\u0441\u0442\u0435\u0440",
+            "naming": "\u041f\u043e\u043d\u0442\u0438\u0439 \u041f\u0438\u043b\u0430\u0442",
+            "count": "2",
+            "tel": "8(999) 0000000",
+            "index": "332232",
+            "adress": "s2s2s2s22",
+            "way1": false,
+            "way2": true,
+            "comment": "\u0446\u0443\u0443\u043a\u0435\u043f\u0443\u043a\u0435\u0443\u0435\u0443"
+        }
+    },
+    {
+        "admin": {
+            "number": 2,
+            "author": "cdcds",
+            "naming": "efsef",
+            "count": "4",
+            "tel": "+7(999) 0000000",
+            "index": "199999",
+            "adress": "s2s2s2s22",
+            "way1": true,
+            "way2": false,
+            "comment": ""
+        }
+    }
+]
