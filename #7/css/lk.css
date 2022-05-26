@@ -1,0 +1,15 @@
+.message{
+    color: green;
+    text-align: center;
+    margin-top: 0;
+}
+
+#right_login{
+    float: right;
+    margin-right: 5%;
+}
+
+#right_exit{
+    float: right;
+    margin-right: 5%;
+}

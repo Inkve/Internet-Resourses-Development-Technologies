@@ -1,0 +1,68 @@
+#right_login{
+    float: right;
+    margin-right: 5%;
+}
+
+#right_exit{
+    float: right;
+    margin-right: 5%;
+}
+
+#div_game{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: beige;
+    width: 70vw;
+    height: 65vh;
+    font-size: x-large;
+}
+
+.element_q1{
+    background-color: darkgray;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 40vw;
+    height: 25vh;
+    margin: 1.5vw;
+}
+
+.element_q2{
+    background-color: darkgray;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 20vw;
+    height: 25vh;
+    margin: 1.5vw;
+}
+
+.elements_q{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: center;
+    justify-content: center;
+    align-content: flex-end;
+}
+
+.elements_game{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: center;
+    justify-content: center;
+    align-content: flex-end;
+}
+
+.element_game{
+    background-color: darkgray;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 12vw;
+    height: 13vh;
+    margin: 1vw;
+}

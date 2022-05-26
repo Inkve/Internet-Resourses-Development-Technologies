@@ -3,6 +3,10 @@ body{
     color: #c90338;
 }
 
+header{
+    min-height: 5vh;
+}
+
 .main{
     display: flex;
     flex-direction: column;

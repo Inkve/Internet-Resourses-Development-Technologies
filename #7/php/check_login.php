@@ -5,6 +5,9 @@
     $login = $data->login;
     $password = $data->password;
     $successful = false;
+    if ($login == null){
+        $login_error = "Поле Логин не может быть пустым!";
+    };
     $file_data = json_decode(file_get_contents("../data/users.json"));
     foreach ($file_data as $element){
         if ($element->login == $login){
