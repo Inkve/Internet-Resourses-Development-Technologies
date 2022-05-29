@@ -52,7 +52,7 @@
 
 <?php
 function check_name($data){
-    setlocale(LC_ALL, "ru_RU.UTF-8");$login = "";
+    setlocale(LC_ALL, "ru_RU.UTF-8");
     $name = "";
     if ($data != null){
         if (property_exists($data, 'name')){
@@ -130,8 +130,10 @@ function check_login($data, $file_data){
         return 'Логин должен начинаться с буквы!';
     };
     foreach ($file_data as $element){
-        if ($element->login == $login){
-            return "Пользователь с таким логином уже существует!";
+        if (property_exists($element, 'login')){
+            if ($element->login == $login){
+                return "Пользователь с таким логином уже существует!";
+            };
         };
     };
     if (preg_match('/^[a-zA-z]{1}[a-zA-Z1-9]{0,2}$/', $login)){
