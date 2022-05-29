@@ -5,11 +5,12 @@
         <link type="text/css" rel="stylesheet" href="../css/styles.css"/>
         <link type="text/css" rel="stylesheet" href="../css/game.css"/>
         <script type="text/javascript" src="../js/jquery-3.6.0.js"> </script>
-        <!-- <script type="text/javascript" src="../js/lk.js"> </script> -->
+        <script type="text/javascript" src="../js/game.js"> </script>
     </head>
     <body>
         <header>
             <span class="link" id="2_main">Главная</span>
+            <span class="link" id="2_lk">Личный кабинет</span>
             <span id="right_login"> 
                 Вы зашли под логином: <span id="login_lk"> </span> <br>
                 <span class="link" id="right_exit"> Выйти </span>
@@ -22,11 +23,16 @@
                 Простейшая игра
             </h2> 
             <div>
-                типо место для уровня, таймера и тд
+                <span>
+                    Это уровень №<label id="level">1</label>.
+                </span>
+                <span>
+                    До конца раунда осталось <label id="timer"> 10 </label> секунд 
+                </span>
             </div>
             <div id="div_game">
                 <div class="elements_q">
-                    <div class="element_q1"> 2+2 = </div>
+                    <div class="element_q1" id="game_question"> 2+2 = </div>
                     <div class="element_q2"> ? </div>
                 </div>
                 <div class="elements_game">
@@ -42,6 +48,7 @@
                     <div class="element_game" id="element_10"> 10 </div>
                 </div>
             </div>
+            <span id="message" class="message"> </span>
         </div>
     </body>
 </html>
