@@ -58,7 +58,7 @@ function get_info(){
                     table.setAttribute("border", "1")
                     let  thead = document.createElement("thead");
                     let thead_tr = document.createElement("tr");
-                    let names = ["Логин", "Количество попыток", "Максимальный уровень"];
+                    let names = ["Логин", "Количество сыгранных игр", "Максимальный уровень"];
                     for (let i = 0; i < 3; i++){
                         let td = document.createElement("td");
                         td.innerHTML = names[i];
