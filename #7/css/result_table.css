@@ -1,0 +1,33 @@
+#right_login{
+    float: right;
+    margin-right: 5%;
+}
+
+#right_exit{
+    float: right;
+    margin-right: 5%;
+}
+
+table{
+    background-color: rgba(159, 188, 128, 0.597);
+    margin: auto;
+    width: 70%;
+    text-align: center;
+}
+
+table td{
+    width: 15%;
+    word-break: break-all;
+}
+
+table tr:hover{
+    background-color: rgba(159, 188, 128, 0.795);
+}
+
+.light{
+    background-color: rgba(213, 233, 84, 0.641);
+}
+
+.light:hover{
+    background-color: rgba(213, 233, 84, 0.382);
+}

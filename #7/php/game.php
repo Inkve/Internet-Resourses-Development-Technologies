@@ -12,57 +12,97 @@ $game_continue = $file_data->game_continue;
 $wait = $file_data->wait;
 $message = "";
 
-if ($from_begin and !$wait){
-    $level_number = 1;
-    generation();
-    $from_begin = false;
-    $wait = true;
-} else if ($game_continue and !$wait) {
-    $level_number++;
-    generation();
-    $game_continue = false;
-    $wait = true;
-} else {
-    $user_answer = check($data->answered);
-    if (($user_answer == $right_answer-1) and $current_time <= $time_on_question){
-        $wait = false;
-        $game_continue = true;
-        $message = "Правильно!";
-        $current_time = 0;
-    } else if (($user_answer != $right_answer) and ($user_answer != -1)){
-        $message = "Неправильно!";
-        $wait = false;
-        $from_begin = true;
-        $current_time = 0;
-    } else if ($current_time > $time_on_question){
-        $message = "Время вышло!";
-        $wait = false;
-        $from_begin = true;
-        $current_time = 0;
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+    $play_number = 0;
+    $max_level = 0;
+    session_start();
+    $login = "";
+    $password = "";
+    if (array_key_exists('login',  $_SESSION)){
+        $login = $_SESSION['login'];
     };
-    echo json_encode(
-        [   
-            "level" => $level_number,
-            "time" => $time_on_question - $current_time,
-            "question" => $question,
-            "answers" => $answers,
-            "message" => $message
-        ]
-    );
-};
+    if (array_key_exists('password',  $_SESSION)){
+        $password = $_SESSION['password'];
+    };
+    $other_users = [];
+    $file_datas = json_decode(file_get_contents("../data/statictics.json"));
+    foreach ($file_datas as $element){
+        if (property_exists($element, $login)){
+            $max_level = $element->$login->max_level;
+            $play_number = $element->$login->play_number;
+        } else if (!property_exists($element, $login)){
+            array_push($other_users, $element);
+        };
+    };
 
-$data_2_file = [
-    "level" => $level_number,
-    "current_time" => $current_time,
-    "time_on_question" => $time_on_question,
-    "question" => $question,
-    "right_answer" => $right_answer,
-    "answers" => $answers,
-    "from_begin" => $from_begin,
-    "game_continue" => $game_continue,
-    "wait" => $wait
-];
-file_put_contents("../data/temp_data.json", json_encode(array($data_2_file)));
+    if ($from_begin and !$wait){
+        $level_number = 1;
+        $time_on_question = (date('i') * 60) + date('s');
+        $current_time = $time_on_question;
+        if ($level_number > $max_level){
+            $max_level = $level_number;
+        };
+        generation();
+        $from_begin = false;
+        $wait = true;
+        $play_number++;
+    } else if ($game_continue and !$wait) {
+        $level_number++;
+        $time_on_question = (date('i') * 60) + date('s');
+        $current_time = $time_on_question;
+        if ($level_number > $max_level){
+            $max_level = $level_number;
+        };
+        generation();
+        $game_continue = false;
+        $wait = true;
+        $play_number++;
+    } else {
+        $user_answer = check($data->answered);
+        if (($user_answer == $right_answer-1) and $current_time - 10 <= $time_on_question){
+            $wait = false;
+            $game_continue = true;
+            $message = "Правильно!";
+        } else if (($user_answer != $right_answer) and ($user_answer != -1)){
+            $message = "Неправильно!";
+            $wait = false;
+            $from_begin = true;
+        } else if ($current_time - 10 > $time_on_question){
+            $message = "Время вышло!";
+            $wait = false;
+            $from_begin = true;
+        };
+        echo json_encode(
+            [   
+                "level" => $level_number,
+                "time" =>  11 - ($current_time - $time_on_question),
+                "question" => $question,
+                "answers" => $answers,
+                "message" => $message
+            ]
+        );
+    };
+
+    $data_2_file = [
+        "level" => $level_number,
+        "current_time" => $current_time,
+        "time_on_question" => $time_on_question,
+        "question" => $question,
+        "right_answer" => $right_answer,
+        "answers" => $answers,
+        "from_begin" => $from_begin,
+        "game_continue" => $game_continue,
+        "wait" => $wait
+    ];
+    file_put_contents("../data/temp_data.json", json_encode(array($data_2_file)));
+
+    $statistics_data = [
+        $login =>["play_number" => $play_number,
+                    "max_level" => $max_level]
+    ];
+    array_push($other_users, $statistics_data);
+    file_put_contents("../data/statictics.json", json_encode(($other_users)));
+};
 
 function check($array){
     $i = 0;

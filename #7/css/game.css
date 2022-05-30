@@ -12,14 +12,15 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: beige;
+    background-color: rgba(159, 188, 128, 0.597);
     width: 70vw;
     height: 65vh;
     font-size: x-large;
+    border-radius: 7%;
 }
 
 .element_q1{
-    background-color: darkgray;
+    background-color: rgba(104, 155, 179, 0.438);
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -27,10 +28,11 @@
     width: 40vw;
     height: 25vh;
     margin: 1.5vw;
+    border-radius: 9%;
 }
 
 .element_q2{
-    background-color: darkgray;
+    background-color: rgba(104, 155, 179, 0.438);
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -38,6 +40,7 @@
     width: 20vw;
     height: 25vh;
     margin: 1.5vw;
+    border-radius: 9%;
 }
 
 .elements_q{
@@ -57,7 +60,7 @@
 }
 
 .element_game{
-    background-color: darkgray;
+    background-color: rgba(104, 155, 179, 0.438);
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -65,4 +68,13 @@
     width: 12vw;
     height: 13vh;
     margin: 1vw;
+    border-radius: 11%;
+}
+
+.element_game:hover{
+    background-color: rgba(102, 153, 176, 0.793);
+}
+
+.element_game:active{
+    background-color: rgba(240, 155, 17, 0.995);
 }

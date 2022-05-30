@@ -23,3 +23,7 @@ header{
     text-decoration: underline;
     cursor: pointer;
 }
+
+.link:hover{
+    color: #a37333;
+}

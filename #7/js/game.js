@@ -4,17 +4,19 @@ $('document').ready(function(){
     $("#2_main").click(function(){
         window.location.replace('../index.html');
     });
+    $("#starts").click(function(){
+        start_game();
+    });
     $("#2_lk").click(function(){
         window.location.replace('../html/lk.html');
     });
     $("#right_exit").click(function(){
         window.location.replace('../html/logout.html');
     });
-    setInterval(() => {
-        get_info(0);
-    }, 1000);
-
 });
+
+let game;
+let t = false;
 
 function update_links(){
     for (let i = 1; i <= 10; i++){
@@ -26,7 +28,18 @@ function update_links(){
 
 let answered = [];
 
+function start_game(){
+    if (!t){
+        game = setInterval(() => {
+            get_info(0);
+        }, 1000);
+        document.getElementById("starts").innerHTML = "Игра уже начата!"
+    };
+    t = true;
+};
+
 function get_info(number){
+    start_game()
     answered = [];
     if (!number){
         for (let i = 1; i <= 10; i++){
@@ -55,6 +68,11 @@ function get_info(number){
                     document.getElementById(`element_${i}`).innerHTML = resived_data["answers"][i-1];
                 };
                 document.getElementById("message").innerHTML = resived_data["message"];
+                if  (resived_data["message"] == "Неправильно!" ||  resived_data["message"] == "Время вышло!"){
+                    clearInterval(game);
+                    t = false;
+                    document.getElementById("starts").innerHTML = "Начать заново!"
+                };
             },
             error: function(){
                 $("#message").show();

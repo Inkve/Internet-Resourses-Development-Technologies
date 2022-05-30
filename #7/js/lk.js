@@ -7,17 +7,15 @@ $('document').ready(function(){
         window.location.replace('game.html');
     });
     $("#2_results").click(function(){
-        window.location.replace('../index.html');
+        window.location.replace('../html/results_table.html');
     });
     $("#right_exit").click(function(){
         window.location.replace('../html/logout.html');
     });
+    $("#lk_2_rules").click(function(){
+        window.location.replace('../html/rules.html');
+    });
 });
-
-
-
-
-
 
 function get_info(){
     $.ajax(

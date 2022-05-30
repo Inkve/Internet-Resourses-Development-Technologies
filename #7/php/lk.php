@@ -2,7 +2,7 @@
     $file_data = json_decode(file_get_contents("../data/temp_data.json"));
     $level_number = null;
     $current_time = null;
-    $time_on_question = 10;
+    $time_on_question = null;
     $question = null;
     $right_answer = null;
     $answers = null;
