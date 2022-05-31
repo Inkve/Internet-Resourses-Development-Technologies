@@ -1,5 +1,4 @@
 <?php
-    $file_data = json_decode(file_get_contents("../data/temp_data.json"));
     session_start();
     $login = "";
     $password = "";
