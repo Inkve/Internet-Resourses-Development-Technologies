@@ -1,18 +1,19 @@
 button{
-    background-color: #93a243;
+    background-color: rgb(228, 221, 221);
     border-radius: 8px;
 }
 
 button:hover{
-    background-color: #94a24355;
+    background-color: #979892d0;
+    color: white;
 }
 
 input{
     border-radius: 5px;
-    box-shadow: 2px 2px 2px #a5c4b5;
+    border: 1px solid rgb(152, 149, 149);
     text-align: center;
-    color: #e15f69;
-    background-color: rgba(176, 232, 177, 0.642);
+    color: white;
+    background-color: #3c4042;
     padding: 0;
     min-width: 40%;
     max-width: 40%;
@@ -20,8 +21,12 @@ input{
     max-height: 20px;
 }
 
+input::placeholder{
+    color: white;
+}
+
 input:hover{
-    background-color: rgba(51, 175, 57, 0.64);
+    background-color: rgb(152, 149, 149);
 }
 
 .login{
@@ -36,7 +41,7 @@ input:hover{
 
 .error{
     display: none;
-    color: red;
+    color: white;
     text-align: center;
     gap: 0rem;
     padding: 0rem;
@@ -45,7 +50,7 @@ input:hover{
 }
 
 .message{
-    color: green;
+    color: white;
     text-align: center;
     margin-top: 0;
 }

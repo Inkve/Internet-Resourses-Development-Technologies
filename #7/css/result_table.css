@@ -5,14 +5,25 @@
 
 #right_exit{
     float: right;
-    margin-right: 5%;
+    margin-right: 4%;
+    background-color: #03dac6;
+    color: black;
+    width: 5vw;
+    height: 3vh;
+    border-radius: 10px;
+}
+
+#right_exit:hover{
+    background-color: #aeeeee;
 }
 
 table{
-    background-color: rgba(159, 188, 128, 0.597);
+    background-color: #3c4042;
+    border: 3px solid rgb(152, 149, 149);
     margin: auto;
     width: 70%;
     text-align: center;
+    color: white;
 }
 
 table td{
@@ -21,13 +32,16 @@ table td{
 }
 
 table tr:hover{
-    background-color: rgba(159, 188, 128, 0.795);
+    background-color: rgb(152, 149, 149);
+    color: black;
 }
 
 .light{
-    background-color: rgba(213, 233, 84, 0.641);
+    background-color: white;
+    color: black;
 }
 
 .light:hover{
-    background-color: rgba(213, 233, 84, 0.382);
+    background-color: rgb(152, 149, 149);
+    color: white;
 }

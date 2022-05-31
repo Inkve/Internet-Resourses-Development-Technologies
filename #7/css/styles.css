@@ -1,6 +1,7 @@
 body{
-    background-color: #e0dfa7;
-    color: #c90338;
+    background-color: #000000;
+    color: #ea80fc;
+    font-family: sans-serif;
 }
 
 header{
@@ -19,11 +20,11 @@ header{
 }
 
 .link{
-    color: #93a243;
+    color: #03dac6;
     text-decoration: underline;
     cursor: pointer;
 }
 
 .link:hover{
-    color: #a37333;
+    color: #aeeeee;
 }

@@ -137,7 +137,7 @@ function generation(){
 function generate($level){
     $first = rand(1*$level*$level, 5*$level*$level);
     $second = rand(1*$level*$level, 5*$level*$level);
-    $question = $first . " + " . $second;
+    $question = $first . " + " . $second . " =";
     $right_number = rand(1, 10);
     $answers = [];
     for ($i = 1; $i <= 10; $i++) {
