@@ -4,6 +4,10 @@
     margin-top: 0;
 }
 
+img{
+    max-width: 45%;
+}
+
 #right_login{
     float: right;
     margin-right: 5%;
