@@ -1,5 +1,4 @@
 <?php
-    $file_data = json_decode(file_get_contents("../data/temp_data.json"));
     $level_number = null;
     $current_time = null;
     $time_on_question = null;
