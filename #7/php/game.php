@@ -98,7 +98,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $wait = false;
             $from_begin = true;
         };
-        session_register_shutdown();
         echo json_encode(
             [   
                 "level" => $level_number,
@@ -119,6 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $_SESSION["from_begin"] = $from_begin;
     $_SESSION["game_continue"] = $game_continue;
     $_SESSION["wait"] = $wait;
+    session_register_shutdown();
     $statistics_data = [
         $login =>["play_number" => $play_number,
                     "max_level" => $max_level]
