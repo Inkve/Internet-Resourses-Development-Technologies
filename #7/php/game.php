@@ -1,15 +1,15 @@
 <?php 
 $data = json_decode(file_get_contents("php://input"));
-$file_data = json_decode(file_get_contents("../data/temp_data.json"))[0];
-$level_number = $file_data->level;
-$current_time = $file_data->current_time + 1;
-$time_on_question = $file_data->time_on_question;
-$question = $file_data->question;
-$right_answer = $file_data->right_answer;
-$answers = $file_data->answers;
-$from_begin = $file_data->from_begin;
-$game_continue = $file_data->game_continue;
-$wait = $file_data->wait;
+
+$level_number;
+$current_time = (date('i') * 60) + date('s');
+$time_on_question;
+$question;
+$right_answer;
+$answers ;
+$from_begin;
+$game_continue;
+$wait;
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -24,6 +24,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if (array_key_exists('password',  $_SESSION)){
         $password = $_SESSION['password'];
     };
+    if (array_key_exists('level',  $_SESSION)){
+        $level_number = $_SESSION["level"];
+    };
+    if (array_key_exists('time_on_question',  $_SESSION)){
+        $time_on_question = $_SESSION["time_on_question"];
+    };
+    if (array_key_exists('question',  $_SESSION)){
+        $question = $_SESSION["question"];
+    };
+    if (array_key_exists('right_answer',  $_SESSION)){
+        $right_answer = $_SESSION["right_answer"];
+    };
+    if (array_key_exists('answers',  $_SESSION)){
+        $answers = $_SESSION["answers"];
+    };
+    if (array_key_exists('from_begin',  $_SESSION)){
+        $from_begin = $_SESSION["from_begin"];
+    };
+    if (array_key_exists('game_continue',  $_SESSION)){
+        $game_continue = $_SESSION["game_continue"];
+    };
+    if (array_key_exists('wait',  $_SESSION)){
+        $wait = $_SESSION["wait"];
+    };
+    session_register_shutdown();
+    
     $other_users = [];
     $file_datas = json_decode(file_get_contents("../data/statictics.json"));
     foreach ($file_datas as $element){
@@ -72,6 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             $wait = false;
             $from_begin = true;
         };
+        session_register_shutdown();
         echo json_encode(
             [   
                 "level" => $level_number,
@@ -82,20 +109,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             ]
         );
     };
-
-    $data_2_file = [
-        "level" => $level_number,
-        "current_time" => $current_time,
-        "time_on_question" => $time_on_question,
-        "question" => $question,
-        "right_answer" => $right_answer,
-        "answers" => $answers,
-        "from_begin" => $from_begin,
-        "game_continue" => $game_continue,
-        "wait" => $wait
-    ];
-    file_put_contents("../data/temp_data.json", json_encode(array($data_2_file)));
-
+    session_start();
+    $_SESSION["level"] = $level_number;
+    $_SESSION["current_time"] = $current_time;
+    $_SESSION["time_on_question"] = $time_on_question;
+    $_SESSION["question"] = $question;
+    $_SESSION["right_answer"] = $right_answer;
+    $_SESSION["answers"] = $answers;
+    $_SESSION["from_begin"] = $from_begin;
+    $_SESSION["game_continue"] = $game_continue;
+    $_SESSION["wait"] = $wait;
     $statistics_data = [
         $login =>["play_number" => $play_number,
                     "max_level" => $max_level]
@@ -118,7 +141,7 @@ function check($array){
 
 function generation(){
     global $level_number, $current_time, $time_on_question, $message,
-    $question, $right_answer, $answers, $from_begin, $game_continue, $wait;
+    $question, $right_answer, $answers;
     $temp = generate($level_number);
     $question = $temp["question"];
     $right_answer = $temp["right_number"];
