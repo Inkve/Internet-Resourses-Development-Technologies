@@ -48,7 +48,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if (array_key_exists('wait',  $_SESSION)){
         $wait = $_SESSION["wait"];
     };
-    session_register_shutdown();
     
     $other_users = [];
     $file_datas = json_decode(file_get_contents("../data/statictics.json"));
@@ -108,7 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             ]
         );
     };
-    session_start();
     $_SESSION["level"] = $level_number;
     $_SESSION["current_time"] = $current_time;
     $_SESSION["time_on_question"] = $time_on_question;
@@ -118,7 +116,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $_SESSION["from_begin"] = $from_begin;
     $_SESSION["game_continue"] = $game_continue;
     $_SESSION["wait"] = $wait;
-    session_register_shutdown();
     $statistics_data = [
         $login =>["play_number" => $play_number,
                     "max_level" => $max_level]
