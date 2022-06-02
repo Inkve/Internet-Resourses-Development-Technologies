@@ -11,12 +11,6 @@ $('document').ready(function(){
     document.getElementById("name").addEventListener("input", function(){
         check_name();
     });
-    document.getElementById("age").addEventListener("input", function(){
-        check_age();
-    });
-    document.getElementById("login").addEventListener("input", function(){
-        check_extra("login");
-    });
     document.getElementById("password1").addEventListener("input", function(){
         check_extra("password1");
     });
@@ -27,15 +21,11 @@ $('document').ready(function(){
 
 function check_registration(){
     let name = document.getElementById("name").value;
-    let age = document.getElementById("age").value;
-    let mail = document.getElementById("mail").value;
     let login = document.getElementById("login").value;
     let password1 = document.getElementById("password1").value;
     let password2 = document.getElementById("password2").value;
     let reg_data = {
         name: name,
-        age: age,
-        mail: mail,
         login: login,
         password1: password1,
         password2: password2
@@ -48,8 +38,6 @@ function check_registration(){
             data: JSON.stringify(reg_data),
             success: function(errors){
                 replace(errors, 'name_err', 'reg_err_name', 'name');
-                replace(errors, 'age_err', 'reg_err_age', 'age');
-                replace(errors, 'mail_err', 'reg_err_mail', 'mail');
                 replace(errors, 'login_err', 'reg_err_login', 'login');
                 replace(errors, 'password1_err', 'reg_err_password1', 'password1');
                 replace(errors, 'password2_err', 'reg_err_password2', 'password2');

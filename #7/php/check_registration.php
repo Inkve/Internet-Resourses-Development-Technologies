@@ -6,14 +6,6 @@
     if ($name_error != ""){
         $successful = false;
     };
-    $age_error = check_age($data);
-    if ($age_error != ""){
-        $successful = false;
-    };
-    $mail_error = check_mail($data);
-    if ($mail_error != ""){
-        $successful = false;
-    };
     $login_error = check_login($data, $file_data);
     if ($login_error != ""){
         $successful = false;
@@ -30,8 +22,6 @@
     if ($successful){
         $current_user = array(
             "name" => $data->name,
-            "age" => $data->age,
-            "mail" => $data->mail,
             "login" => $data->login,
             "password" => $data->password1
         );
@@ -40,8 +30,6 @@
     };
     $errors = array(
         "name_err" => $name_error,
-        "age_err" => $age_error,
-        "mail_err" => $mail_error,
         "login_err" => $login_error,
         "password1_err" => $password1_error,
         "password2_err" => $password2_error,
@@ -70,46 +58,6 @@ function check_name($data){
     };
     if (!preg_match('/^[А-Я][а-я]{0,30}+$/u', $name)){
         return "Вторая и последующие буквы должны быть строчными!";
-    };
-    return '';
-};
-?>
-
-<?php
-function check_age($data){
-    $age = "";
-    if ($data != null){
-        if (property_exists($data, 'age')){
-            $age = $data->age;
-        };
-    };
-    $pattern_age = '/^(?:100|[1-9]\d|[1-9])$/';
-    if ($age == null){
-        return "Поле Возраст не может быть пустым!";
-    };
-    if ($age > 100){
-        return "Укажите Ваш реальный возраст";
-    };
-    if (!preg_match($pattern_age, $age)){
-        return "В поле Возраст допустимы лишь цифры";
-    };
-    return '';
-};
-?>
-
-<?php
-function check_mail($data){
-    $mail = "";
-    if ($data != null){
-        if (property_exists($data, 'mail')){
-            $mail = $data->mail;
-        };
-    };
-    if ($mail == null){
-        return "Поле Почта не может быть пустым!";
-    };
-    if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-        return "Некорректная почта!";
     };
     return '';
 };
