@@ -5,13 +5,13 @@ h2{
 
 button{
     margin-top: 0;
-    width: 370px;
-    height: 5vh;
+    width: 17vw;
+    height: 3vh;
     background: linear-gradient(to left, pink, orange,  yellow, lime, aqua);
     -webkit-background-clip: border-box;
     -webkit-text-fill-color: transparent;
     border-radius: 25px;
-    font-size: 4vh;
+    font-size: 2.5vh;
 }
 
 button:hover{
@@ -39,21 +39,21 @@ input{
     border-radius: 25px;
     border: 3px solid black;
     text-align: center;
-    background: linear-gradient(to left, pink, orange,  yellow, lime, aqua);
+    background: linear-gradient(to right, pink, orange,  yellow, lime, aqua);
     -webkit-background-clip: border-box;
     -webkit-text-fill-color: transparent;
     padding: 0;
     min-width: 40%;
     max-width: 40%;
-    min-height: 3.5vh;
-    max-height: 3.5vh;
+    min-height: 4vh;
+    max-height: 4vh;
     font-size: 2vh;
     cursor: url("../images/auto.png"), auto;
 }
 
 
 input:hover{
-    background: linear-gradient(to left, pink, orange,  yellow, lime, aqua);
+    background: linear-gradient(to right, pink, orange,  yellow, lime, aqua);
     background-position: 0 0;
     animation: background-gor-long 5s infinite alternate;
     -webkit-background-clip: border-box;
@@ -72,8 +72,8 @@ input:hover{
     text-align: center;
     gap: 0rem;
     padding: 0rem;
-    min-height: 3.5vh;
-    max-height: 3.5vh;
+    min-height: 4vh;
+    max-height: 4vh;
     font-size: 3.4vh;
 }
 
