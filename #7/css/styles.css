@@ -1,11 +1,21 @@
+html{
+    cursor: url("../images/auto.png"), auto;
+}
+
 body{
-    background-color: #000000;
-    color: #ea80fc;
+    background-image: url("../images/background.jpg");
     font-family: sans-serif;
+}
+
+h2{
+    margin-bottom: 0;
 }
 
 header{
     min-height: 6vh;
+    text-align: left;
+    color: red;
+    font-size: 1.2vw;
 }
 
 .main{
@@ -17,14 +27,33 @@ header{
     margin-left: 5%;
     max-width: 90%;
     text-align: center;
-}
+    background: linear-gradient(to left, pink, orange,  yellow, lime, aqua);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+    -webkit-text-stroke: 1.8px black;
+    color: transparent;
+} 
 
 .link{
-    color: #03dac6;
     text-decoration: underline;
-    cursor: pointer;
+    cursor: url("../images/pointer.png"), pointer;
 }
 
 .link:hover{
-    color: #aeeeee;
+    width: 50%;
+    max-width: 500px;
+    height: 200px;
+    background: linear-gradient(crimson, gold, yellowgreen, teal, crimson);
+    background-position: 0 0;
+    animation: background 2s infinite alternate;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: underline;
+}
+
+@keyframes background {
+    100% {
+      background-position: 0 50px;
+    }
 }

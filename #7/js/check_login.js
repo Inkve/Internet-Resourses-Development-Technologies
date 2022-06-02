@@ -58,7 +58,7 @@ function replace(data, field_id, span_id, input_id){
         setTimeout(() => {
             $(`#${span_id}`).hide();
             $(`#${input_id}`).show();
-        }, 1500);
+        }, 2500);
     };
 };
 
