@@ -41,9 +41,6 @@ header{
 }
 
 .link:hover{
-    width: 50%;
-    max-width: 500px;
-    height: 200px;
     background: linear-gradient(crimson, gold, yellowgreen, teal, crimson);
     background-position: 0 0;
     animation: background 2s infinite alternate;
