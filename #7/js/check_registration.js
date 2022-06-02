@@ -82,20 +82,6 @@ function check_name(){
     result == "" ? input.value = "" : input.value = result;
 };
 
-function check_age(){
-    let input = document.getElementById("age");
-    let testing = new RegExp("^([0-9]*)$");
-    let number = input.value.toString();
-    let result = "";
-    for (element of number){
-        if ((testing.test(element)) && (result.length < 3)){
-            result += element;
-        };
-    };
-    result = Number(result);
-    result == 0 ? input.value = "" : input.value = result;
-};
-
 function check_extra(id){
     let input = document.getElementById(id);
     let testing = new RegExp("^([a-z,A-Z,0-9]){1,30}$");
