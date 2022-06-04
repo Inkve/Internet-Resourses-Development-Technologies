@@ -1,6 +1,6 @@
 $('document').ready(function(){
     get_info();
-    $("#2_main").click(function(){
+    $("#to_main").click(function(){
         window.location.replace('../index.html');
     });
     $("#2_game").click(function(){
@@ -13,7 +13,7 @@ $('document').ready(function(){
         window.location.replace('../html/logout.html');
     });
     $("#lk_2_rules").click(function(){
-        window.location.replace('../html/rules.html');
+        window.location.assign('../html/rules.html');
     });
 });
 

@@ -2,7 +2,7 @@ $('document').ready(function(){
     $("#reg_button").click(function(){
         check_registration();
     });
-    $("#2_main").click(function(){
+    $("#to_main").click(function(){
         window.location.replace('../index.html');
     });
     $("#reg_2_log").click(function(){
@@ -66,7 +66,7 @@ function replace(data, field_id, span_id, input_id){
         setTimeout(() => {
             $(`#${span_id}`).hide();
             $(`#${input_id}`).show();
-        }, 1500);
+        }, 2500);
     };
 };
 

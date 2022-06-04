@@ -1,5 +1,5 @@
 $('document').ready(function(){
-    $("#2_main").click(function(){
+    $("#to_main").click(function(){
         window.location.replace('index.html');
     });
     $("#start_2_reg").click(function(){
@@ -9,6 +9,6 @@ $('document').ready(function(){
         window.location.replace('html/login.html');
     });
     $("#start_2_rules").click(function(){
-        window.location.replace('html/rules.html');
+        window.location.assign('html/rules.html');
     });
 });

@@ -3,7 +3,7 @@ $('document').ready(function(){
     $("#login_button").click(function(){
         check_login();
     });
-    $("#2_main").click(function(){
+    $("#to_main").click(function(){
         window.location.replace('../index.html');
     });
     $("#log_2_reg").click(function(){

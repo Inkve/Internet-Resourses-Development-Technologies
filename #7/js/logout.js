@@ -1,6 +1,6 @@
 $('document').ready(function(){
     get_info();
-    $("#header").click(function(){
+    $("#to_main").click(function(){
         window.location.replace('../index.html');
     });
 });

@@ -1,7 +1,7 @@
 $('document').ready(function(){
     get_infos();
-    update_links();
-    $("#2_main").click(function(){
+    //update_links();
+    $("#to_main").click(function(){
         window.location.replace('../index.html');
     });
     $("#starts").click(function(){

@@ -4,18 +4,27 @@ html{
 
 body{
     background-image: url("../images/background.jpg");
-    font-family: sans-serif;
+    font-family: Verdana;
 }
 
 h2{
     margin-bottom: 0;
 }
 
+#to_main{
+    margin-left: 1%;
+}
+
 header{
     min-height: 6vh;
     text-align: left;
-    color: red;
+    background: linear-gradient(to left, pink, orange,  yellow, lime, aqua);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px black;
+    color: transparent;
     font-size: 1.2vw;
+    font-family: Verdana;
 }
 
 .main{
@@ -30,9 +39,9 @@ header{
     background: linear-gradient(to left, pink, orange,  yellow, lime, aqua);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 40px;
     -webkit-text-stroke: 1.8px black;
     color: transparent;
+    font-size: 3vw;
 } 
 
 .link{

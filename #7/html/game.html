@@ -9,47 +9,64 @@
     </head>
     <body>
         <header>
-            <span class="link" id="2_main">Главная</span>
-            <span class="link" id="2_lk">Личный кабинет</span>
+            <span class="link" id="to_main">ГЛАВНАЯ</span>
+            <span class="link" id="2_lk">ЛИЧНЫЙ КАБИНЕТ</span>
             <span id="right_login"> 
                 Пользователь: <span id="login_lk"> </span> <br>
-                <button id="right_exit"> Выйти </button>
+                <button id="right_exit" class="button1"> Выйти </button>
             </span>
         </header>
         <div class="main"> 
             <h2> 
-                Лабораторная работа №7 
-            </h2> 
-            <div>
-                <span class="link" id="starts">
-                    Начать играть!
-                </span> <br>
-                <span>
-                    Это уровень №<label id="level">X</label>.
-                </span>
-                <span>
-                    До конца раунда осталось <label id="timer"> Y </label> секунд 
-                </span>
-            </div>
-            <div id="div_game">
-                <div class="elements_q">
-                    <div class="element_q1" id="game_question"> Тут будет Ваш вопрос</div>
-                    <div class="element_q2"> ? </div>
+                ПосчитайКа!
+            </h2>
+            <div class="main_div_game">
+
+                <div id="div_game_menu"  class="main_div_game">
+                    <div id="menu">
+                        Привет!
+                        <div>
+                            <button class="menu_btn"> Правила</button>
+                            <button class="menu_btn"> Начать</button>
+                        </div>
+                    </div>
                 </div>
-                <span id="message" class="message"> </span>
-                <div class="elements_game">
-                    <div class="element_game" id="element_1"> А тут ответ №1 </div>
-                    <div class="element_game" id="element_2"> А тут ответ №2 </div>
-                    <div class="element_game" id="element_3"> А тут ответ №3 </div>
-                    <div class="element_game" id="element_4"> А тут ответ №4 </div>
-                    <div class="element_game" id="element_5"> А тут ответ №5 </div>
-                    <div class="element_game" id="element_6"> А тут ответ №6 </div>
-                    <div class="element_game" id="element_7"> А тут ответ №7 </div>
-                    <div class="element_game" id="element_8"> А тут ответ №8 </div>
-                    <div class="element_game" id="element_9"> А тут ответ №9 </div>
-                    <div class="element_game" id="element_10"> А тут ответ №10 </div>
+
+                <div id="div_game"  class="main_div_game">
+                    <div id="info">
+                        <span>
+                            Ваш уровень: X
+                        </span>
+                        <span>
+                            Осталось секунд: Y
+                        </span>
+                        <span>
+                            <img class="lives" src="../images/heart.png">
+                            <img class="lives" src="../images/heart.png">
+                            <img class="lives" src="../images/heart_f.png">
+                        </span>
+                    </div>
+                    
+                    <div class="elements_q">
+                        <div class="element_q1" id="game_question"> Тут будет Ваш вопрос</div>
+                        <div class="element_q2"> <img src="../images/equal.png"> </div>
+                        <div class="element_q3"> ? </div>
+                    </div>
+                    <span id="message" class="message"> </span>
+                    <div class="elements_game">
+                        <div class="element_game" id="element_1">Ответ №1 </div>
+                        <div class="element_game" id="element_2">Ответ №2 </div>
+                        <div class="element_game" id="element_3">Ответ №3 </div>
+                        <div class="element_game" id="element_4">Ответ №4 </div>
+                        <div class="element_game" id="element_5">Ответ №5 </div>
+                        <div class="element_game" id="element_6">Ответ №6 </div>
+                        <div class="element_game" id="element_7">Ответ №7 </div>
+                        <div class="element_game" id="element_8">Ответ №8 </div>
+                        <div class="element_game" id="element_9">Ответ №9 </div>
+                        <div class="element_game" id="element_10">Ответ №10 </div>
+                    </div>
                 </div>
-            </div>
+            </div>  
         </div>
     </body>
 </html>
