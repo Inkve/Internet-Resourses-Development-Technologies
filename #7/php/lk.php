@@ -31,7 +31,6 @@
             if ($element->login == $login){
                 if ($element->password == $password){
                 $name = $element->name;
-                $age = $element->age;
                 $mail = $element->mail;
                 };
             };
