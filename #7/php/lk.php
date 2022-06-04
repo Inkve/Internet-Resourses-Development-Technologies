@@ -8,6 +8,8 @@
     $from_begin = true;
     $game_continue = false;
     $wait = false;
+    $lives = null;
+    $change = false;
     session_start();
     $login = "";
     $password = "";
@@ -43,6 +45,7 @@
         $_SESSION["from_begin"] = $from_begin;
         $_SESSION["game_continue"] = $game_continue;
         $_SESSION["wait"] = $wait;
+        $_SESSION["lives"] = $lives;
         echo json_encode([
             "successful" => true,
             "login" => $login,

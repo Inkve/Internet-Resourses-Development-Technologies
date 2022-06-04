@@ -92,7 +92,7 @@ h2{
     border: 3px solid rgb(152, 149, 149);
     border-radius: 50px;
     width: 95vw;
-    height: 80vh;
+    height: 79vh;
     background-color: rgba(255, 255, 255, 0.552);
 }
 
@@ -115,7 +115,7 @@ h2{
     border: 3px solid rgb(152, 149, 149);
     border-radius: 50px;
     width: 95vw;
-    height: 80vh;
+    height: 79vh;
     background-color: rgba(255, 255, 255, 0.782);
 }
 
@@ -131,7 +131,7 @@ h2{
     height: 25vh;
     margin: 1.5vw;
     border-radius: 30px;
-    font-size: 100%;
+    font-size: 5vw;
 }
 
 .element_q2{
@@ -157,6 +157,7 @@ h2{
     margin: 1.5vw;
     border-radius: 30px;
     font-size: 100%;
+    font-size: 5vw;
 }
 
 .elements_q{
@@ -194,6 +195,13 @@ h2{
     height: 15vh;
     margin: 1vw;
     border-radius: 10px;
+    font-size: 5vw;
+}
+
+.str_div{
+    display: flex;
+    justify-content: space-around;
+    gap: 3%;
 }
 
 .element_game:hover{
@@ -202,5 +210,5 @@ h2{
 }
 
 .element_game:active{
-    background-color: #03dac6;
+    background-color: #0eda03;
 }
