@@ -16,7 +16,7 @@ h2{
 }
 
 header{
-    min-height: 6vh;
+    min-height: 7vh;
     text-align: left;
     background: linear-gradient(to left, pink, orange,  yellow, lime, aqua);
     -webkit-background-clip: text;

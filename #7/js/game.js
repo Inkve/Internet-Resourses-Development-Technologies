@@ -72,7 +72,7 @@ function get_info(number){
 
                         let menu = document.createElement("div");
                         menu.setAttribute("id", "menu");
-                        menu.innerHTML = `Вы проиграли! <br>
+                        menu.innerHTML = `Игра окончена! <br>
                         Ваш счет: ${resived_data["level"] - 1}`;
                         let str_div = document.createElement("div");
                         str_div.setAttribute("class", "str_div");

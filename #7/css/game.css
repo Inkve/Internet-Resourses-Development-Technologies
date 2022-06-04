@@ -92,7 +92,7 @@ h2{
     border: 3px solid rgb(152, 149, 149);
     border-radius: 50px;
     width: 95vw;
-    height: 79vh;
+    height: 76vh;
     background-color: rgba(255, 255, 255, 0.552);
 }
 
@@ -101,6 +101,7 @@ h2{
 }
 
 .main_div_game{
+    margin-top: 0.5%;
     z-index: 0;
     display: flex;
     flex-direction: column;
@@ -115,7 +116,7 @@ h2{
     border: 3px solid rgb(152, 149, 149);
     border-radius: 50px;
     width: 95vw;
-    height: 79vh;
+    height: 76vh;
     background-color: rgba(255, 255, 255, 0.782);
 }
 
