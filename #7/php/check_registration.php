@@ -27,12 +27,10 @@
         );
         array_push($file_data, $current_user);
         file_put_contents("../data/users.json", json_encode($file_data));
-    };
-    if ($successful){
         session_start();
-        $_SESSION['login'] = $login;
-        $_SESSION['password'] = $password;
-    }
+        $_SESSION['login'] = $data->login;
+        $_SESSION['password'] = $data->password1;
+    };
     $errors = array(
         "name_err" => $name_error,
         "login_err" => $login_error,

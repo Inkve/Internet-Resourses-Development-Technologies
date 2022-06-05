@@ -116,6 +116,10 @@ if ($from_begin and !$wait){
         $from_begin = true;
         $message = "Конец";
     };
+    $answer_user = "";
+    if ($user_answer != -1){
+        $answer_user = $answers[$user_answer];
+    };
     echo json_encode(
         [   
             "level" => $level_number,
@@ -124,7 +128,7 @@ if ($from_begin and !$wait){
             "answers" => $answers,
             "message" => $message,
             "lives" => $lives,
-            "user_answer" => $answers[$user_answer]
+            "user_answer" => $answer_user
         ]
     );
 };
