@@ -62,27 +62,34 @@ function get_info(number){
                 document.getElementById("level").innerHTML = resived_data["level"];
                 document.getElementById("timer").innerHTML = resived_data["time" ];
                 document.getElementById("game_question").innerHTML = resived_data["question"];
-                if (resived_data["user_answer"] != null){
-                    document.getElementById("element_q3").innerHTML = resived_data["user_answer"];
-                    setTimeout(() => {
-                        document.getElementById("element_q3").innerHTML = "?";
-                    }, 900);
-                };
                 for (let i = 1; i <= 10; i++){
                     document.getElementById(`element_${i}`).innerHTML = resived_data["answers"][i-1];
                 };
                 if  (resived_data["message"] == "Правильно!"){
                     let eq = document.getElementById("equal");
                     eq.src = "../images/equal.png";
+                    document.getElementById("element_q3").innerHTML = resived_data["user_answer"];
                     clearInterval(game);
                     setTimeout(() => {
                         game = setInterval(() => {
                             get_info(0);
                         }, 500);
+                        document.getElementById("element_q3").innerHTML = "?";
                     }, 700);
+                };
+                if  (resived_data["message"] == "Время вышло!"){
+                    clearInterval(game);
+                    document.getElementById("element_q3").innerHTML = resived_data["user_answer"];
+                    setTimeout(() => {
+                        game = setInterval(() => {
+                            get_info(0);
+                        }, 500);
+                        document.getElementById("element_q3").innerHTML = "?";
+                    }, 800);
                 };
                 if  (resived_data["message"] == "Неправильно!"){
                     clearInterval(game);
+                    document.getElementById("element_q3").innerHTML = resived_data["user_answer"];
                     let eq = document.getElementById("equal");
                     eq.src = "../images/not_equal.png";
                     setTimeout(() => {
@@ -90,33 +97,36 @@ function get_info(number){
                             get_info(0);
                         }, 500);
                         eq.src = "../images/equal.png";
+                        document.getElementById("element_q3").innerHTML = "?";
                     }, 800);
                 };
                 if  (resived_data["message"] == "Конец"){
                     clearInterval(game);
+                    document.getElementById("element_q3").innerHTML = resived_data["user_answer"];
                     document.getElementById("div_game_menu").style.visibility = "visible";
-                        let menu = document.createElement("div");
-                        menu.setAttribute("id", "menu");
-                        menu.innerHTML = `Игра окончена! <br>
-                        Ваш счет: ${resived_data["level"] - 1}`;
-                        let str_div = document.createElement("div");
-                        str_div.setAttribute("class", "str_div");
-                        let start_btn = document.createElement("button");
-                        start_btn.setAttribute("class", "menu_btn");
-                        start_btn.innerHTML = "Заново!";
-                        start_btn.addEventListener("click", function(){
-                            start_game();
-                        });
-                        let lk_btn = document.createElement("button");
-                        lk_btn.setAttribute("class", "menu_btn");
-                        lk_btn.innerHTML = "В ЛК!";
-                        lk_btn.addEventListener("click", function(){
-                            window.location.replace('../html/lk.html');
-                        });
-                        str_div.append(lk_btn);
-                        str_div.append(start_btn);
-                        menu.append(str_div);
-                        document.getElementById("menu").replaceWith(menu);
+                    let menu = document.createElement("div");
+                    menu.setAttribute("id", "menu");
+                    menu.innerHTML = `Игра окончена! <br>
+                    Ваш счет: ${resived_data["level"] - 1}`;
+                    let str_div = document.createElement("div");
+                    str_div.setAttribute("class", "str_div");
+                    let start_btn = document.createElement("button");
+                    start_btn.setAttribute("class", "menu_btn");
+                    start_btn.innerHTML = "Заново!";
+                    start_btn.addEventListener("click", function(){
+                        start_game();
+                        document.getElementById("element_q3").innerHTML = "?";
+                    });
+                    let lk_btn = document.createElement("button");
+                    lk_btn.setAttribute("class", "menu_btn");
+                    lk_btn.innerHTML = "В ЛК!";
+                    lk_btn.addEventListener("click", function(){
+                        window.location.replace('../html/lk.html');
+                    });
+                    str_div.append(lk_btn);
+                    str_div.append(start_btn);
+                    menu.append(str_div);
+                    document.getElementById("menu").replaceWith(menu);
                 };
                 let lives = Number(resived_data["lives"]);
                 let one = document.getElementById("one");

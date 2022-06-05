@@ -93,10 +93,12 @@ if ($from_begin and !$wait){
     $change - false;
 } else {
     $user_answer = check($data->answered);
+    $answer_user = "";
     if (($user_answer == $right_answer - 1) and ($current_time - 9 <= $time_on_question) and ($lives > 0)){
         $wait = false;
         $game_continue = true;
         $message = "Правильно!";
+        $answer_user = $answers[$right_answer - 1];
         $change  = true;
     } else if (($user_answer != $right_answer - 1) and ($user_answer != -1) and ($current_time - 9 <= $time_on_question)){
         $message = "Неправильно!";
@@ -104,21 +106,19 @@ if ($from_begin and !$wait){
         $wait = false;
         $change = false;
         $lives = $lives - 1;
+        $answer_user = $answers[$user_answer];
     } else if ($current_time - 9 > $time_on_question){
         $message = "Время вышло!";
         $game_continue = true;
         $lives = $lives - 1;
         $wait = false;
         $change = false;
+        $answer_user = $answers[$right_answer - 1];
     };
     if ($lives <= 0){
         $wait = false;
         $from_begin = true;
         $message = "Конец";
-    };
-    $answer_user = "";
-    if ($user_answer != -1){
-        $answer_user = $answers[$user_answer];
     };
     echo json_encode(
         [   
