@@ -4,7 +4,9 @@ html{
 
 body{
     background-image: url("../images/background.jpg");
+    background-position: center;
     font-family: Verdana;
+    object-fit: cover;
 }
 
 h2{

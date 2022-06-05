@@ -62,14 +62,39 @@ function get_info(number){
                 document.getElementById("level").innerHTML = resived_data["level"];
                 document.getElementById("timer").innerHTML = resived_data["time" ];
                 document.getElementById("game_question").innerHTML = resived_data["question"];
+                if (resived_data["user_answer"] != null){
+                    document.getElementById("element_q3").innerHTML = resived_data["user_answer"];
+                    setTimeout(() => {
+                        document.getElementById("element_q3").innerHTML = "?";
+                    }, 900);
+                };
                 for (let i = 1; i <= 10; i++){
                     document.getElementById(`element_${i}`).innerHTML = resived_data["answers"][i-1];
                 };
-                // document.getElementById("message").innerHTML = resived_data["message"];
+                if  (resived_data["message"] == "Правильно!"){
+                    let eq = document.getElementById("equal");
+                    eq.src = "../images/equal.png";
+                    clearInterval(game);
+                    setTimeout(() => {
+                        game = setInterval(() => {
+                            get_info(0);
+                        }, 500);
+                    }, 700);
+                };
+                if  (resived_data["message"] == "Неправильно!"){
+                    clearInterval(game);
+                    let eq = document.getElementById("equal");
+                    eq.src = "../images/not_equal.png";
+                    setTimeout(() => {
+                        game = setInterval(() => {
+                            get_info(0);
+                        }, 500);
+                        eq.src = "../images/equal.png";
+                    }, 800);
+                };
                 if  (resived_data["message"] == "Конец"){
                     clearInterval(game);
                     document.getElementById("div_game_menu").style.visibility = "visible";
-
                         let menu = document.createElement("div");
                         menu.setAttribute("id", "menu");
                         menu.innerHTML = `Игра окончена! <br>

@@ -58,8 +58,8 @@ function get_info(){
                     table.setAttribute("border", "1")
                     let  thead = document.createElement("thead");
                     let thead_tr = document.createElement("tr");
-                    let names = ["Логин", "Количество сыгранных игр", "Максимальный уровень"];
-                    for (let i = 0; i < 3; i++){
+                    let names = ["Место", "Логин", "Максимальный уровень", "Количество сыгранных игр"];
+                    for (let i = 0; i < names.length; i++){
                         let td = document.createElement("td");
                         td.innerHTML = names[i];
                         thead_tr.append(td);
@@ -67,21 +67,23 @@ function get_info(){
                     thead.append(thead_tr);
                     table.append(thead);
                     let tbody = document.createElement("tbody");
-                    all_data.forEach(element_array => {
+                    all_data.forEach(element => {
                         let tbody_tr = document.createElement("tr");
-                        for (key in element_array){
-                            if (key == login){
-                                tbody_tr.setAttribute("class", "light");
-                            }
-                            let td = document.createElement("td");
-                            td.innerHTML = key;
-                            tbody_tr.append(td);
-                            for (key2 in element_array[key]){
-                                let td = document.createElement("td");
-                                td.innerHTML = element_array[key][key2];
-                                tbody_tr.append(td);
-                            };
+                        if (login == element["login"]){
+                            tbody_tr.setAttribute("class", "light")
                         };
+                        let td1 = document.createElement("td");
+                        let td2 = document.createElement("td");
+                        let td3 = document.createElement("td");
+                        let td4 = document.createElement("td");
+                        td1.innerHTML = all_data.indexOf(element) + 1;
+                        td2.innerHTML = element["login"];
+                        td3.innerHTML = element["max_level"];
+                        td4.innerHTML = element["play_number"];
+                        tbody_tr.append(td1);
+                        tbody_tr.append(td2);
+                        tbody_tr.append(td3);
+                        tbody_tr.append(td4);
                         tbody.append(tbody_tr); 
                     });
                     table.append(tbody);
@@ -89,7 +91,7 @@ function get_info(){
                 };
             },
             error: function(){
-                window.location.replace('login.html');
+                window.location.replace('../html/login.html');
             }
         }
     );

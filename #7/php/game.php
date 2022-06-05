@@ -13,8 +13,6 @@ $wait;
 $lives;
 $change;
 $message = "";
-
-
 $play_number = 0;
 $max_level = 0;
 session_start();
@@ -58,12 +56,12 @@ if (array_key_exists('change',  $_SESSION)){
 };
 
 $other_users = [];
-$file_datas = json_decode(file_get_contents("../data/statictics.json"));
+$file_datas = json_decode(file_get_contents("../data/statictics.json"), true);
 foreach ($file_datas as $element){
-    if (property_exists($element, $login)){
-        $max_level = $element->$login->max_level;
-        $play_number = $element->$login->play_number;
-    } else if (!property_exists($element, $login)){
+    if($element["login"] == $login){
+        $max_level = $element["max_level"];
+        $play_number = $element["play_number"];
+    } else {
         array_push($other_users, $element);
     };
 };
@@ -93,15 +91,14 @@ if ($from_begin and !$wait){
     $game_continue = false;
     $wait = true;
     $change - false;
-    $play_number++;
 } else {
     $user_answer = check($data->answered);
-    if (($user_answer == $right_answer-1) and ($current_time - 9 <= $time_on_question) and ($lives > 0)){
+    if (($user_answer == $right_answer - 1) and ($current_time - 9 <= $time_on_question) and ($lives > 0)){
         $wait = false;
         $game_continue = true;
         $message = "Правильно!";
         $change  = true;
-    } else if (($user_answer != $right_answer) and ($user_answer != -1) and ($current_time - 9 <= $time_on_question)){
+    } else if (($user_answer != $right_answer - 1) and ($user_answer != -1) and ($current_time - 9 <= $time_on_question)){
         $message = "Неправильно!";
         $game_continue = true;
         $wait = false;
@@ -126,7 +123,8 @@ if ($from_begin and !$wait){
             "question" => $question,
             "answers" => $answers,
             "message" => $message,
-            "lives" => $lives
+            "lives" => $lives,
+            "user_answer" => $answers[$user_answer]
         ]
     );
 };
@@ -142,10 +140,14 @@ $_SESSION["wait"] = $wait;
 $_SESSION["lives"] = $lives;
 $_SESSION["change"] = $change;
 $statistics_data = [
-    $login =>["play_number" => $play_number,
-                "max_level" => $max_level]
+    "login" => $login,
+    "play_number" => $play_number,
+    "max_level" => $max_level
 ];
 array_push($other_users, $statistics_data);
+usort($other_users, function($a, $b){
+    return ($b["max_level"] - $a["max_level"]);
+});
 file_put_contents("../data/statictics.json", json_encode(($other_users)));
 
 function check($array){
