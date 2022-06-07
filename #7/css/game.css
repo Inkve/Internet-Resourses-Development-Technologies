@@ -121,9 +121,13 @@ h2{
 }
 
 .element_q1{
-    background-color: white;
+    background-image:  url("../images/btn.png");
+    background-size: 40vw 25vh;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    -webkit-text-fill-color: black;
     color: black;
-    border: 1px solid rgb(152, 149, 149);
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -146,9 +150,13 @@ h2{
 }
 
 .element_q3{
-    background-color: white;
+    background-image:  url("../images/btn.png");
+    background-size: 20vw 25vh;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    -webkit-text-fill-color: black;
     color: black;
-    border: 1px solid rgb(152, 149, 149);
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -185,18 +193,22 @@ h2{
 }
 
 .element_game{
-    background-color: white;
+    background-image:  url("../images/btn.png");
+    background-size: 16.5vw 5vw;
+    background-origin: border-box;
+    background-repeat: no-repeat;
+    overflow: hidden;
     color: black;
-    border: 1px solid rgb(152, 149, 149);
     display: flex;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
     width: 16.5vw;
-    height: 15vh;
+    height: 5vw;
     margin: 1vw;
     border-radius: 10px;
-    font-size: 5vw;
+    font-size: 3.5vw;
+    -webkit-text-fill-color: black;
 }
 
 .str_div{
@@ -206,10 +218,9 @@ h2{
 }
 
 .element_game:hover{
-    background-color: rgba(190, 182, 182, 0.536);
-    color: white;
+    background-image:  url("../images/btnn.png");
 }
 
 .element_game:active{
-    background-color: #0eda03;
+    background-image:  url("../images/btnnn.png");
 }
