@@ -185,8 +185,8 @@ function generation(){
 };
 
 function generate($level){
-    $first = rand(1*$level*$level, 5*$level*$level);
-    $second = rand(1*$level*$level, 5*$level*$level);
+    $first = rand(1*$level*1.3, 5*$level*1.3);
+    $second = rand(1*$level*1.4, 5*$level*1.3);
     $question = $first . " + " . $second;
     $right_number = rand(1, 10);
     $answers = [];

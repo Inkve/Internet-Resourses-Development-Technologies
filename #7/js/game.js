@@ -1,3 +1,4 @@
+let firework;
 $('document').ready(function(){
     get_infos();
     $("#to_main").click(function(){
@@ -15,6 +16,24 @@ $('document').ready(function(){
     });
     $("#right_exit").click(function(){
         window.location.replace('../html/logout.html');
+    });
+    firework = JS_FIREWORKS.Fireworks({
+        id : 'fireworks-canvas',
+        hue : 1200,
+        particleCount : 200,
+        delay : 1,
+        minDelay : 10,
+        maxDelay : 30,
+        boundaries : { // of respawn and target
+            top: 10,
+            bottom: document.documentElement.clientHeight * 0.1,
+            left: 10,
+            right: document.documentElement.clientWidth * 0.2
+        },
+        fireworkSpeed : 1,
+        fireworkAcceleration : 1.05,
+        particleFriction : .95,
+        particleGravity : 1.8
     });
 });
 
@@ -66,6 +85,7 @@ function get_info(number){
                     document.getElementById(`element_${i}`).innerHTML = resived_data["answers"][i-1];
                 };
                 if  (resived_data["message"] == "Правильно!"){
+                    firework.start();
                     let eq = document.getElementById("equal");
                     eq.src = "../images/equal.png";
                     document.getElementById("element_q3").innerHTML = resived_data["user_answer"];
@@ -75,7 +95,10 @@ function get_info(number){
                             get_info(0);
                         }, 500);
                         document.getElementById("element_q3").innerHTML = "?";
-                    }, 700);
+                    }, 1500);
+                    setTimeout(() => {
+                        firework.stop();
+                    }, 2500);
                 };
                 if  (resived_data["message"] == "Время вышло!"){
                     clearInterval(game);
@@ -85,7 +108,7 @@ function get_info(number){
                             get_info(0);
                         }, 500);
                         document.getElementById("element_q3").innerHTML = "?";
-                    }, 800);
+                    }, 1200);
                 };
                 if  (resived_data["message"] == "Неправильно!"){
                     clearInterval(game);
@@ -98,7 +121,7 @@ function get_info(number){
                         }, 500);
                         eq.src = "../images/equal.png";
                         document.getElementById("element_q3").innerHTML = "?";
-                    }, 800);
+                    }, 1200);
                 };
                 if  (resived_data["message"] == "Конец"){
                     clearInterval(game);
